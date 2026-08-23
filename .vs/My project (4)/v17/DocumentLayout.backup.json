@@ -1,0 +1,595 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\yurin\\My project (4)\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|c:\\users\\yurin\\my project (4)\\assets\\companiontankai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\companiontankai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\move2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\move2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\tankuimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\tankuimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\kawaii_tanks_project (free)\\scripts\\camera_rotate_scripts\\camera_rotate_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\kawaii_tanks_project (free)\\scripts\\camera_rotate_scripts\\camera_rotate_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\kawaii_tanks_project (free)\\scripts\\camera_manager_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\kawaii_tanks_project (free)\\scripts\\camera_manager_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\kawaii_tanks_project (free)\\scripts\\camera_avoid_obstacle_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\kawaii_tanks_project (free)\\scripts\\camera_avoid_obstacle_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\kawaii_tanks_project (free)\\scripts\\fire_spawn_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\kawaii_tanks_project (free)\\scripts\\fire_spawn_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\kawaii_tanks_project (free)\\scripts\\turret_control_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\kawaii_tanks_project (free)\\scripts\\turret_control_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\kawaii_tanks_project (free)\\scripts\\camera_zoom_scripts\\camera_zoom_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\kawaii_tanks_project (free)\\scripts\\camera_zoom_scripts\\camera_zoom_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\kawaii_tanks_project (free)\\scripts\\aimmarker_control_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\kawaii_tanks_project (free)\\scripts\\aimmarker_control_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\scope.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\scope.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\reticle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\reticle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yurin\\My project (4)\\Assets\\mouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\mouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\kawaii_tanks_project (free)\\scripts\\barrel_control_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\kawaii_tanks_project (free)\\scripts\\barrel_control_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\kawaii_tanks_project (free)\\scripts\\cannon_control_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\kawaii_tanks_project (free)\\scripts\\cannon_control_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\kawaii_tanks_project (free)\\scripts\\fire_control_scripts\\fire_control_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\kawaii_tanks_project (free)\\scripts\\fire_control_scripts\\fire_control_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\rotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\rotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\kawaii_tanks_project (free)\\scripts\\game_controller_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\kawaii_tanks_project (free)\\scripts\\game_controller_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\kawaii_tanks_project (free)\\scripts\\bullet_nav_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\kawaii_tanks_project (free)\\scripts\\bullet_nav_cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yurin\\My project (4)\\Assets\\ray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\ray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\guuuun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\guuuun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\scroll_track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\scroll_track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yurin\\My project (4)\\Assets\\Aiming_Control_CS.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Aiming_Control_CS.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\aimcontroller_z.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\aimcontroller_z.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\newbehaviourscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\newbehaviourscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\headcontroller_z.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\headcontroller_z.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\cameralookatmouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\cameralookatmouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\bullet fx pack trail, fire, energy\\sources\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\bullet fx pack trail, fire, energy\\sources\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\bullet fx pack trail, fire, energy\\sources\\scripts\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\bullet fx pack trail, fire, energy\\sources\\scripts\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\bullet fx pack trail, fire, energy\\prefabs\\bu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\bullet fx pack trail, fire, energy\\prefabs\\bu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\zoomuot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\zoomuot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\turretrotate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\turretrotate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\headcontroller_z2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\headcontroller_z2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|C:\\Users\\yurin\\My project (4)\\assets\\rotation2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\rotation2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yurin\\My project (4)\\Assets\\NewBehaviourScript1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\NewBehaviourScript1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CompanionTankAI.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\CompanionTankAI.cs",
+              "RelativeDocumentMoniker": "Assets\\CompanionTankAI.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\CompanionTankAI.cs",
+              "RelativeToolTip": "Assets\\CompanionTankAI.cs",
+              "ViewState": "AgIAAP0AAAAAAAAAAAAIwB8BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T04:58:21.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TankUIManager.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\TankUIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\TankUIManager.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\TankUIManager.cs",
+              "RelativeToolTip": "Assets\\TankUIManager.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T04:19:14.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "move2.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\move2.cs",
+              "RelativeDocumentMoniker": "Assets\\move2.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\move2.cs",
+              "RelativeToolTip": "Assets\\move2.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAIwK4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-28T04:00:24.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Camera_Avoid_Obstacle_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Avoid_Obstacle_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Avoid_Obstacle_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Avoid_Obstacle_CS.cs",
+              "RelativeToolTip": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Avoid_Obstacle_CS.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-28T03:12:00.723Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Camera_Manager_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Manager_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Manager_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Manager_CS.cs",
+              "RelativeToolTip": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Manager_CS.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAUwBUAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-28T03:11:29.244Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Camera_Rotate_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Rotate_Scripts\\Camera_Rotate_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Rotate_Scripts\\Camera_Rotate_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Rotate_Scripts\\Camera_Rotate_CS.cs",
+              "RelativeToolTip": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Rotate_Scripts\\Camera_Rotate_CS.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAADgv3gAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-28T02:18:02.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Camera_Zoom_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Zoom_Scripts\\Camera_Zoom_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Zoom_Scripts\\Camera_Zoom_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Zoom_Scripts\\Camera_Zoom_CS.cs",
+              "RelativeToolTip": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Zoom_Scripts\\Camera_Zoom_CS.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAADwv3UAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T02:37:19.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Fire_Spawn_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Fire_Spawn_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Fire_Spawn_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Fire_Spawn_CS.cs",
+              "RelativeToolTip": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Fire_Spawn_CS.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAIwDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T02:55:04.458Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Turret_Control_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Turret_Control_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Turret_Control_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Turret_Control_CS.cs",
+              "RelativeToolTip": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Turret_Control_CS.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAkAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T03:03:28.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "move.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\move.cs",
+              "RelativeDocumentMoniker": "Assets\\move.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\move.cs",
+              "RelativeToolTip": "Assets\\move.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAAwEwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T03:07:56.149Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Fire_Control_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Fire_Control_Scripts\\Fire_Control_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Fire_Control_Scripts\\Fire_Control_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Fire_Control_Scripts\\Fire_Control_CS.cs",
+              "RelativeToolTip": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Fire_Control_Scripts\\Fire_Control_CS.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAEcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T03:04:05.852Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "scope.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\scope.cs",
+              "RelativeDocumentMoniker": "Assets\\scope.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\scope.cs",
+              "RelativeToolTip": "Assets\\scope.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T02:23:24.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Bullet_Nav_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Bullet_Nav_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Bullet_Nav_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Bullet_Nav_CS.cs",
+              "RelativeToolTip": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Bullet_Nav_CS.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAIwBcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T02:48:27.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "guuuun.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\guuuun.cs",
+              "RelativeDocumentMoniker": "Assets\\guuuun.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\guuuun.cs",
+              "RelativeToolTip": "Assets\\guuuun.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T03:32:29.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "reticle.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\reticle.cs",
+              "RelativeDocumentMoniker": "Assets\\reticle.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\reticle.cs",
+              "RelativeToolTip": "Assets\\reticle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T02:41:02.784Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AimMarker_Control_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\AimMarker_Control_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\AimMarker_Control_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\AimMarker_Control_CS.cs",
+              "RelativeToolTip": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\AimMarker_Control_CS.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAQwDcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T02:58:27.444Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "rotation.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\rotation.cs",
+              "RelativeDocumentMoniker": "Assets\\rotation.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\rotation.cs",
+              "RelativeToolTip": "Assets\\rotation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T04:22:00.679Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Barrel_Control_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Barrel_Control_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Barrel_Control_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Barrel_Control_CS.cs",
+              "RelativeToolTip": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Barrel_Control_CS.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T03:09:05.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "mouse.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\mouse.cs",
+              "RelativeDocumentMoniker": "Assets\\mouse.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\mouse.cs",
+              "RelativeToolTip": "Assets\\mouse.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T02:16:34.305Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Cannon_Control_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Cannon_Control_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Cannon_Control_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Cannon_Control_CS.cs",
+              "RelativeToolTip": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Cannon_Control_CS.cs",
+              "ViewState": "AgIAAMEAAAAAAAAAAAAIwOMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T03:00:24.657Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ray.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\ray.cs",
+              "RelativeDocumentMoniker": "Assets\\ray.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\ray.cs",
+              "RelativeToolTip": "Assets\\ray.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T02:34:55.115Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Game_Controller_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Game_Controller_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Game_Controller_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Game_Controller_CS.cs",
+              "RelativeToolTip": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Game_Controller_CS.cs",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAkwKYAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T02:49:47.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "NewBehaviourScript.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\NewBehaviourScript.cs",
+              "RelativeDocumentMoniker": "Assets\\NewBehaviourScript.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\NewBehaviourScript.cs",
+              "RelativeToolTip": "Assets\\NewBehaviourScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T02:51:25.156Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AimController_Z.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\AimController_Z.cs",
+              "RelativeDocumentMoniker": "Assets\\AimController_Z.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\AimController_Z.cs",
+              "RelativeToolTip": "Assets\\AimController_Z.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T03:06:54.129Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Aiming_Control_CS.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Aiming_Control_CS.cs",
+              "RelativeDocumentMoniker": "Assets\\Aiming_Control_CS.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Aiming_Control_CS.cs",
+              "RelativeToolTip": "Assets\\Aiming_Control_CS.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T02:45:03.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Scroll_Track.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Scroll_Track.cs",
+              "RelativeDocumentMoniker": "Assets\\Scroll_Track.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Scroll_Track.cs",
+              "RelativeToolTip": "Assets\\Scroll_Track.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T03:41:43.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CameraLookAtMouse.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\CameraLookAtMouse.cs",
+              "RelativeDocumentMoniker": "Assets\\CameraLookAtMouse.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\CameraLookAtMouse.cs",
+              "RelativeToolTip": "Assets\\CameraLookAtMouse.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAIwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T03:13:08.049Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "turretrotate.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\turretrotate.cs",
+              "RelativeDocumentMoniker": "Assets\\turretrotate.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\turretrotate.cs",
+              "RelativeToolTip": "Assets\\turretrotate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T02:25:12.604Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "HeadController_Z.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\HeadController_Z.cs",
+              "RelativeDocumentMoniker": "Assets\\HeadController_Z.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\HeadController_Z.cs",
+              "RelativeToolTip": "Assets\\HeadController_Z.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T03:09:43.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "NewBehaviourScript1.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\NewBehaviourScript1.cs",
+              "RelativeDocumentMoniker": "Assets\\NewBehaviourScript1.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\NewBehaviourScript1.cs",
+              "RelativeToolTip": "Assets\\NewBehaviourScript1.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T02:48:40.847Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "zoomuot.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\zoomuot.cs",
+              "RelativeDocumentMoniker": "Assets\\zoomuot.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\zoomuot.cs",
+              "RelativeToolTip": "Assets\\zoomuot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T04:36:37.592Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Gun.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Bullet FX Pack Trail, Fire, Energy\\Sources\\Scripts\\Gun.cs",
+              "RelativeDocumentMoniker": "Assets\\Bullet FX Pack Trail, Fire, Energy\\Sources\\Scripts\\Gun.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Bullet FX Pack Trail, Fire, Energy\\Sources\\Scripts\\Gun.cs",
+              "RelativeToolTip": "Assets\\Bullet FX Pack Trail, Fire, Energy\\Sources\\Scripts\\Gun.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T05:07:04.912Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Bullet.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Bullet FX Pack Trail, Fire, Energy\\Sources\\Scripts\\Bullet.cs",
+              "RelativeDocumentMoniker": "Assets\\Bullet FX Pack Trail, Fire, Energy\\Sources\\Scripts\\Bullet.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Bullet FX Pack Trail, Fire, Energy\\Sources\\Scripts\\Bullet.cs",
+              "RelativeToolTip": "Assets\\Bullet FX Pack Trail, Fire, Energy\\Sources\\Scripts\\Bullet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T05:19:08.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "bu.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Bullet FX Pack Trail, Fire, Energy\\Prefabs\\bu.cs",
+              "RelativeDocumentMoniker": "Assets\\Bullet FX Pack Trail, Fire, Energy\\Prefabs\\bu.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\Bullet FX Pack Trail, Fire, Energy\\Prefabs\\bu.cs",
+              "RelativeToolTip": "Assets\\Bullet FX Pack Trail, Fire, Energy\\Prefabs\\bu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T05:20:07.506Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "rotation2.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\rotation2.cs",
+              "RelativeDocumentMoniker": "Assets\\rotation2.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\rotation2.cs",
+              "RelativeToolTip": "Assets\\rotation2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T02:51:26.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "HeadController_Z2.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\HeadController_Z2.cs",
+              "RelativeDocumentMoniker": "Assets\\HeadController_Z2.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\HeadController_Z2.cs",
+              "RelativeToolTip": "Assets\\HeadController_Z2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T03:14:47.451Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
