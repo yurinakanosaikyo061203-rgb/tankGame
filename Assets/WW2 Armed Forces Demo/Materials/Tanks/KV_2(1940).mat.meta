@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 80351f700d4da6449bab8c2b6988c004
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 184465
+  packageName: WW2 Armed Forces Demo
+  packageVersion: 2.3.0
+  assetPath: Assets/WW2 Armed Forces Demo/Materials/Tanks/KV_2(1940).mat
+  uploadId: 979692

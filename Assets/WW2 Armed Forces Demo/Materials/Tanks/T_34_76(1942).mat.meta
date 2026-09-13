@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 60c186ed1da5cb348aae3711893b2d20
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 184465
+  packageName: WW2 Armed Forces Demo
+  packageVersion: 2.3.0
+  assetPath: Assets/WW2 Armed Forces Demo/Materials/Tanks/T_34_76(1942).mat
+  uploadId: 979692

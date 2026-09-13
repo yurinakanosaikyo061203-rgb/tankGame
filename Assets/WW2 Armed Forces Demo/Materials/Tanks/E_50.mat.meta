@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f5ea9fada4e79dc428728a22796421aa
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 184465
+  packageName: WW2 Armed Forces Demo
+  packageVersion: 2.3.0
+  assetPath: Assets/WW2 Armed Forces Demo/Materials/Tanks/E_50.mat
+  uploadId: 979692

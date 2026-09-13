@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\yurin\\My project (4)\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|c:\\users\\yurin\\my project (4)\\assets\\enemytankai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\enemytankai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|c:\\users\\yurin\\my project (4)\\assets\\companiontankai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15DCF4D4-C92D-D7D8-1EDE-9B62906D5B60}|Assembly-CSharp.csproj|solutionrelative:assets\\companiontankai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -159,6 +163,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "EnemyTankAI.cs",
+              "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\EnemyTankAI.cs",
+              "RelativeDocumentMoniker": "Assets\\EnemyTankAI.cs",
+              "ToolTip": "C:\\Users\\yurin\\My project (4)\\Assets\\EnemyTankAI.cs",
+              "RelativeToolTip": "Assets\\EnemyTankAI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-13T02:42:25.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "CompanionTankAI.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\CompanionTankAI.cs",
               "RelativeDocumentMoniker": "Assets\\CompanionTankAI.cs",
@@ -171,7 +188,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TankUIManager.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\TankUIManager.cs",
               "RelativeDocumentMoniker": "Assets\\TankUIManager.cs",
@@ -183,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "move2.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\move2.cs",
               "RelativeDocumentMoniker": "Assets\\move2.cs",
@@ -195,7 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Camera_Avoid_Obstacle_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Avoid_Obstacle_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Avoid_Obstacle_CS.cs",
@@ -207,7 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Camera_Manager_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Manager_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Manager_CS.cs",
@@ -219,7 +236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Camera_Rotate_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Rotate_Scripts\\Camera_Rotate_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Rotate_Scripts\\Camera_Rotate_CS.cs",
@@ -231,7 +248,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Camera_Zoom_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Zoom_Scripts\\Camera_Zoom_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Camera_Zoom_Scripts\\Camera_Zoom_CS.cs",
@@ -243,7 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Fire_Spawn_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Fire_Spawn_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Fire_Spawn_CS.cs",
@@ -255,7 +272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Turret_Control_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Turret_Control_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Turret_Control_CS.cs",
@@ -267,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "move.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\move.cs",
               "RelativeDocumentMoniker": "Assets\\move.cs",
@@ -279,7 +296,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Fire_Control_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Fire_Control_Scripts\\Fire_Control_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Fire_Control_Scripts\\Fire_Control_CS.cs",
@@ -291,7 +308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "scope.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\scope.cs",
               "RelativeDocumentMoniker": "Assets\\scope.cs",
@@ -303,7 +320,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Bullet_Nav_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Bullet_Nav_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Bullet_Nav_CS.cs",
@@ -315,7 +332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "guuuun.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\guuuun.cs",
               "RelativeDocumentMoniker": "Assets\\guuuun.cs",
@@ -327,7 +344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "reticle.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\reticle.cs",
               "RelativeDocumentMoniker": "Assets\\reticle.cs",
@@ -339,7 +356,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "AimMarker_Control_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\AimMarker_Control_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\AimMarker_Control_CS.cs",
@@ -351,7 +368,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "rotation.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\rotation.cs",
               "RelativeDocumentMoniker": "Assets\\rotation.cs",
@@ -363,7 +380,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Barrel_Control_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Barrel_Control_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Barrel_Control_CS.cs",
@@ -375,7 +392,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "mouse.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\mouse.cs",
               "RelativeDocumentMoniker": "Assets\\mouse.cs",
@@ -386,7 +403,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Cannon_Control_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Cannon_Control_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Cannon_Control_CS.cs",
@@ -398,7 +415,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "ray.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\ray.cs",
               "RelativeDocumentMoniker": "Assets\\ray.cs",
@@ -410,7 +427,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Game_Controller_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Game_Controller_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Kawaii_Tanks_Project (Free)\\Scripts\\Game_Controller_CS.cs",
@@ -422,7 +439,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "NewBehaviourScript.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\NewBehaviourScript.cs",
               "RelativeDocumentMoniker": "Assets\\NewBehaviourScript.cs",
@@ -434,7 +451,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "AimController_Z.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\AimController_Z.cs",
               "RelativeDocumentMoniker": "Assets\\AimController_Z.cs",
@@ -446,7 +463,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "Aiming_Control_CS.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Aiming_Control_CS.cs",
               "RelativeDocumentMoniker": "Assets\\Aiming_Control_CS.cs",
@@ -457,7 +474,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "Scroll_Track.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Scroll_Track.cs",
               "RelativeDocumentMoniker": "Assets\\Scroll_Track.cs",
@@ -469,7 +486,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "CameraLookAtMouse.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\CameraLookAtMouse.cs",
               "RelativeDocumentMoniker": "Assets\\CameraLookAtMouse.cs",
@@ -481,7 +498,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "turretrotate.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\turretrotate.cs",
               "RelativeDocumentMoniker": "Assets\\turretrotate.cs",
@@ -493,7 +510,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "HeadController_Z.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\HeadController_Z.cs",
               "RelativeDocumentMoniker": "Assets\\HeadController_Z.cs",
@@ -505,7 +522,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "NewBehaviourScript1.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\NewBehaviourScript1.cs",
               "RelativeDocumentMoniker": "Assets\\NewBehaviourScript1.cs",
@@ -516,7 +533,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "zoomuot.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\zoomuot.cs",
               "RelativeDocumentMoniker": "Assets\\zoomuot.cs",
@@ -528,7 +545,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "Gun.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Bullet FX Pack Trail, Fire, Energy\\Sources\\Scripts\\Gun.cs",
               "RelativeDocumentMoniker": "Assets\\Bullet FX Pack Trail, Fire, Energy\\Sources\\Scripts\\Gun.cs",
@@ -540,7 +557,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "Bullet.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Bullet FX Pack Trail, Fire, Energy\\Sources\\Scripts\\Bullet.cs",
               "RelativeDocumentMoniker": "Assets\\Bullet FX Pack Trail, Fire, Energy\\Sources\\Scripts\\Bullet.cs",
@@ -552,7 +569,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "bu.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\Bullet FX Pack Trail, Fire, Energy\\Prefabs\\bu.cs",
               "RelativeDocumentMoniker": "Assets\\Bullet FX Pack Trail, Fire, Energy\\Prefabs\\bu.cs",
@@ -564,7 +581,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "rotation2.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\rotation2.cs",
               "RelativeDocumentMoniker": "Assets\\rotation2.cs",
@@ -576,7 +593,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "HeadController_Z2.cs",
               "DocumentMoniker": "C:\\Users\\yurin\\My project (4)\\Assets\\HeadController_Z2.cs",
               "RelativeDocumentMoniker": "Assets\\HeadController_Z2.cs",
