@@ -82,6 +82,7 @@
     <Compile Include="Assets\Kawaii_Tanks_Project (Free)\Scripts\Barrel_Control_CS.cs" />
     <Compile Include="Assets\Kawaii_Tanks_Project (Free)\Scripts\Camera_Zoom_Scripts\Camera_Zoom_Input_01_Desktop_CS.cs" />
     <Compile Include="Assets\Kawaii_Tanks_Project (Free)\Scripts\Layer_Settings_CS.cs" />
+    <Compile Include="Assets\EnemyTurretAI.cs" />
     <Compile Include="Assets\Kawaii_Tanks_Project (Free)\Scripts\General_Settings_CS.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />

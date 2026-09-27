@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using System.Collections.Generic; // Listを使うための道具箱
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
@@ -10,119 +10,150 @@ public class EnemyTankAI : MonoBehaviour
     private Transform _transform;
     private NavMeshAgent _agent;
     private Transform _attackTarget;
+    private EnemyTurretAI _turretAI; // ★砲塔スクリプトへの参照を追加
 
     [Header("スペック設定")]
-    [SerializeField] private float horsepower = 700f;     // パンターIIの実車馬力
-    [SerializeField] private float maxSpeed = 15.3f;       // 最高時速 55km/h相当
-    [SerializeField] private float maxBackSpeed = 4.2f;    // 後退時速 15km/h相当
-    [SerializeField] private float rotateSpeed = 50.0f;    // 旋回速度
-    [SerializeField] private float turnForwardPower = 0.5f; // 旋回時の前進力
+    [SerializeField] private float horsepower = 700f;
+    [SerializeField] private float maxSpeed = 15.3f;
+    [SerializeField] private float maxBackSpeed = 4.2f;
+    [SerializeField] private float rotateSpeed = 50.0f;
+    [SerializeField] private float turnForwardPower = 0.5f;
 
-    [Header("索敵設定")]
-    [SerializeField] private float scanRadius = 1000f;      // プレイヤー側を探す範囲（m）
-    [SerializeField] private float attackDistance = 100f;   // この距離まで近づいたら足を止めて狙う
+    [Header("索敵・戦闘設定")]
+    [SerializeField] private float scanRadius = 1000f;
+    [SerializeField] private float attackDistance = 200f;
+    [SerializeField] private LayerMask obstacleLayer;
 
+    private float _stuckTimer = 0f;
+    private float _backTimer = 0f;
+    private float _escapeTurnTimer = 0f;
+    private float _escapeForwardTimer = 0f;
+    private bool _isBacking = false;
+    private bool _isEscapingTurn = false;
+    private bool _isEscapingForward = false;
+    private Vector3 _lastPosition;
+    private float _posCheckTimer = 0f;
     private float _scanTimer = 0f;
+    private bool _hasLineOfSight = false;
+
+    public Transform AttackTarget => _attackTarget;
+    public bool HasLineOfSight => _hasLineOfSight;
+    public LayerMask ObstacleLayer => obstacleLayer; // ★砲塔側から参照できるように公開
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _transform = transform;
         _agent = GetComponent<NavMeshAgent>();
+        _turretAI = GetComponent<EnemyTurretAI>(); // 自動取得
     }
 
     private void Start()
     {
-        // ★【53トンに設定】32トンから引き上げ、重戦車級の重さに
         _rigidbody.mass = 53000f;
         _rigidbody.linearDamping = 1.0f;
         _rigidbody.angularDamping = 4.0f;
 
-        // NavMeshAgentの自動ブレーキなどを完全無効化
         _agent.updatePosition = false;
         _agent.updateRotation = false;
         _agent.stoppingDistance = 0f;
         _agent.acceleration = 9999f;
         _agent.speed = 99f;
+
+        _lastPosition = _transform.position;
     }
 
     private void Update()
     {
-        // 0.5秒おきに一番近いターゲットをスキャン
         _scanTimer += Time.deltaTime;
         if (_scanTimer >= 0.5f)
         {
             _scanTimer = 0f;
             FindNearestTarget();
+
+            // ★【修正】自分（足元）からの視線ではなく、大砲（マズル）から狙えるかをチェックする
+            if (_turretAI != null)
+            {
+                _hasLineOfSight = _turretAI.CheckMuzzleLineOfSight();
+            }
+            else
+            {
+                _hasLineOfSight = false;
+            }
         }
 
-        // Agentの論理位置を現在の物理位置に毎フレーム強制同期
-        if (_agent.isOnNavMesh)
-        {
-            _agent.nextPosition = _transform.position;
-        }
+        if (_attackTarget == null) return;
 
-        // 行き先の決定（ターゲットがいたらそこへNavMeshを伸ばす）
-        if (_attackTarget != null)
+        if (_agent.isOnNavMesh) _agent.nextPosition = _transform.position;
+
+        float distanceToTarget = Vector3.Distance(_transform.position, _attackTarget.position);
+
+        // ★大砲の弾が通るルートが確保できて、かつ200m以内なら足を止める
+        if (_hasLineOfSight && distanceToTarget <= attackDistance)
         {
+            _agent.ResetPath();
+        }
+        else
+        {
+            // 大砲が壁で遮られている、または遠すぎる場合は、狙える位置まで回り込んで追いかける
             _agent.SetDestination(_attackTarget.position);
+        }
+
+        // スタック判定
+        if (!_isBacking && !_isEscapingTurn && !_isEscapingForward)
+        {
+            bool shouldMove = _agent.hasPath && (!_hasLineOfSight || distanceToTarget > attackDistance);
+            _posCheckTimer += Time.deltaTime;
+            if (_posCheckTimer >= 0.2f)
+            {
+                _posCheckTimer = 0f;
+                float checkDist = Vector3.Distance(_transform.position, _lastPosition);
+                if (shouldMove && checkDist < 0.12f)
+                {
+                    _stuckTimer += 0.2f;
+                    if (_stuckTimer > 1.5f) { _isBacking = true; _backTimer = 1.5f; _stuckTimer = 0f; }
+                }
+                else _stuckTimer = 0f;
+                _lastPosition = _transform.position;
+            }
+        }
+        else if (_isBacking)
+        {
+            _backTimer -= Time.deltaTime;
+            if (_backTimer <= 0f) { _isBacking = false; _isEscapingTurn = true; _escapeTurnTimer = 1.0f; }
+        }
+        else if (_isEscapingTurn)
+        {
+            _escapeTurnTimer -= Time.deltaTime;
+            if (_escapeTurnTimer <= 0f) { _isEscapingTurn = false; _isEscapingForward = true; _escapeForwardTimer = 1.0f; }
+        }
+        else if (_isEscapingForward)
+        {
+            _escapeForwardTimer -= Time.deltaTime;
+            if (_escapeForwardTimer <= 0f) { _isEscapingForward = false; _stuckTimer = 0f; _posCheckTimer = 0f; _lastPosition = _transform.position; _agent.ResetPath(); }
         }
     }
 
     private void FixedUpdate()
     {
-        if (_attackTarget == null)
-        {
-            ApplyStopBrake();
-            return;
-        }
+        if (_attackTarget == null) { ApplyStopBrake(); return; }
+        if (_isBacking) { ExecuteMovement(0f, -1f); return; }
+        if (_isEscapingTurn) { ExecuteMovement(1f, 0f); return; }
+        if (_isEscapingForward) { ExecuteMovement(0f, 1f); return; }
 
         float distanceToTarget = Vector3.Distance(_transform.position, _attackTarget.position);
+        if (_hasLineOfSight && distanceToTarget <= attackDistance) { ApplyStopBrake(); return; }
 
-        // 設定した攻撃距離（例:30m）より近づいたら足を止めて狙う
-        if (distanceToTarget <= attackDistance)
-        {
-            ApplyStopBrake();
-            return;
-        }
+        Vector3 targetDirection = (_agent.hasPath && _agent.steeringTarget != Vector3.zero && !_agent.pathPending) ?
+            (_agent.steeringTarget - _transform.position).normalized : (_attackTarget.position - _transform.position).normalized;
 
-        // NavMeshAgentが指示する「次の経由地」への方向（無ければ直接ターゲット）
-        Vector3 targetDirection = Vector3.zero;
-        if (_agent.hasPath && _agent.steeringTarget != Vector3.zero && !_agent.pathPending)
-        {
-            targetDirection = (_agent.steeringTarget - _transform.position).normalized;
-        }
-        else
-        {
-            targetDirection = (_attackTarget.position - _transform.position).normalized;
-        }
-
-        // ★【ここを修正】通常モデル（Zプラスが正面）のローカル空間に変換
         Vector3 localDir = _transform.InverseTransformDirection(targetDirection);
-
-        // Zプラス（正面）を基準にした、目標への角度（-180〜180）を計算
         float angleToTarget = Mathf.Atan2(localDir.x, localDir.z) * Mathf.Rad2Deg;
 
-        float horizontalInput = 0f;
-        float verticalInput = 0f;
+        float horizontalInput = Mathf.Abs(angleToTarget) > 8f ? (angleToTarget > 0f ? 1f : -1f) : 0f;
+        float verticalInput = Mathf.Abs(angleToTarget) < 45f ? 1f : 0f;
 
-        // 旋回入力の計算（ターゲットが右にあれば右（1）、左にあれば左（-1））
-        if (Mathf.Abs(angleToTarget) > 8f)
-        {
-            horizontalInput = angleToTarget > 0f ? 1f : -1f;
-        }
-
-        // 前進入力の計算（目標が正面45度以内なら進む）
-        if (Mathf.Abs(angleToTarget) < 45f)
-        {
-            verticalInput = 1f;
-        }
-
-        // 信地旋回用の自動前進
-        if (Mathf.Abs(horizontalInput) > 0.05f && Mathf.Abs(verticalInput) <= 0.05f)
-        {
-            verticalInput = turnForwardPower;
-        }
+        if (Mathf.Abs(horizontalInput) > 0.05f && Mathf.Abs(verticalInput) <= 0.05f) verticalInput = turnForwardPower;
 
         ExecuteMovement(horizontalInput, verticalInput);
     }
@@ -130,69 +161,54 @@ public class EnemyTankAI : MonoBehaviour
     private void FindNearestTarget()
     {
         List<Transform> potentialTargets = new List<Transform>();
-
-        // Playerタグ（自分）を探す
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null) potentialTargets.Add(player.transform);
 
-        // 仲間（CompanionTankAIを持つオブジェクト）を探す
         CompanionTankAI[] companions = FindObjectsByType<CompanionTankAI>(FindObjectsSortMode.None);
-        foreach (var c in companions)
-        {
-            potentialTargets.Add(c.transform);
-        }
+        foreach (var c in companions) potentialTargets.Add(c.transform);
 
         float closestDistance = scanRadius;
         Transform closestTarget = null;
-
         foreach (Transform t in potentialTargets)
         {
             float distance = Vector3.Distance(_transform.position, t.position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestTarget = t;
-            }
+            if (distance < closestDistance) { closestDistance = distance; closestTarget = t; }
         }
-
         _attackTarget = closestTarget;
     }
 
     private void ExecuteMovement(float horizontal, float vertical)
     {
-        // ★【通常モデル用】前進がZプラス方向なので、符号をそのまま取得
         float currentForwardSpeed = _transform.InverseTransformDirection(_rigidbody.linearVelocity).z;
-
-        // 53トンの巨体を動かすため、加える力の倍率をプレイヤー（1200）より高い【1800】に引き上げ！
         float totalForce = horsepower * 1800f;
 
-        // 旋回
-        if (Mathf.Abs(horizontal) > 0.05f && Mathf.Abs(vertical) > 0.05f)
+        if (Mathf.Abs(horizontal) > 0.05f)
         {
             Quaternion turnRotation = Quaternion.Euler(0f, horizontal * rotateSpeed * Time.fixedDeltaTime, 0f);
             _rigidbody.MoveRotation(_rigidbody.rotation * turnRotation);
         }
 
-        // 前進
-        if (vertical > 0.05f)
+        if (vertical > 0.05f && currentForwardSpeed < maxSpeed)
         {
-            if (currentForwardSpeed < maxSpeed)
+            _rigidbody.AddRelativeForce(Vector3.forward * (totalForce * vertical), ForceMode.Force);
+            if (currentForwardSpeed > maxSpeed * 0.6f)
             {
-                // ★【通常モデル用】Vector3.back から Vector3.forward に変更
-                _rigidbody.AddRelativeForce(Vector3.forward * (totalForce * vertical), ForceMode.Force);
-
-                if (currentForwardSpeed > maxSpeed * 0.6f)
-                {
-                    Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-                    localVelocity.z = Mathf.Lerp(localVelocity.z, maxSpeed, Time.fixedDeltaTime * 1.5f);
-                    _rigidbody.linearVelocity = _transform.TransformDirection(localVelocity);
-                }
+                Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
+                localVelocity.z = Mathf.Lerp(localVelocity.z, maxSpeed, Time.fixedDeltaTime * 1.5f);
+                _rigidbody.linearVelocity = _transform.TransformDirection(localVelocity);
             }
         }
-        else
+        else if (vertical < -0.05f && currentForwardSpeed > -maxBackSpeed)
         {
-            ApplyStopBrake();
+            _rigidbody.AddRelativeForce(Vector3.back * (totalForce * Mathf.Abs(vertical) * 0.8f), ForceMode.Force);
+            if (currentForwardSpeed < -(maxBackSpeed * 0.5f))
+            {
+                Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
+                localVelocity.z = Mathf.Lerp(localVelocity.z, -maxBackSpeed, Time.fixedDeltaTime * 2.0f);
+                _rigidbody.linearVelocity = _transform.TransformDirection(localVelocity);
+            }
         }
+        else if (Mathf.Abs(horizontal) <= 0.05f) ApplyStopBrake();
     }
 
     private void ApplyStopBrake()
@@ -200,15 +216,13 @@ public class EnemyTankAI : MonoBehaviour
         float currentForwardSpeed = _transform.InverseTransformDirection(_rigidbody.linearVelocity).z;
         if (Mathf.Abs(currentForwardSpeed) > 0.1f)
         {
-            // ★【通常モデル用】速度の反対（後ろ向き）にブレーキをかけるため Vector3.back に変更
             Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
             _rigidbody.AddRelativeForce(Vector3.back * (localVelocity.z * 25000f), ForceMode.Force);
         }
         else
         {
             Vector3 localVel = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-            localVel.z = 0f;
-            _rigidbody.linearVelocity = _transform.TransformDirection(localVel);
+            localVel.z = 0f; _rigidbody.linearVelocity = _transform.TransformDirection(localVel);
         }
     }
 }

@@ -446,6 +446,7 @@
 "Assets/CameraLookAtMouse.cs"
 "Assets/CompanionTankAI.cs"
 "Assets/EnemyTankAI.cs"
+"Assets/EnemyTurretAI.cs"
 "Assets/HeadController_Z.cs"
 "Assets/HeadController_Z2.cs"
 "Assets/Kawaii_Tanks_Project (Free)/Scripts/AimMarker_Control_CS.cs"

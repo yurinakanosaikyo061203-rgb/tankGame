@@ -2,10 +2,10 @@
 Built from '6000.4/staging' branch; Version is '6000.4.0f1 (8cf496087c8f) revision 9237654'; Using compiler version '194234433'; Build Type 'Release'
 OS: 'Windows 11  (10.0.26200) Core' Language: 'ja' Physical Memory: 14177 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-yurin" at "2026-08-23T03:05:00.7662602Z"
 System  architecture: x64
 Process architecture: x64
-Date: 2026-08-23T03:05:00Z
+Date: 2026-09-13T02:33:18Z
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-yurin" at "2026-09-13T02:33:18.9185385Z"
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.4.0f1\Editor\Unity.exe
@@ -19,7 +19,7 @@ C:/Users/yurin/My project (4)
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-53905
+58032
 -licensingIpc
 LicenseClient-yurin
 -force-d3d12
@@ -68,12 +68,12 @@ C:/Users/yurin/My project (4)
     "memorysetup-job-temp-allocator-block-size=2097152"
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
-Player connection [27404]  Target information:
+Player connection [14420]  Target information:
 
-Player connection [27404]  * "[IP] 192.168.0.13 [Port] 0 [Flags] 2 [Guid] 1772407176 [EditorId] 1772407176 [Version] 1048832 [Id] WindowsEditor(7,mycomputer2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [14420]  * "[IP] 192.168.0.25 [Port] 0 [Flags] 2 [Guid] 2637067335 [EditorId] 2637067335 [Version] 1048832 [Id] WindowsEditor(7,mycomputer2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [27404] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [27404] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [14420] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [14420] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -85,7 +85,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 29.22 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 163.68 ms, found 3 plugins.
 Initialize engine version: 6000.4.0f1 (8cf496087c8f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/yurin/My project (4)/Assets
@@ -104,58 +104,55 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56836
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56144
 CodeReloadManager initialized
-Begin MonoManager ReloadAssembly
-Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.004790 seconds.
-Native extension for WindowsStandalone target not found
 [Licensing::Client] Error: HandshakeResponse reported an error:
 	ResponseCode: 505
 	ResponseStatus: Unsupported protocol version '1.18.1'.
 [Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-yurin"
 [Licensing::IpcConnector] LicenseClient-yurin channel disconnected successfully.
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-yurin-6000.4.0" at "2026-08-23T03:05:04.6053104Z"
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-yurin-6000.4.0" at "2026-09-13T02:33:23.9469678Z"
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.006178 seconds.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              db1c6c0f43a14d9ba495a63475cee182
+  Correlation Id:          a3467ccc3eef97886400d28896439c3f
+  External correlation Id: 159598189227355748
+  Machine Id:              3X+WYo16LhlzxjcNlVO2p4mBnLw=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-yurin-6000.4.0" (connect: 0.02s, validation: 0.00s, handshake: 5.43s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-yurin-6000.4.0-notifications" at "2026-09-13T02:33:29.3827198Z"
+[Licensing::Module] Licensing Background thread has ended after 10.51s
+Native extension for WindowsStandalone target not found
 Package Manager log level set to [2]
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.941 seconds
-Domain Reload Profiling: 1826ms
-	BeginReloadAssembly (314ms)
-		CreateAndSetChildDomain (5ms)
-	RebuildCommonClasses (98ms)
-	RebuildNativeTypeToScriptingClass (27ms)
-	initialDomainReloadingComplete (121ms)
-	LoadAllAssembliesAndSetupDomain (322ms)
-		LoadAssemblies (302ms)
-		AnalyzeDomain (304ms)
-			TypeCache.Refresh (301ms)
-				TypeCache.ScanAssembly (268ms)
-	FinalizeReload (944ms)
+- Finished resetting the current domain, in  0.886 seconds
+Domain Reload Profiling: 5288ms
+	BeginReloadAssembly (875ms)
+	RebuildCommonClasses (1189ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (186ms)
+	LoadAllAssembliesAndSetupDomain (2133ms)
+		LoadAssemblies (865ms)
+		AnalyzeDomain (2114ms)
+			TypeCache.Refresh (2112ms)
+				TypeCache.ScanAssembly (1547ms)
+	FinalizeReload (888ms)
 		SetupLoadedEditorAssemblies (0ms)
-			InitializePlatformSupportModulesInManaged (108ms)
-			BeforeProcessingInitializeOnLoad (117ms)
-			ProcessInitializeOnLoadAttributes (246ms)
-			ProcessInitializeOnLoadMethodAttributes (354ms)
+			InitializePlatformSupportModulesInManaged (89ms)
+			BeforeProcessingInitializeOnLoad (123ms)
+			ProcessInitializeOnLoadAttributes (278ms)
+			ProcessInitializeOnLoadMethodAttributes (272ms)
 ========================================================================
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-[Licensing::Module] Licensing is not yet initialized.
-[Licensing::Client] Handshaking with LicensingClient:
-  Version:                 1.18.1+9fbee8e
-  Session Id:              4d35aab98c314a928bf854dab95dbc6b
-  Correlation Id:          9ce3635224243dd39518ee16d4d18be3
-  External correlation Id: 4427207038907006808
-  Machine Id:              3X+WYo16LhlzxjcNlVO2p4mBnLw=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-yurin-6000.4.0" (connect: 0.00s, validation: 0.00s, handshake: 4.72s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-yurin-6000.4.0-notifications" at "2026-08-23T03:05:09.3317813Z"
-[Licensing::Module] Licensing Background thread has ended after 8.57s
-[Licensing::Module] Licensing is initialized (took 3.50s).
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
   Id: 15669334704542-UnityPersXXXX
@@ -178,7 +175,7 @@ Assembly Unity.TextMeshPro.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshP
 Assembly UnityEditor.UI.Common.Tests.dll at Library/ScriptAssemblies/UnityEditor.UI.Common.Tests.dll not valid. Loading of assembly skipped.
 Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.UI.EditorTests.dll not valid. Loading of assembly skipped.
 Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
-Refreshing native plugins compatible for Editor in 3.01 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 2.53 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
@@ -188,47 +185,686 @@ Native extension for WindowsStandalone target not found
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.980 seconds
-Domain Reload Profiling: 5803ms
-	BeginReloadAssembly (3802ms)
-		DisableScriptedObjects (6ms)
-		CreateAndSetChildDomain (78ms)
-	RebuildCommonClasses (44ms)
-	RebuildNativeTypeToScriptingClass (14ms)
-	initialDomainReloadingComplete (213ms)
-	LoadAllAssembliesAndSetupDomain (749ms)
-		LoadAssemblies (648ms)
-		AnalyzeDomain (244ms)
-			TypeCache.Refresh (171ms)
-				TypeCache.ScanAssembly (155ms)
-			BuildScriptInfoCaches (65ms)
-			ResolveRequiredComponents (7ms)
-	FinalizeReload (981ms)
+- Finished resetting the current domain, in  1.144 seconds
+Domain Reload Profiling: 11949ms
+	BeginReloadAssembly (375ms)
+		DisableScriptedObjects (23ms)
+		CreateAndSetChildDomain (79ms)
+	RebuildCommonClasses (64ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (5939ms)
+	LoadAllAssembliesAndSetupDomain (4408ms)
+		LoadAssemblies (3576ms)
+		AnalyzeDomain (1013ms)
+			TypeCache.Refresh (884ms)
+				TypeCache.ScanAssembly (863ms)
+			BuildScriptInfoCaches (121ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (1145ms)
 		SetupLoadedEditorAssemblies (0ms)
-			BeforeProcessingInitializeOnLoad (156ms)
-			ProcessInitializeOnLoadAttributes (582ms)
-			ProcessInitializeOnLoadMethodAttributes (51ms)
-			AfterProcessingInitializeOnLoad (8ms)
-		AwakeInstancesAfterBackupRestoration (7ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+			BeforeProcessingInitializeOnLoad (150ms)
+			ProcessInitializeOnLoadAttributes (775ms)
+			ProcessInitializeOnLoadMethodAttributes (54ms)
+			AfterProcessingInitializeOnLoad (11ms)
+		AwakeInstancesAfterBackupRestoration (8ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.24 seconds
+Refreshing native plugins compatible for Editor in 2.53 ms, found 3 plugins.
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 3790 unused Assets / (1.0 MB). Loaded Objects now: 4430.
-Memory consumption went from 111.9 MB to 110.9 MB.
-Total: 7.200900 ms (FindLiveObjects: 0.595600 ms CreateObjectMapping: 0.308900 ms MarkObjects: 5.263800 ms  DeleteObjects: 1.030500 ms)
+Unloading 3792 unused Assets / (1.1 MB). Loaded Objects now: 4432.
+Memory consumption went from 112.1 MB to 111.0 MB.
+Total: 23.969100 ms (FindLiveObjects: 8.708800 ms CreateObjectMapping: 0.916400 ms MarkObjects: 11.705900 ms  DeleteObjects: 2.409800 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 570826.547326 seconds.
-  path: Assets/CompanionTankAI.cs
-  importAddress: Guid(a363e32e7b8266a45aec5cba3b7a65d5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/CompanionTankAI.cs using Guid(a363e32e7b8266a45aec5cba3b7a65d5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '38badcb66528598ec96311c36fd6f627') in 0.1394197 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=479cfbf5b99993cc88c370c1e9444cdb DependenciesID=14104c4547eaa0bdd95ea630ddd03fbd StaticDependenciesID=ad01a2873adb75f92fe00165210d2b44 
+  Time since last request: 633851.936406 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks
+  importAddress: Guid(345a2ed6eb0b0984c95a55174351cb75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks using Guid(345a2ed6eb0b0984c95a55174351cb75) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '4399b164b24e14fc3c6b51f26a84ece4') in 0.169053 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=edc94d03d76c12c30c541d554f5301e5 DependenciesID=0235199e5fe72ab65ab769aac6951757 StaticDependenciesID=94cb1b2ca1860204bed2e7ec5fe9aa55 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 3.20 ms, found 3 plugins.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 3787 unused Assets / (0.9 MB). Loaded Objects now: 4435.
+Memory consumption went from 113.2 MB to 112.3 MB.
+Total: 16.347100 ms (FindLiveObjects: 1.589800 ms CreateObjectMapping: 0.787600 ms MarkObjects: 11.728500 ms  DeleteObjects: 2.239300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 305.765336 seconds.
+  path: Assets/NewMonoBehaviourScript.cs
+  importAddress: Guid(b2716a5bdea0a12499696f5854f8aa6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewMonoBehaviourScript.cs using Guid(b2716a5bdea0a12499696f5854f8aa6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '57fe31f0134b4ff32c8f075ce0854dcb') in 0.0015531 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=bd6ee50206a05f78a1746ef34c8a2b75 DependenciesID=ed93117e3188b5027c96f85bcd5c2ef1 StaticDependenciesID=4c4b63fa72c390797edb351bb12d91cb 
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
-  importAddress: Guid(2e498d1c8094910479dc3e1b768306a4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset using Guid(2e498d1c8094910479dc3e1b768306a4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'f39740dd86272de61f1588709b5b2c67') in 0.1898757 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ae180291a52642bef3165b32528419f4 DependenciesID=36c3a4fe0366843ec4325a46d1b84434 StaticDependenciesID=68b7be0f3d0258428941971034d68faf 
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
+  Time since last request: 16.783611 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Renault_ZB/Renault_ZB_AlbedoTransparency_1.png
+  importAddress: Guid(9059d10ab1d4334418b08a25cc3aae77) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Renault_ZB/Renault_ZB_AlbedoTransparency_1.png using Guid(9059d10ab1d4334418b08a25cc3aae77) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '5b58f88fa5f747de67f7b02fc317f94b') in 0.3957733 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=24731289ef25162448edb8326421db64 DependenciesID=9bfe0d6a88f63eae687ee955d3934a0a StaticDependenciesID=7de19c59fc1b8cd0c12b5503a0657088 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000086 seconds.
+  path: Assets/WW2 Armed Forces Demo/Models/Cromwell_IV.fbx
+  importAddress: Guid(0089e4ef716f68b4f9146fc2282177b4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Models/Cromwell_IV.fbx using Guid(0089e4ef716f68b4f9146fc2282177b4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '033a4809c503c20a5c3f2b10e5b62b89') in 0.2646229 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=497a0744d8e0744bc2dc4105791efcc3 DependenciesID=4deb34eb003564a4b6cfa76cf4e3aa49 StaticDependenciesID=69f20a583f5acd58dcb5928807dc371a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 116
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000088 seconds.
+  path: Assets/WW2 Armed Forces Demo/Models/Hotchkiss_H35.fbx
+  importAddress: Guid(b6a8e96f709732d49b968642c76bea2c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Models/Hotchkiss_H35.fbx using Guid(b6a8e96f709732d49b968642c76bea2c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '5f4449b4966c0293db5935647d861637') in 0.1086195 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f717f2a1956643a29b90caf2ae9e4090 DependenciesID=38f231cc719b1a85368a963374db1fe0 StaticDependenciesID=84c1d920e2684063ae79353ac7463e6d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 142
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/WW2 Armed Forces Demo/Demo
+  importAddress: Guid(96ffba98cbe19ba4c81aeab056118663) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Demo using Guid(96ffba98cbe19ba4c81aeab056118663) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '5cfabee036b03ac3ebfd78cb4550a43c') in 0.0837819 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c8d9a848e483795a030dfe3c901c586b DependenciesID=f398b47f01edd014a9abcca3c6e4a7f6 StaticDependenciesID=5251923764ffea0ea99d4d6e1039ccc1 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/SOMUA_S35
+  importAddress: Guid(df3dc4406ff831e4e85afc97bcdfc6aa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/SOMUA_S35 using Guid(df3dc4406ff831e4e85afc97bcdfc6aa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b4e97c4632897dd4f6a32943290ba0b1') in 0.0288185 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=94c02140ab58418b373af5feadb1f44c DependenciesID=b94b874cb23569825b0f1070932b639d StaticDependenciesID=796735e6d1b7f92b9d1e4d84294ce28a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/WW2 Armed Forces Demo/Models/SOMUA_S35.fbx
+  importAddress: Guid(21b9d46bd64fa9c41a757d7d2bd68c1b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Models/SOMUA_S35.fbx using Guid(21b9d46bd64fa9c41a757d7d2bd68c1b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'cd399d5ec60525026217a8317d62b92d') in 0.2465856 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ee55a4629571bb31e183de6c7393120b DependenciesID=6c78a252d94a32c68acc08171bf6bdef StaticDependenciesID=fee18e18627ef8f3e81ff5a3af9ea36e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 174
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures
+  importAddress: Guid(44135ac16623b32489fe82b07ee9bf49) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures using Guid(44135ac16623b32489fe82b07ee9bf49) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b73b949728ad6e12685e7111957d37ed') in 0.0484899 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=755ac2e8b334a2453735a57ead1146ba DependenciesID=6f6b81ce3cd6f0c23a67ecb086f11132 StaticDependenciesID=7a76a1c425096452a87c9bdf6e88146e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Panzer_II_F/Panzer_II_F_Metallic.png
+  importAddress: Guid(23c8c254ba71cac4eb380c9a0772cad1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Panzer_II_F/Panzer_II_F_Metallic.png using Guid(23c8c254ba71cac4eb380c9a0772cad1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'dcc1e3eb9d0c0774691e200f6f6cfc8b') in 0.0558946 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5a8face0ae59db573a32fe9b9d95b744 DependenciesID=62b85d086f6ce8e4b5584498ad9cd5ec StaticDependenciesID=d0599820f341e16feadbdbce6a6c4337 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/Matilda_II.mat
+  importAddress: Guid(0eb8bd350930aea44a2246daa6f45e3f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/Matilda_II.mat using Guid(0eb8bd350930aea44a2246daa6f45e3f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3734ef2ea49a31f347b593ec53a91a0b') in 0.0774574 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6c1eb08ddec73b7176351ddaf53a4267 DependenciesID=213d257f2711d4cdf9fb86a639390469 StaticDependenciesID=348a7eaecdf5f18f63cc2faff018f6df 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/KV_2(1940)/KV_2(1940)_AO.png
+  importAddress: Guid(c1223126ec49cf640be75ea24e126ee8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/KV_2(1940)/KV_2(1940)_AO.png using Guid(c1223126ec49cf640be75ea24e126ee8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8d62cc3ca4900a6983527c127b33ae47') in 0.0529216 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=329afe6893f8cf8126867152ac2b17da DependenciesID=d6b2529984f6ebf97cc55dc3d5ca5fe9 StaticDependenciesID=5971722628a1b5c3597ab35de59affca 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001661 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/M5A1_Stuart/M5A1_Stuart_Normal.png
+  importAddress: Guid(a14c242144e28db48a408f3b7cbf9b07) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/M5A1_Stuart/M5A1_Stuart_Normal.png using Guid(a14c242144e28db48a408f3b7cbf9b07) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '704231e88041ca2410416d615f9b6c52') in 0.0626085 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9403891ddd662b94499e37338a3c2278 DependenciesID=24147648ac2afed60e109ad9ae3faa17 StaticDependenciesID=2546ab01e5f6cc4554ef7ac6b4fea2a3 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/SOMUA_S35/SOMUA_S35_Metallic.png
+  importAddress: Guid(f2448fd486c62ff488ba6312fb4a9057) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/SOMUA_S35/SOMUA_S35_Metallic.png using Guid(f2448fd486c62ff488ba6312fb4a9057) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '4d50f83f1d1ab0ad6e5dfda7a23ed114') in 0.1060948 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=cdbf35b18ff81996c99aa86016c46e69 DependenciesID=78cbd85c20409680f95f87b848102716 StaticDependenciesID=111c0d69207bb44447f5787dddfb10d3 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/WW2 Armed Forces Demo/Models/KV_2(1940).fbx
+  importAddress: Guid(155a9092e8023fe44a6681efb0b82f13) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Models/KV_2(1940).fbx using Guid(155a9092e8023fe44a6681efb0b82f13) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '0c6a74dbc6fe2cd622e90f487dfca49b') in 0.1158728 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7fbcf955c4c6edc20a6de62c7c605df8 DependenciesID=4ecff6f6094477a5fdddaff7aac0219a StaticDependenciesID=a2740579ee96f5da60cd7d7994a657a2 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 158
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/Renault_ZB.mat
+  importAddress: Guid(d0a49a82978ea5146ac7cbeca1323721) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/Renault_ZB.mat using Guid(d0a49a82978ea5146ac7cbeca1323721) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e9c2e4d1ce939d80bf51cecbe22645fb') in 0.0394416 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=dab43d8dc14054d88d151f3a10b801ce DependenciesID=31375955b321bb676178cb52be90a436 StaticDependenciesID=95ff6b61e2605a907241c2f9ff75810e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Panzer_II_F/Panzer_II_F_Normal.png
+  importAddress: Guid(9be48c75c05a49d4eab4620497d48753) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Panzer_II_F/Panzer_II_F_Normal.png using Guid(9be48c75c05a49d4eab4620497d48753) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '1e4248dfd0c7e0995c24ded04cdb2c41') in 0.0649171 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=dfd6677c03abd76481f03816c513408a DependenciesID=015bbb3299e0f6fdd0efb1689ff72951 StaticDependenciesID=80ec39a881ddc7a9aeb87255e62b11e9 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000111 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/KV_2(1940)/KV_2(1940)_AlbedoTransparency_1.png
+  importAddress: Guid(0b807d0c89ae3ab40a31f93b2f53993b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/KV_2(1940)/KV_2(1940)_AlbedoTransparency_1.png using Guid(0b807d0c89ae3ab40a31f93b2f53993b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8ab9f0c5d048abf32075520cf40ce50b') in 0.0674173 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8e7a6fc8300e059d1cd8e3d5b2f293eb DependenciesID=3b93e9d4785d32da5190ccb41f49a62f StaticDependenciesID=155be21f78729828ac0d523cd9fe751b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/T_28_85
+  importAddress: Guid(29e52320e6c49d0408bfa82dd4acd401) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/T_28_85 using Guid(29e52320e6c49d0408bfa82dd4acd401) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a0c7d61ce4d882d2aa3b66caa3905f1a') in 0.0384786 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a826165feee39ccc83560a6417dea61f DependenciesID=671ae2d772a8937d337aad4b5f74216d StaticDependenciesID=fbb37063cfca861d3f060f9c79824297 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000104 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Cromwell_IV/Cromwell_IV_AO.png
+  importAddress: Guid(83bd7451f5c7b4b4b9e8c760e3f318e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Cromwell_IV/Cromwell_IV_AO.png using Guid(83bd7451f5c7b4b4b9e8c760e3f318e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '2984c4e69f501346035982ffc5e6d436') in 0.0358667 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2909d993e8a0ed5d3ee215b6a1041cd8 DependenciesID=771b9cb81bf8438e3628640990639d0a StaticDependenciesID=dfbd31d6877bea9c5ac5cee1b09872b1 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/WW2 Armed Forces Demo/Models/M4A3(75)_Sherman.fbx
+  importAddress: Guid(184961720d718b14094db99ebab8f232) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Models/M4A3(75)_Sherman.fbx using Guid(184961720d718b14094db99ebab8f232) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'fadc76c55f28f7f430483bce27b746a6') in 0.1263398 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=167d5a1859a5b95f0aece9a2b412ea2c DependenciesID=3ad27ac1dc3b2e86f7a3bdf3f9b246ed StaticDependenciesID=6c2f5783d6693455618d485d1e4bb5c8 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 158
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/WW2 Armed Forces Demo/Models/Panzer_VI_E.fbx
+  importAddress: Guid(8383bdf117bcd2a4da5dd2e573b9de23) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Models/Panzer_VI_E.fbx using Guid(8383bdf117bcd2a4da5dd2e573b9de23) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e4147a53210b08e29572d391639a5d52') in 0.1095418 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0f5d6b7d067d605c4cb95f495293bae6 DependenciesID=48ec73f35a259ca50b31e592e1ca69f5 StaticDependenciesID=ebdbe16800e7643de6cc8d08da79ef0d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 146
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Carro_Armato_M13_40
+  importAddress: Guid(dbbe8179e70a8434480048c363b1df29) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Carro_Armato_M13_40 using Guid(dbbe8179e70a8434480048c363b1df29) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '655c0bb2706769efd3fcffd9ba2dbb0f') in 0.0246417 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=685df6639c2690281bf8cd37d4b22c61 DependenciesID=03b2751dc9f1e8414f5b1866029090a9 StaticDependenciesID=a02feda45d592d252e669a52c33c5be6 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Chi_Ha
+  importAddress: Guid(67c0dec62e7510644b5bd719f2b1d62e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Chi_Ha using Guid(67c0dec62e7510644b5bd719f2b1d62e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '66a174dcc33be2bcc7ccece5a0de03f3') in 0.0289609 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2796fc07b44adb0836989b26059f1022 DependenciesID=1c278610acfc6cc4802b6c48ed279b4d StaticDependenciesID=d53ecb76f607798d6b81f220a20b0168 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000079 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/T_28_85/T_28_85_AlbedoTransparency_1.png
+  importAddress: Guid(2907f1d3f8414bf4ea499e3dd5824e51) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/T_28_85/T_28_85_AlbedoTransparency_1.png using Guid(2907f1d3f8414bf4ea499e3dd5824e51) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '617f4860f99c7b5160ff755f3891d0b7') in 0.0692801 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4bdf798b3388931ad4ab96c564a8d97d DependenciesID=d691c892c0ddd4dbb5594c7036358817 StaticDependenciesID=de97a711866634a71944e514ca735988 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000210 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/M4A3(75)_Sherman.mat
+  importAddress: Guid(cb4bc258acf06484dbdbb4990c3b9939) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/M4A3(75)_Sherman.mat using Guid(cb4bc258acf06484dbdbb4990c3b9939) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'bdc42147aeb80a0471b896b5eeca2c8b') in 0.0239085 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d22dfb2d3112a7c79c7f2300e6cdb06e DependenciesID=9ed9c4a7a85263ec3c26729d53e5fbaf StaticDependenciesID=2be49db948693123fc956a7e3d196ac5 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000070 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/SOMUA_S35/SOMUA_S35_AlbedoTransparency_1.png
+  importAddress: Guid(625a7e3a6a1b80e488e9d9d3ada81fc5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/SOMUA_S35/SOMUA_S35_AlbedoTransparency_1.png using Guid(625a7e3a6a1b80e488e9d9d3ada81fc5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '57943bb456de0853edbe62b4c44931fb') in 0.0665558 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ab25ea03c7d7f435c475599d1ff1f297 DependenciesID=fbc6aa7d60a971d35648ac46f6d8c6c2 StaticDependenciesID=28bbcd8f5aa73d9ed38ebc0f44673fb6 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/WW2 Armed Forces Demo
+  importAddress: Guid(b1e27df65351e114cb9c2c7711d04c83) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo using Guid(b1e27df65351e114cb9c2c7711d04c83) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e5039938ac449c826cf602dcbf624e9a') in 0.0320487 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2787a006aca1b2612fdbfa0648e7d5a5 DependenciesID=6126d145218f04e866baa8af3ea06404 StaticDependenciesID=857eda182cbcfcce3de6851a062ef90b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000084 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Track/Track_AlbedoTransparency.png
+  importAddress: Guid(4dd4dae0b888c5d4eae3bad58c72780f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Track/Track_AlbedoTransparency.png using Guid(4dd4dae0b888c5d4eae3bad58c72780f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'd551eaaeb7b80369fb26697f38262a95') in 0.0737755 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=86acac10c9b811564b499840c697d5af DependenciesID=c393942eebb35465e090f91bb9e29c58 StaticDependenciesID=06edfa7474eb05cff6430ab8643df7f8 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/Hotchkiss_H35.mat
+  importAddress: Guid(ed2a834a165ba7c40b6cf79d2a393b6c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/Hotchkiss_H35.mat using Guid(ed2a834a165ba7c40b6cf79d2a393b6c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'ce100b34c3566d9750468192b1dbba17') in 0.0406264 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=640e3625f03a99ae1d25944fe2ca444c DependenciesID=537cb1f6fc8b674ca5d7a28889ff82e0 StaticDependenciesID=5cd20ef471553213a472c907e6381b0f 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000095 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Cromwell_IV/Cromwell_IV_AlbedoTransparency_1.png
+  importAddress: Guid(b27aa03a9bed6d147942bdf70e933a3f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Cromwell_IV/Cromwell_IV_AlbedoTransparency_1.png using Guid(b27aa03a9bed6d147942bdf70e933a3f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '6719102384c336c8fc5891c818a11cf7') in 0.1878328 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4effc2d6e0645c16482a4081ee0118a7 DependenciesID=e5bb6e66f05fda8839f9072398728533 StaticDependenciesID=fb4b7c929215c741194dcd5a662062c2 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000118 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/Ha_Go.mat
+  importAddress: Guid(762c14f2643cfb34eaa8bc937c705382) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/Ha_Go.mat using Guid(762c14f2643cfb34eaa8bc937c705382) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '64e3aea706f0d8a79ab1871f057168a0') in 0.1740346 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7febd4863b95b31b9ddadfc468da2a0f DependenciesID=c7cdf4c0d2d7e3c73c5d4a6ee085121f StaticDependenciesID=9459669848ce373fba58fd94786ac8c8 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/WW2 Armed Forces Demo/Prefabs/Carro_Armato_M13_40.prefab
+  importAddress: Guid(223da80c35889c24c8850c6a4e112261) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Prefabs/Carro_Armato_M13_40.prefab using Guid(223da80c35889c24c8850c6a4e112261) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '4d004952ab4061d637d3259952e02d97') in 0.1178791 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e6e3b9f742aba70f77e7dfcbbbfe7322 DependenciesID=8ce11de1483f671060b1308b7a72dfdf StaticDependenciesID=6c4367af1cd09191124db6dac2f5fefe 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 325
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000066 seconds.
+  path: Assets/WW2 Armed Forces Demo/Documentation
+  importAddress: Guid(c8c973a77fc575642a437abb213ab327) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Documentation using Guid(c8c973a77fc575642a437abb213ab327) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '0d0c45fb50c22ee365f367bc7afe40ad') in 0.0184449 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9f44c1351200417c704d2b355db91555 DependenciesID=d5b7048fb0402e69b08a14aa1514bed1 StaticDependenciesID=4ea7b7d87e427a95d9dfd7183bb8923b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/T_34_76(1942)/T_34_76(1942)_Metallic.png
+  importAddress: Guid(c7b30ec690ade8a4391fad7867f32e7a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/T_34_76(1942)/T_34_76(1942)_Metallic.png using Guid(c7b30ec690ade8a4391fad7867f32e7a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '388f6b801556500b2b4368380b79811e') in 0.1377951 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=db7cf7e9221d1a339da7c2f2e9f83c88 DependenciesID=77220b041175f2e13c32b17a305ece6b StaticDependenciesID=0297382164fd89b405ec292e73ab743d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000070 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/M5A1_Stuart
+  importAddress: Guid(c1e77adacd597e749b2894163e775df7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/M5A1_Stuart using Guid(c1e77adacd597e749b2894163e775df7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '27a1560a73ab694c5aaf5904b1aba77f') in 0.2804681 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=90c92a23daffcea3c0c9c4c394b9f2d7 DependenciesID=200cf55248ae98ff9cb88ac011a792f2 StaticDependenciesID=ba8dc11f184b6385b7889a0d0762fda1 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/WW2 Armed Forces Demo/Prefabs/Hotchkiss_H35.prefab
+  importAddress: Guid(6c27316a4329175499c8b8a161bbf40c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Prefabs/Hotchkiss_H35.prefab using Guid(6c27316a4329175499c8b8a161bbf40c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'bfa2aadf8e62b3c6aa39e22f67c8667b') in 0.8921654 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8f8c1fdecd2a6aeacfa7a573a4c8a191 DependenciesID=638812cc4a1cf98dbe8ba759377c6ca7 StaticDependenciesID=3481a4cd294b7bf9dc2a5a814cbeeeb1 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 143
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000069 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/E_50/Materials/E_50_AlbedoTransparency_1.mat
+  importAddress: Guid(e9ffc9e0bcc45f946851c002fbbaa75c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/E_50/Materials/E_50_AlbedoTransparency_1.mat using Guid(e9ffc9e0bcc45f946851c002fbbaa75c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e07dbe5d568882cb744adbe598d1b02a') in 0.6215759 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4c9a9e306df6a89dd4f83ae5b493ca4b DependenciesID=22ec6193779e204073cf14cb89d1b55f StaticDependenciesID=2c7c0502f87f663d7c3fe7da53dace5f 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/E_50/Materials/E_50_AO.mat
+  importAddress: Guid(609007333fd4ffa44aa561527bc4d18b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/E_50/Materials/E_50_AO.mat using Guid(609007333fd4ffa44aa561527bc4d18b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e39922e6e6a1595501e46e48233e6601') in 0.103927 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0c4b20d0776f775e2b9bef63a87c77ee DependenciesID=4dd9289c678f30fd424b324185c3cdad StaticDependenciesID=335dfd385636c356c646bb25b90953dc 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Track/Track.mat
+  importAddress: Guid(50ae672eaf06e824d92418a698b1a6a6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Track/Track.mat using Guid(50ae672eaf06e824d92418a698b1a6a6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3d009a3877fd8e0742465f392be29b45') in 0.1930955 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ac93f07adde3c6ff901f961421f773f7 DependenciesID=10cc20b1d8d3bf80b2e1a1ee4bd209bf StaticDependenciesID=2f3567e31baf3fc07f45ed4d856753fe 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000076 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Matilda_II/Matilda_II_Normal.png
+  importAddress: Guid(f3b020647a2146842bea03858953146d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Matilda_II/Matilda_II_Normal.png using Guid(f3b020647a2146842bea03858953146d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3c0e12ef193e87754ca8ba1b7777718b') in 0.1001329 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=41bf7f34c969412916b17c3e69fe951c DependenciesID=978964fe2ccb132b68b5bea70fa4d24d StaticDependenciesID=1d46827ac5f189b1e28887a74f3ee25d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Chi_Ha/Chi_Ha_Metallic.png
+  importAddress: Guid(3ba1ba592141c88479cf9940746afd88) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Chi_Ha/Chi_Ha_Metallic.png using Guid(3ba1ba592141c88479cf9940746afd88) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3b5bbd0640b61e351e6f34a3ca12125e') in 0.0610588 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=73fbfcfce5b0d359d7832669bd7bf895 DependenciesID=0b7b249de5d06adf563a38b0e9515527 StaticDependenciesID=84b86ec67f4be0312d7d71fc05f2f994 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000091 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Hotchkiss_H35/Hotchkiss_H35_AO.png
+  importAddress: Guid(7dec86ce70a0bdb44b03987976764d16) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Hotchkiss_H35/Hotchkiss_H35_AO.png using Guid(7dec86ce70a0bdb44b03987976764d16) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'bd74b10efce2b08f52d19c80011d7fe2') in 0.191217 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1c3455ee3e415e8ebbd74fdfd34b2381 DependenciesID=0b53809b92f8b1ac8fa30cdc80725092 StaticDependenciesID=88ad5d4bd4412bc1eabeacb1b70d60ba 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/KV_2(1940)
+  importAddress: Guid(2a560bb060eabae468b0cb4a8731ab22) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/KV_2(1940) using Guid(2a560bb060eabae468b0cb4a8731ab22) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e43765eb5b1f9b99dfcda0c5ca5feed5') in 0.1496243 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=00f6165ca3c557e2111f619b2203a859 DependenciesID=6d31884c41ebc445d2f10e62a1ecfe0d StaticDependenciesID=af8a17af39fd3294afd87b63f1267d4d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/WW2 Armed Forces Demo/Models/T_28_85.fbx
+  importAddress: Guid(11708e0ade3d5b84f834283f73fbe101) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Models/T_28_85.fbx using Guid(11708e0ade3d5b84f834283f73fbe101) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '9813ed31d6565aa21675aeda704363a2') in 1.2753642 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8e58ec065f47468345ce8b3991b069ec DependenciesID=1b73eaec66e871da13a0818da5c35ddb StaticDependenciesID=b54dd47cb62eaddd85e829d04f630a67 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 240
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000080 seconds.
+  path: Assets/WW2 Armed Forces Demo/Models/Ha_Go.fbx
+  importAddress: Guid(3fab61b99db84344c9b4ce0adb48fe1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Models/Ha_Go.fbx using Guid(3fab61b99db84344c9b4ce0adb48fe1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '0847b22f29fc65bbab89f4b8476dcc2d') in 0.2317075 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1ce8115d72a4a159f4ba49fa24cab519 DependenciesID=7b853ca3874ad98012d0a9cf2333b123 StaticDependenciesID=41baf03320ae76a96b3efd35b0f959be 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 124
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/WW2 Armed Forces Demo/Scripts
+  importAddress: Guid(5de4d06010b5a8c44a38ba9d48e81738) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Scripts using Guid(5de4d06010b5a8c44a38ba9d48e81738) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '35c3c3fefc21cec848e6fd476a03a0a7') in 0.0197802 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=89a01a6c7dc101fb1387f9a98335acb2 DependenciesID=24461c04e4e6f9748a32b594e895ec8d StaticDependenciesID=dc185d8fd071a3bcecf853e4b9090b9e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/KV_2(1940).mat
+  importAddress: Guid(80351f700d4da6449bab8c2b6988c004) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/KV_2(1940).mat using Guid(80351f700d4da6449bab8c2b6988c004) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '38cf3e48164f58477e6876d25015b199') in 0.02347 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=410aeb0cf85aba7ed2c49fce21455799 DependenciesID=c080cfa27c35f83e99e3fc273d231884 StaticDependenciesID=e3436c4cbd30db5ab86429b1248e9913 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/WW2 Armed Forces Demo/Prefabs/KV_2(1940).prefab
+  importAddress: Guid(db6875df17300f941a5a999209c12a47) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Prefabs/KV_2(1940).prefab using Guid(db6875df17300f941a5a999209c12a47) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '98ad180cadb28f2e9c5f51ae782c4bfe') in 0.1618972 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a5d53639f43250a38c7161da363ad9e9 DependenciesID=8ff884f8bf0cfbb6878ebc22475c81a0 StaticDependenciesID=996bfcdd76506748e8401252c2cf1b43 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 289
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/WW2 Armed Forces Demo/Models/Vickers_Mk_E_Type_B.fbx
+  importAddress: Guid(420280c64c4b1584e95748b3e8088795) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Models/Vickers_Mk_E_Type_B.fbx using Guid(420280c64c4b1584e95748b3e8088795) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '1e0167c1c52bdd33cbd79d3545b83ca6') in 0.4012027 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1d8e43e9c65390d76195eec248a32152 DependenciesID=72129996ffd276df4178c63ed96dc99a StaticDependenciesID=c0b00af96c49a8554836dcb81e1deace 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 182
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Carro_Armato_L6_40/Carro_Armato_L6_40_AlbedoTransparency_1.png
+  importAddress: Guid(ae55b8decdad5cc46b2278452f41c4ed) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Carro_Armato_L6_40/Carro_Armato_L6_40_AlbedoTransparency_1.png using Guid(ae55b8decdad5cc46b2278452f41c4ed) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c2445b108babbb76eb229bbaad5bd7e7') in 0.1032602 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a71d57aa50b1c4afa51440a7aca1ec51 DependenciesID=3dc3e2672eb5bb905c3081e6ce26612a StaticDependenciesID=9c2825fd54a309161ad7a9a6d479f8e0 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/WW2 Armed Forces Demo/Prefabs/Panzer_VI_E.prefab
+  importAddress: Guid(03bd5e3ea2209eb49a5742f90b548d10) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Prefabs/Panzer_VI_E.prefab using Guid(03bd5e3ea2209eb49a5742f90b548d10) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '09059fdd2132a6fd5653e153be6e524e') in 0.1319096 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=aff00753e4cd2b0e0af916669f9cd829 DependenciesID=827cc9fc037dba938cbc8f67958362a4 StaticDependenciesID=8adac4f94e52ce8afc5c8899d5749edd 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 147
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/SOMUA_S35/SOMUA_S35_Normal.png
+  importAddress: Guid(2681f33490a35b545b9ea25bb7b15763) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/SOMUA_S35/SOMUA_S35_Normal.png using Guid(2681f33490a35b545b9ea25bb7b15763) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8e7741be5be01aab51e4d6ceb36a7a59') in 0.0934251 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0ff67371596c2220158475fb3290e60e DependenciesID=cabb35df08d730a6acb1e0878276e59f StaticDependenciesID=212da5d63f5aa6a7c3eee94575c254ac 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/WW2 Armed Forces Demo/Prefabs/Matilda_II.prefab
+  importAddress: Guid(4dc2293ab5c561140872035453dd1c81) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Prefabs/Matilda_II.prefab using Guid(4dc2293ab5c561140872035453dd1c81) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b7bc5548751ec5352b909293b01b382f') in 0.3960519 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=50be874ee309d77f517133961db6834d DependenciesID=ab84f1d763c9fd3d3dfe0f78f3f49c5b StaticDependenciesID=509693e80cd1972297be177d81c63c7a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 175
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Renault_ZB/Renault_ZB_AO.png
+  importAddress: Guid(ccc0380714d4369438b802b448fc9228) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Renault_ZB/Renault_ZB_AO.png using Guid(ccc0380714d4369438b802b448fc9228) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'eabdf2fded7a6ebb84baff7efc0339a3') in 0.0910997 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5f58956f051e4b9bc6cf79cd8e37f7c9 DependenciesID=dd8df3495f0c4c774dc387ea6dd63edd StaticDependenciesID=8b4bc3dd9be8c641a9fa42194617119c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000066 seconds.
+  path: Assets/WW2 Armed Forces Demo/Models/Chi_Ha.fbx
+  importAddress: Guid(dd1b4de3b25189940abb94cfe4d913ea) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Models/Chi_Ha.fbx using Guid(dd1b4de3b25189940abb94cfe4d913ea) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '5471da79b38bb92fdd0f11c13d5d625f') in 0.3085453 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=401a5892ea7067bc3bc0bb32dec23bb8 DependenciesID=10bc6f3b13ab9c6d5033b4d9240f3d5b StaticDependenciesID=9e502abca9edcb468ef9f7566148e321 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 156
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000076 seconds.
+  path: Assets/WW2 Armed Forces Demo/Prefabs/Cromwell_IV.prefab
+  importAddress: Guid(5f694739ee4c9494c905f4e9353cfe0c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Prefabs/Cromwell_IV.prefab using Guid(5f694739ee4c9494c905f4e9353cfe0c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '24a2751e8f5f8afd6ca5af5c5bddb9ce') in 0.1163786 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=25d62f5417e192ea2da0494d1b581ff7 DependenciesID=e4992a65944ec5d35df5abe4738cd53d StaticDependenciesID=3bc1932262929bc24a184250a583f17b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 213
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Vickers_Mk_E_Type_B/Vickers_Mk_E_Type_B_Metallic.png
+  importAddress: Guid(5c508f578d7276f4da480010f57f3fe6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Vickers_Mk_E_Type_B/Vickers_Mk_E_Type_B_Metallic.png using Guid(5c508f578d7276f4da480010f57f3fe6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'f14faa1fe14710645e9d446d82aad35a') in 0.167469 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d1cddf5f148f9610fd96aded399a5465 DependenciesID=dcd6464ed387664893064d44cc8e40b2 StaticDependenciesID=362077b3e296353676f2694451cc96d2 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000099 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/T_34_76(1942).mat
+  importAddress: Guid(60c186ed1da5cb348aae3711893b2d20) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/T_34_76(1942).mat using Guid(60c186ed1da5cb348aae3711893b2d20) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '6737becd3799048f199d1db77bf41e13') in 0.0293639 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=89a8a84cc85fc189315aa2a7e2d97ac8 DependenciesID=1956f988cc2b02b720c49f950b4ad8a9 StaticDependenciesID=b7d0f29a0d41f4f17a10d14864640ede 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/WW2 Armed Forces Demo/Prefabs/T_28_85.prefab
+  importAddress: Guid(c76811f97687e3542804ac4e2492e3b4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Prefabs/T_28_85.prefab using Guid(c76811f97687e3542804ac4e2492e3b4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'f35b28551efb1bf2e1b1fba6fe845e29') in 0.0746424 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c1b1f6466380b25636aac4d31fbc4881 DependenciesID=13032a1cc0ce43c92bea931e8689a3cd StaticDependenciesID=0979faf10c1ff5a2df292dce82b6f899 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 437
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Panzer_VI_E/Panzer_VI_E_AlbedoTransparency_1.png
+  importAddress: Guid(e9f5840d67e6b3740b54c13b5c36b86b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Panzer_VI_E/Panzer_VI_E_AlbedoTransparency_1.png using Guid(e9f5840d67e6b3740b54c13b5c36b86b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '0f6eb4944c48817c32ed6660f9b80f66') in 0.0915062 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6f78dbebcd0bb48b4ff2a310173b3327 DependenciesID=a6c848db1d3bd5dd50d42209a2f86b81 StaticDependenciesID=121dd409ff026200a44f55880ecaa206 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 3.07 ms, found 3 plugins.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 3788 unused Assets / (1.2 MB). Loaded Objects now: 4435.
+Memory consumption went from 114.3 MB to 113.2 MB.
+Total: 13.051700 ms (FindLiveObjects: 0.735500 ms CreateObjectMapping: 0.321100 ms MarkObjects: 10.114800 ms  DeleteObjects: 1.876600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 5.865230 seconds.
+  path: Assets/EnemyTankAI.cs
+  importAddress: Guid(b2716a5bdea0a12499696f5854f8aa6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/EnemyTankAI.cs using Guid(b2716a5bdea0a12499696f5854f8aa6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: 'f0d4bb7c5cae3705162f2e39f10870ab') in 0.0030904 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=bd6ee50206a05f78a1746ef34c8a2b75 DependenciesID=c235a077b4eb463eb0a56cf4773b4ef6 StaticDependenciesID=b6f3ecba94975ad2206b43a0a5de1401 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/Cromwell_IV.mat
+  importAddress: Guid(4130e29d3b8edf749927e8eb9c420c87) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/Cromwell_IV.mat using Guid(4130e29d3b8edf749927e8eb9c420c87) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'be0f86374b3d367a6a4ff3df2236c6d3') in 0.0589999 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=505561a5822c8a2239bf568ae77d010c DependenciesID=b4d5f1bd277b18ec26ffba3956869aea StaticDependenciesID=1a1c5e67fd8454804ff7a197e1d41e9d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000114 seconds.
+  path: Assets/WW2 Armed Forces Demo/Models/M5A1_Stuart.fbx
+  importAddress: Guid(85e177f1c2fb49047a065d605cf0aa38) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Models/M5A1_Stuart.fbx using Guid(85e177f1c2fb49047a065d605cf0aa38) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '630fc57bc7fc58b7c227063f83a3d7c7') in 0.2901221 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=51a6e00b94f195129215b5eedd38fa0c DependenciesID=c30df1be6c59583f5816e29be41fe4cf StaticDependenciesID=ba2f83ff5296858a4bf4948637980afa 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 138
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/M4A3(75)_Sherman/M4A3(75)_Sherman_AlbedoTransparency_1.png
+  importAddress: Guid(698d68a026c6f4249a862419725d80af) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/M4A3(75)_Sherman/M4A3(75)_Sherman_AlbedoTransparency_1.png using Guid(698d68a026c6f4249a862419725d80af) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3b63e15e5710f31320f2adcf18dca3bb') in 0.0903258 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f65b81705a93106ddb5df68c7fd535c0 DependenciesID=ab68924be2dc8418f736c91138df9ce6 StaticDependenciesID=168f4bb212b37f24e512012c5937b798 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000073 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Panzer_VI_E/Panzer_VI_E_Metallic.png
+  importAddress: Guid(c10ef7564e4f85249bddcbcfdbb15876) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Panzer_VI_E/Panzer_VI_E_Metallic.png using Guid(c10ef7564e4f85249bddcbcfdbb15876) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e14bbcd2315348ee8970b8399694505f') in 0.1752379 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=fd287d2e5a4c638df7089fd55f9f62bc DependenciesID=b797b34bd7db56a5137022d35df8a5c4 StaticDependenciesID=c59e23be1f884ecaab937c2828673904 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Track/Track_Normal.png
+  importAddress: Guid(3fb4f4ae1dd003f4fb7e163863310e10) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Track/Track_Normal.png using Guid(3fb4f4ae1dd003f4fb7e163863310e10) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '0b9bcead871d5825ed450b676302ae0c') in 0.1707531 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=09eb5ebba49bfb3788927b0e0568a253 DependenciesID=cd8703e65a3b993738a5631b71e8bb46 StaticDependenciesID=36fa27b1f57f89823433cf573f7b6395 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/SOMUA_S35.mat
+  importAddress: Guid(15d5eea3ceb7c3d40bfb86e213f55e69) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/SOMUA_S35.mat using Guid(15d5eea3ceb7c3d40bfb86e213f55e69) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '0c0de3779a1a5a36e35ba5315ae809a7') in 0.033173 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1ccf1b9316e5c869725a5a4e51ea2421 DependenciesID=6403a56f5c435b167930cedf86d86b5b StaticDependenciesID=b271c34f064f3dddd9929412b97e5fd9 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000072 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/Panzer_VI_E.mat
+  importAddress: Guid(30950fff99c5ccd4f85905dc6f09b870) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/Panzer_VI_E.mat using Guid(30950fff99c5ccd4f85905dc6f09b870) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b93fea842d3919de76384f6ef6d76467') in 0.2595384 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7a317725412c14b6788ba5fe39045145 DependenciesID=6190f87db95dd9e635482b374cbcdec7 StaticDependenciesID=415e4ed7c50d3f566aa0d8a6e19de1e1 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000068 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/Vickers_MK_E_Type_B.mat
+  importAddress: Guid(31cf38c1d26ce1440be5bb8009211e90) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/Vickers_MK_E_Type_B.mat using Guid(31cf38c1d26ce1440be5bb8009211e90) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '34971860d09bf7370e092fd877f6b0cb') in 0.0831599 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a3d8357ef03391c4e1b1fb6511ffc3b5 DependenciesID=5c5583290a9b50a1a371660a7eac4f9a StaticDependenciesID=99297cdd8fb8696faf6ea8d67e3c03b3 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/Carro_Armato_L6_40.mat
+  importAddress: Guid(e14ae0ce9ab78374d9dc7d2ba91e8ac4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/Carro_Armato_L6_40.mat using Guid(e14ae0ce9ab78374d9dc7d2ba91e8ac4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c97dba8752bc446327116405760af30d') in 0.0856123 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=18d44bea3fc1b8a437c6c65fda05b162 DependenciesID=bbdc1bac92615c58286914a7cdd37757 StaticDependenciesID=c9ec5893a54cb6cb44e9e9c0c962affe 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Chi_Ha/Chi_Ha_AO.png
+  importAddress: Guid(0d927e7e20868bd4ab85bb6e29334438) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Chi_Ha/Chi_Ha_AO.png using Guid(0d927e7e20868bd4ab85bb6e29334438) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '7913fdc2458e332292bd699891e8bdf1') in 0.4021076 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=758b67c818fce1096ffc6c446175bc53 DependenciesID=9b5a565a7ab3dbc1fda38c8f5563a7ef StaticDependenciesID=09d75ee4cc7b01e9a21248994757d713 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Renault_ZB/Renault_ZB_Metallic.png
+  importAddress: Guid(64992bd1d1dfe9448b8f3e6ec90bca57) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Renault_ZB/Renault_ZB_Metallic.png using Guid(64992bd1d1dfe9448b8f3e6ec90bca57) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '11252bd97671b025e07d266f1dc3a868') in 0.1166606 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1d64a67ae8fb0f0193b209c346a433bc DependenciesID=82ffefdaad5d0a0015099975a5ab3239 StaticDependenciesID=bbd6c5b3892307f983f5dd4997fd083e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000070 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/T_28_85.mat
+  importAddress: Guid(8eecaf6f6da7051478fe489e29754b62) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/T_28_85.mat using Guid(8eecaf6f6da7051478fe489e29754b62) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c0ba1d506ebb5859145c5b8c30a7285b') in 0.0241438 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=294438835653b14e73806be0e7594649 DependenciesID=42e0a8c414b1bf45d6875ad9b39de73a StaticDependenciesID=ac8f512cdcf1971714d12ec9669eed1b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/WW2 Armed Forces Demo/Prefabs/E_50.prefab
+  importAddress: Guid(e193ae02c58da924c8aa7ca158fdc7ee) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Prefabs/E_50.prefab using Guid(e193ae02c58da924c8aa7ca158fdc7ee) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '26bcb9f2bfcd48f5aac2d5820772888b') in 0.8627372 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=84fd47db83b5a64c29c7aac955a52395 DependenciesID=d688913ef7fc9d86e56ce978784459ea StaticDependenciesID=57a897f364a476e5dd52fccd26ac220d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 227
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000090 seconds.
+  path: Assets/WW2 Armed Forces Demo/Demo/Demo.unity
+  importAddress: Guid(bbfbf049524450a459c0b97dfe2bad5a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Demo/Demo.unity using Guid(bbfbf049524450a459c0b97dfe2bad5a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '830f98bdf16724d9b39b2c5a28cd61b1') in 0.2890778 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3a7875a6785ed7e2cfeee16aa1abb259 DependenciesID=ff3ba95427fdf50a4966fb8da4ea9b18 StaticDependenciesID=394b4687ec7043b66c13bcea2b39ddde 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/WW2 Armed Forces Demo/Materials/Tanks/Carro_Armato_M13_40.mat
+  importAddress: Guid(a8033a1365178614a81732ba7720c03e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Materials/Tanks/Carro_Armato_M13_40.mat using Guid(a8033a1365178614a81732ba7720c03e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'baaa5c15d9acec774acfdca7752292aa') in 0.1180935 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4f8867f0e24d5d0491ea20b99876121c DependenciesID=22f2d7cd163b3fbdf3f5484e5e65ce3c StaticDependenciesID=d1acf3248e26a24c7755228c104ee782 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/WW2 Armed Forces Demo/Textures/Panzer_II_F/Panzer_II_F_AO.png
+  importAddress: Guid(cd294dc6a9358494583beb52ec44318e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Textures/Panzer_II_F/Panzer_II_F_AO.png using Guid(cd294dc6a9358494583beb52ec44318e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '76f3169e883c0059a5b06fff029f6bd3') in 0.1015659 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d78d3dfe6321ca1a937430280cab35a1 DependenciesID=07474794689c7265a8435b7d1079899c StaticDependenciesID=c91197a99607e52ef57237f4156cfd4f 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000074 seconds.
+  path: Assets/WW2 Armed Forces Demo/Models/T_34_76(1942).fbx
+  importAddress: Guid(e8f2bfa8582bc1643bd5a5248c1c3e8b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/WW2 Armed Forces Demo/Models/T_34_76(1942).fbx using Guid(e8f2bfa8582bc1643bd5a5248c1c3e8b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e4126467bed7942c59f0c10db62bcc6e') in 4.8511304 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d2d0e84e25974e1042f5404149756359 DependenciesID=2df01714bd94101ed77a22733695e369 StaticDependenciesID=3c1c6f37523eeea0e2c14d48a39fe2e6 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 116
+
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
