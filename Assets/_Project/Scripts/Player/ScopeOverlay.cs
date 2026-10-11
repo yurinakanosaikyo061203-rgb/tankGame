@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class scope : MonoBehaviour
+public class ScopeOverlay : MonoBehaviour
 {
     // ここに完成している「照準器の画像（GameObject）」をインスペクターからドラッグ＆ドロップします
     [SerializeField] private GameObject scopeImage;

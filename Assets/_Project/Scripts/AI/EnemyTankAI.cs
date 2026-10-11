@@ -8,6 +8,7 @@ public class EnemyTankAI : MonoBehaviour
 {
     private Rigidbody _rigidbody;
     private Transform _transform;
+    private TankDrive _drive;
     private NavMeshAgent _agent;
     private Transform _attackTarget;
     private EnemyTurretAI _turretAI; // ★砲塔スクリプトへの参照を追加
@@ -44,6 +45,7 @@ public class EnemyTankAI : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _transform = transform;
+        _drive = new TankDrive(_rigidbody, 1f);
         _agent = GetComponent<NavMeshAgent>();
         _turretAI = GetComponent<EnemyTurretAI>(); // 自動取得
     }
@@ -136,13 +138,13 @@ public class EnemyTankAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_attackTarget == null) { ApplyStopBrake(); return; }
+        if (_attackTarget == null) { _drive.Brake(); return; }
         if (_isBacking) { ExecuteMovement(0f, -1f); return; }
         if (_isEscapingTurn) { ExecuteMovement(1f, 0f); return; }
         if (_isEscapingForward) { ExecuteMovement(0f, 1f); return; }
 
         float distanceToTarget = Vector3.Distance(_transform.position, _attackTarget.position);
-        if (_hasLineOfSight && distanceToTarget <= attackDistance) { ApplyStopBrake(); return; }
+        if (_hasLineOfSight && distanceToTarget <= attackDistance) { _drive.Brake(); return; }
 
         Vector3 targetDirection = (_agent.hasPath && _agent.steeringTarget != Vector3.zero && !_agent.pathPending) ?
             (_agent.steeringTarget - _transform.position).normalized : (_attackTarget.position - _transform.position).normalized;
@@ -179,50 +181,21 @@ public class EnemyTankAI : MonoBehaviour
 
     private void ExecuteMovement(float horizontal, float vertical)
     {
-        float currentForwardSpeed = _transform.InverseTransformDirection(_rigidbody.linearVelocity).z;
+        float currentForwardSpeed = _drive.ForwardSpeed;
         float totalForce = horsepower * 1800f;
 
-        if (Mathf.Abs(horizontal) > 0.05f)
-        {
-            Quaternion turnRotation = Quaternion.Euler(0f, horizontal * rotateSpeed * Time.fixedDeltaTime, 0f);
-            _rigidbody.MoveRotation(_rigidbody.rotation * turnRotation);
-        }
+        if (Mathf.Abs(horizontal) > 0.05f) _drive.Turn(horizontal, rotateSpeed);
 
         if (vertical > 0.05f && currentForwardSpeed < maxSpeed)
         {
-            _rigidbody.AddRelativeForce(Vector3.forward * (totalForce * vertical), ForceMode.Force);
-            if (currentForwardSpeed > maxSpeed * 0.6f)
-            {
-                Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-                localVelocity.z = Mathf.Lerp(localVelocity.z, maxSpeed, Time.fixedDeltaTime * 1.5f);
-                _rigidbody.linearVelocity = _transform.TransformDirection(localVelocity);
-            }
+            _drive.Push(totalForce * vertical);
+            if (currentForwardSpeed > maxSpeed * 0.6f) _drive.ApproachSpeed(maxSpeed, Time.fixedDeltaTime * 1.5f);
         }
         else if (vertical < -0.05f && currentForwardSpeed > -maxBackSpeed)
         {
-            _rigidbody.AddRelativeForce(Vector3.back * (totalForce * Mathf.Abs(vertical) * 0.8f), ForceMode.Force);
-            if (currentForwardSpeed < -(maxBackSpeed * 0.5f))
-            {
-                Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-                localVelocity.z = Mathf.Lerp(localVelocity.z, -maxBackSpeed, Time.fixedDeltaTime * 2.0f);
-                _rigidbody.linearVelocity = _transform.TransformDirection(localVelocity);
-            }
+            _drive.Push(-(totalForce * Mathf.Abs(vertical) * 0.8f));
+            if (currentForwardSpeed < -(maxBackSpeed * 0.5f)) _drive.ApproachSpeed(-maxBackSpeed, Time.fixedDeltaTime * 2.0f);
         }
-        else if (Mathf.Abs(horizontal) <= 0.05f) ApplyStopBrake();
-    }
-
-    private void ApplyStopBrake()
-    {
-        float currentForwardSpeed = _transform.InverseTransformDirection(_rigidbody.linearVelocity).z;
-        if (Mathf.Abs(currentForwardSpeed) > 0.1f)
-        {
-            Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-            _rigidbody.AddRelativeForce(Vector3.back * (localVelocity.z * 25000f), ForceMode.Force);
-        }
-        else
-        {
-            Vector3 localVel = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-            localVel.z = 0f; _rigidbody.linearVelocity = _transform.TransformDirection(localVel);
-        }
+        else if (Mathf.Abs(horizontal) <= 0.05f) _drive.Brake();
     }
 }

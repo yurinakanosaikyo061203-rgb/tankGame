@@ -1,7 +1,7 @@
 // 例: マウスホイールで3Dカメラをズームイン/アウトする
 using UnityEngine;
 
-public class zoomuot : MonoBehaviour
+public class CameraZoom : MonoBehaviour
 {
     public Camera mainCam; // InspectorでMain Cameraをドラッグ＆ドロップ
     public float zoomSpeed = 10f;

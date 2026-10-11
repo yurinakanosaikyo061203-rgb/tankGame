@@ -1,10 +1,11 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class move2 : MonoBehaviour
+public class PlayerTankMovement : MonoBehaviour
 {
     private Rigidbody _rigidbody;
     private Transform _transform;
+    private TankDrive _drive;
 
     [Header("戦車のスペック設定")]
     [SerializeField] private float horsepower = 500f;     // 500馬力固定
@@ -33,6 +34,7 @@ public class move2 : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _transform = transform;
+        _drive = new TankDrive(_rigidbody, 1f);
     }
 
     private void Start()
@@ -65,14 +67,14 @@ public class move2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CurrentForwardSpeed = _transform.InverseTransformDirection(_rigidbody.linearVelocity).z;
+        CurrentForwardSpeed = _drive.ForwardSpeed;
 
         // ギアの判定処理
         UpdateGearLogic();
 
         if (isFrozen)
         {
-            ApplyStopBrake();
+            _drive.Brake();
             return;
         }
 
@@ -91,9 +93,7 @@ public class move2 : MonoBehaviour
         // 1. 旋回（回転）処理
         if (Mathf.Abs(horizontal) > 0.05f && Mathf.Abs(vertical) > 0.05f)
         {
-            // ★【ここを修正】前回入れた「-1f」を削除し、通常の入力方向に回転させる（これで左右が直ります）
-            Quaternion turnRotation = Quaternion.Euler(0f, horizontal * rotateSpeed * Time.fixedDeltaTime, 0f);
-            _rigidbody.MoveRotation(_rigidbody.rotation * turnRotation);
+            _drive.Turn(horizontal, rotateSpeed);
         }
 
         // 2. 移動処理
@@ -103,19 +103,17 @@ public class move2 : MonoBehaviour
         {
             if (CurrentForwardSpeed < maxSpeed)
             {
-                _rigidbody.AddRelativeForce(Vector3.forward * (totalForce * vertical), ForceMode.Force);
+                _drive.Push(totalForce * vertical);
 
                 float startBrakeSpeed = 6.0f - (pitchAngle * 0.2f);
                 startBrakeSpeed = Mathf.Clamp(startBrakeSpeed, 2.0f, maxSpeed - 1f);
 
                 if (CurrentForwardSpeed > startBrakeSpeed)
                 {
-                    Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
                     float slopeWeight = 1.5f + (pitchAngle * 0.1f);
                     slopeWeight = Mathf.Clamp(slopeWeight, 0.2f, 5.0f);
 
-                    localVelocity.z = Mathf.Lerp(localVelocity.z, maxSpeed, Time.fixedDeltaTime * slopeWeight);
-                    _rigidbody.linearVelocity = _transform.TransformDirection(localVelocity);
+                    _drive.ApproachSpeed(maxSpeed, Time.fixedDeltaTime * slopeWeight);
                 }
             }
         }
@@ -123,34 +121,17 @@ public class move2 : MonoBehaviour
         {
             if (CurrentForwardSpeed > -maxBackSpeed)
             {
-                _rigidbody.AddRelativeForce(Vector3.back * (totalForce * Mathf.Abs(vertical) * 0.8f), ForceMode.Force);
+                _drive.Push(-(totalForce * Mathf.Abs(vertical) * 0.8f));
 
                 if (CurrentForwardSpeed < -(maxBackSpeed * 0.5f))
                 {
-                    Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-                    localVelocity.z = Mathf.Lerp(localVelocity.z, -maxBackSpeed, Time.fixedDeltaTime * 2.0f);
-                    _rigidbody.linearVelocity = _transform.TransformDirection(localVelocity);
+                    _drive.ApproachSpeed(-maxBackSpeed, Time.fixedDeltaTime * 2.0f);
                 }
             }
         }
         else
         {
-            ApplyStopBrake();
-        }
-    }
-
-    private void ApplyStopBrake()
-    {
-        if (Mathf.Abs(CurrentForwardSpeed) > 0.1f)
-        {
-            Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-            _rigidbody.AddRelativeForce(Vector3.back * (localVelocity.z * 25000f), ForceMode.Force);
-        }
-        else
-        {
-            Vector3 localVel = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-            localVel.z = 0f;
-            _rigidbody.linearVelocity = _transform.TransformDirection(localVel);
+            _drive.Brake();
         }
     }
 

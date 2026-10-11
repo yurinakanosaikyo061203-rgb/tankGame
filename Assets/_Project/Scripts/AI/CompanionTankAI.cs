@@ -5,6 +5,7 @@ public class CompanionTankAI : MonoBehaviour
 {
     private Rigidbody _rigidbody;
     private Transform _transform;
+    private TankDrive _drive;
     private Transform _playerTransform;
 
     [Header("スペック設定")]
@@ -37,6 +38,7 @@ public class CompanionTankAI : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _transform = transform;
+        _drive = new TankDrive(_rigidbody, -1f);
     }
 
     private void Start()
@@ -121,7 +123,7 @@ public class CompanionTankAI : MonoBehaviour
 
         if (_attackTarget == null && distanceToPlayer <= followDistance)
         {
-            ApplyStopBrake();
+            _drive.Brake();
             return;
         }
 
@@ -226,26 +228,23 @@ public class CompanionTankAI : MonoBehaviour
 
     private void ExecuteMovement(float horizontal, float vertical)
     {
-        float currentForwardSpeed = -_transform.InverseTransformDirection(_rigidbody.linearVelocity).z;
+        float currentForwardSpeed = _drive.ForwardSpeed;
         float totalForce = horsepower * 1200f;
 
         if (Mathf.Abs(horizontal) > 0.05f && Mathf.Abs(vertical) > 0.05f)
         {
-            Quaternion turnRotation = Quaternion.Euler(0f, horizontal * rotateSpeed * Time.fixedDeltaTime, 0f);
-            _rigidbody.MoveRotation(_rigidbody.rotation * turnRotation);
+            _drive.Turn(horizontal, rotateSpeed);
         }
 
         if (vertical > 0.05f)
         {
             if (currentForwardSpeed < maxSpeed)
             {
-                _rigidbody.AddRelativeForce(Vector3.back * (totalForce * vertical), ForceMode.Force);
+                _drive.Push(totalForce * vertical);
 
                 if (currentForwardSpeed > maxSpeed * 0.6f)
                 {
-                    Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-                    localVelocity.z = Mathf.Lerp(localVelocity.z, -maxSpeed, Time.fixedDeltaTime * 1.5f);
-                    _rigidbody.linearVelocity = _transform.TransformDirection(localVelocity);
+                    _drive.ApproachSpeed(maxSpeed, Time.fixedDeltaTime * 1.5f);
                 }
             }
         }
@@ -253,35 +252,17 @@ public class CompanionTankAI : MonoBehaviour
         {
             if (currentForwardSpeed > -maxBackSpeed)
             {
-                _rigidbody.AddRelativeForce(Vector3.forward * (totalForce * Mathf.Abs(vertical) * 0.8f), ForceMode.Force);
+                _drive.Push(-(totalForce * Mathf.Abs(vertical) * 0.8f));
 
                 if (currentForwardSpeed < -(maxBackSpeed * 0.5f))
                 {
-                    Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-                    localVelocity.z = Mathf.Lerp(localVelocity.z, maxBackSpeed, Time.fixedDeltaTime * 2.0f);
-                    _rigidbody.linearVelocity = _transform.TransformDirection(localVelocity);
+                    _drive.ApproachSpeed(-maxBackSpeed, Time.fixedDeltaTime * 2.0f);
                 }
             }
         }
         else
         {
-            ApplyStopBrake();
-        }
-    }
-
-    private void ApplyStopBrake()
-    {
-        float currentForwardSpeed = -_transform.InverseTransformDirection(_rigidbody.linearVelocity).z;
-        if (Mathf.Abs(currentForwardSpeed) > 0.1f)
-        {
-            Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-            _rigidbody.AddRelativeForce(Vector3.forward * (localVelocity.z * 25000f), ForceMode.Force);
-        }
-        else
-        {
-            Vector3 localVel = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
-            localVel.z = 0f;
-            _rigidbody.linearVelocity = _transform.TransformDirection(localVel);
+            _drive.Brake();
         }
     }
 }
