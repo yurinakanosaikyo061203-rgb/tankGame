@@ -37,9 +37,29 @@ public class EnemyTankAI : MonoBehaviour
     private float _scanTimer = 0f;
     private bool _hasLineOfSight = false;
 
-    public Transform AttackTarget => _attackTarget;
-    public bool HasLineOfSight => _hasLineOfSight;
-    public LayerMask ObstacleLayer => obstacleLayer; // ★砲塔側から参照できるように公開
+    public Transform AttackTarget
+    {
+        get
+        {
+            return _attackTarget;
+        }
+    }
+
+    public bool HasLineOfSight
+    {
+        get
+        {
+            return _hasLineOfSight;
+        }
+    }
+
+    public LayerMask ObstacleLayer // ★砲塔側から参照できるように公開
+    {
+        get
+        {
+            return obstacleLayer;
+        }
+    }
 
     private void Awake()
     {
@@ -84,9 +104,15 @@ public class EnemyTankAI : MonoBehaviour
             }
         }
 
-        if (_attackTarget == null) return;
+        if (_attackTarget == null)
+        {
+            return;
+        }
 
-        if (_agent.isOnNavMesh) _agent.nextPosition = _transform.position;
+        if (_agent.isOnNavMesh)
+        {
+            _agent.nextPosition = _transform.position;
+        }
 
         float distanceToTarget = Vector3.Distance(_transform.position, _attackTarget.position);
 
@@ -113,49 +139,120 @@ public class EnemyTankAI : MonoBehaviour
                 if (shouldMove && checkDist < 0.12f)
                 {
                     _stuckTimer += 0.2f;
-                    if (_stuckTimer > 1.5f) { _isBacking = true; _backTimer = 1.5f; _stuckTimer = 0f; }
+                    if (_stuckTimer > 1.5f)
+                    {
+                        _isBacking = true;
+                        _backTimer = 1.5f;
+                        _stuckTimer = 0f;
+                    }
                 }
-                else _stuckTimer = 0f;
+                else
+                {
+                    _stuckTimer = 0f;
+                }
                 _lastPosition = _transform.position;
             }
         }
         else if (_isBacking)
         {
             _backTimer -= Time.deltaTime;
-            if (_backTimer <= 0f) { _isBacking = false; _isEscapingTurn = true; _escapeTurnTimer = 1.0f; }
+            if (_backTimer <= 0f)
+            {
+                _isBacking = false;
+                _isEscapingTurn = true;
+                _escapeTurnTimer = 1.0f;
+            }
         }
         else if (_isEscapingTurn)
         {
             _escapeTurnTimer -= Time.deltaTime;
-            if (_escapeTurnTimer <= 0f) { _isEscapingTurn = false; _isEscapingForward = true; _escapeForwardTimer = 1.0f; }
+            if (_escapeTurnTimer <= 0f)
+            {
+                _isEscapingTurn = false;
+                _isEscapingForward = true;
+                _escapeForwardTimer = 1.0f;
+            }
         }
         else if (_isEscapingForward)
         {
             _escapeForwardTimer -= Time.deltaTime;
-            if (_escapeForwardTimer <= 0f) { _isEscapingForward = false; _stuckTimer = 0f; _posCheckTimer = 0f; _lastPosition = _transform.position; _agent.ResetPath(); }
+            if (_escapeForwardTimer <= 0f)
+            {
+                _isEscapingForward = false;
+                _stuckTimer = 0f;
+                _posCheckTimer = 0f;
+                _lastPosition = _transform.position;
+                _agent.ResetPath();
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        if (_attackTarget == null) { _drive.Brake(); return; }
-        if (_isBacking) { ExecuteMovement(0f, -1f); return; }
-        if (_isEscapingTurn) { ExecuteMovement(1f, 0f); return; }
-        if (_isEscapingForward) { ExecuteMovement(0f, 1f); return; }
+        if (_attackTarget == null)
+        {
+            _drive.Brake();
+            return;
+        }
+        if (_isBacking)
+        {
+            ExecuteMovement(0f, -1f);
+            return;
+        }
+        if (_isEscapingTurn)
+        {
+            ExecuteMovement(1f, 0f);
+            return;
+        }
+        if (_isEscapingForward)
+        {
+            ExecuteMovement(0f, 1f);
+            return;
+        }
 
         float distanceToTarget = Vector3.Distance(_transform.position, _attackTarget.position);
-        if (_hasLineOfSight && distanceToTarget <= attackDistance) { _drive.Brake(); return; }
+        if (_hasLineOfSight && distanceToTarget <= attackDistance)
+        {
+            _drive.Brake();
+            return;
+        }
 
-        Vector3 targetDirection = (_agent.hasPath && _agent.steeringTarget != Vector3.zero && !_agent.pathPending) ?
-            (_agent.steeringTarget - _transform.position).normalized : (_attackTarget.position - _transform.position).normalized;
+        Vector3 targetDirection;
+        if (_agent.hasPath && _agent.steeringTarget != Vector3.zero && !_agent.pathPending)
+        {
+            targetDirection = (_agent.steeringTarget - _transform.position).normalized;
+        }
+        else
+        {
+            targetDirection = (_attackTarget.position - _transform.position).normalized;
+        }
 
         Vector3 localDir = _transform.InverseTransformDirection(targetDirection);
         float angleToTarget = Mathf.Atan2(localDir.x, localDir.z) * Mathf.Rad2Deg;
 
-        float horizontalInput = Mathf.Abs(angleToTarget) > 8f ? (angleToTarget > 0f ? 1f : -1f) : 0f;
-        float verticalInput = Mathf.Abs(angleToTarget) < 45f ? 1f : 0f;
+        float horizontalInput = 0f;
+        if (Mathf.Abs(angleToTarget) > 8f)
+        {
+            if (angleToTarget > 0f)
+            {
+                horizontalInput = 1f;
+            }
+            else
+            {
+                horizontalInput = -1f;
+            }
+        }
 
-        if (Mathf.Abs(horizontalInput) > 0.05f && Mathf.Abs(verticalInput) <= 0.05f) verticalInput = turnForwardPower;
+        float verticalInput = 0f;
+        if (Mathf.Abs(angleToTarget) < 45f)
+        {
+            verticalInput = 1f;
+        }
+
+        if (Mathf.Abs(horizontalInput) > 0.05f && Mathf.Abs(verticalInput) <= 0.05f)
+        {
+            verticalInput = turnForwardPower;
+        }
 
         ExecuteMovement(horizontalInput, verticalInput);
     }
@@ -164,17 +261,27 @@ public class EnemyTankAI : MonoBehaviour
     {
         List<Transform> potentialTargets = new List<Transform>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null) potentialTargets.Add(player.transform);
+        if (player != null)
+        {
+            potentialTargets.Add(player.transform);
+        }
 
         CompanionTankAI[] companions = FindObjectsByType<CompanionTankAI>(FindObjectsSortMode.None);
-        foreach (var c in companions) potentialTargets.Add(c.transform);
+        foreach (CompanionTankAI c in companions)
+        {
+            potentialTargets.Add(c.transform);
+        }
 
         float closestDistance = scanRadius;
         Transform closestTarget = null;
         foreach (Transform t in potentialTargets)
         {
             float distance = Vector3.Distance(_transform.position, t.position);
-            if (distance < closestDistance) { closestDistance = distance; closestTarget = t; }
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestTarget = t;
+            }
         }
         _attackTarget = closestTarget;
     }
@@ -184,18 +291,30 @@ public class EnemyTankAI : MonoBehaviour
         float currentForwardSpeed = _drive.ForwardSpeed;
         float totalForce = horsepower * 1800f;
 
-        if (Mathf.Abs(horizontal) > 0.05f) _drive.Turn(horizontal, rotateSpeed);
+        if (Mathf.Abs(horizontal) > 0.05f)
+        {
+            _drive.Turn(horizontal, rotateSpeed);
+        }
 
         if (vertical > 0.05f && currentForwardSpeed < maxSpeed)
         {
             _drive.Push(totalForce * vertical);
-            if (currentForwardSpeed > maxSpeed * 0.6f) _drive.ApproachSpeed(maxSpeed, Time.fixedDeltaTime * 1.5f);
+            if (currentForwardSpeed > maxSpeed * 0.6f)
+            {
+                _drive.ApproachSpeed(maxSpeed, Time.fixedDeltaTime * 1.5f);
+            }
         }
         else if (vertical < -0.05f && currentForwardSpeed > -maxBackSpeed)
         {
             _drive.Push(-(totalForce * Mathf.Abs(vertical) * 0.8f));
-            if (currentForwardSpeed < -(maxBackSpeed * 0.5f)) _drive.ApproachSpeed(-maxBackSpeed, Time.fixedDeltaTime * 2.0f);
+            if (currentForwardSpeed < -(maxBackSpeed * 0.5f))
+            {
+                _drive.ApproachSpeed(-maxBackSpeed, Time.fixedDeltaTime * 2.0f);
+            }
         }
-        else if (Mathf.Abs(horizontal) <= 0.05f) _drive.Brake();
+        else if (Mathf.Abs(horizontal) <= 0.05f)
+        {
+            _drive.Brake();
+        }
     }
 }

@@ -50,12 +50,18 @@ public class CompanionTankAI : MonoBehaviour
         _currentPersonalSpace = maxPersonalSpace;
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null) _playerTransform = player.transform;
+        if (player != null)
+        {
+            _playerTransform = player.transform;
+        }
     }
 
     private void Update()
     {
-        if (_playerTransform == null) return;
+        if (_playerTransform == null)
+        {
+            return;
+        }
 
         _scanTimer += Time.deltaTime;
         if (_scanTimer >= 0.5f)
@@ -111,7 +117,10 @@ public class CompanionTankAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_playerTransform == null) return;
+        if (_playerTransform == null)
+        {
+            return;
+        }
 
         if (_isBacking)
         {
@@ -127,7 +136,15 @@ public class CompanionTankAI : MonoBehaviour
             return;
         }
 
-        Vector3 targetPosition = _attackTarget != null ? _attackTarget.position : _playerTransform.position;
+        Vector3 targetPosition;
+        if (_attackTarget != null)
+        {
+            targetPosition = _attackTarget.position;
+        }
+        else
+        {
+            targetPosition = _playerTransform.position;
+        }
         Vector3 baseDirection = (targetPosition - _transform.position).normalized;
         Vector3 separationDirection = ComputeSeparationForce();
         Vector3 finalDirection = (baseDirection + separationDirection * separationWeight).normalized;
@@ -140,7 +157,14 @@ public class CompanionTankAI : MonoBehaviour
 
         if (Mathf.Abs(angleToTarget) > 6f)
         {
-            horizontalInput = angleToTarget > 0f ? 1f : -1f;
+            if (angleToTarget > 0f)
+            {
+                horizontalInput = 1f;
+            }
+            else
+            {
+                horizontalInput = -1f;
+            }
         }
 
         if (Mathf.Abs(angleToTarget) < 90f)
@@ -184,7 +208,10 @@ public class CompanionTankAI : MonoBehaviour
 
         foreach (CompanionTankAI companion in allCompanions)
         {
-            if (companion.gameObject == this.gameObject) continue;
+            if (companion.gameObject == this.gameObject)
+            {
+                continue;
+            }
 
             float distance = Vector3.Distance(_transform.position, companion.transform.position);
 
@@ -204,7 +231,10 @@ public class CompanionTankAI : MonoBehaviour
             }
         }
 
-        if (neighborCount > 0) steering /= neighborCount;
+        if (neighborCount > 0)
+        {
+            steering /= neighborCount;
+        }
         return steering.normalized;
     }
 

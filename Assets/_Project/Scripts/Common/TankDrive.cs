@@ -15,7 +15,13 @@ public class TankDrive
         _facing = facing;
     }
 
-    public float ForwardSpeed => _facing * _transform.InverseTransformDirection(_rigidbody.linearVelocity).z;
+    public float ForwardSpeed
+    {
+        get
+        {
+            return _facing * _transform.InverseTransformDirection(_rigidbody.linearVelocity).z;
+        }
+    }
 
     public void Turn(float horizontal, float rotateSpeed)
     {

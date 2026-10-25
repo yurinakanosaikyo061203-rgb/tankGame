@@ -49,7 +49,10 @@ public class PlayerTankMovement : MonoBehaviour
         if (isFrozen)
         {
             isAccelerating = false;
-            if (audioSource != null) audioSource.pitch = Mathf.Lerp(audioSource.pitch, 1.0f, Time.deltaTime * 2.0f);
+            if (audioSource != null)
+            {
+                audioSource.pitch = Mathf.Lerp(audioSource.pitch, 1.0f, Time.deltaTime * 2.0f);
+            }
             return;
         }
 
@@ -60,7 +63,11 @@ public class PlayerTankMovement : MonoBehaviour
 
         if (audioSource != null)
         {
-            float targetPitch = isAccelerating ? 3.0f : 1.0f;
+            float targetPitch = 1.0f;
+            if (isAccelerating)
+            {
+                targetPitch = 3.0f;
+            }
             audioSource.pitch = Mathf.Lerp(audioSource.pitch, targetPitch, Time.deltaTime * 2.0f);
         }
     }
@@ -88,7 +95,10 @@ public class PlayerTankMovement : MonoBehaviour
         }
 
         float pitchAngle = _transform.localEulerAngles.x;
-        if (pitchAngle > 180f) pitchAngle -= 360f;
+        if (pitchAngle > 180f)
+        {
+            pitchAngle -= 360f;
+        }
 
         // 1. 旋回（回転）処理
         if (Mathf.Abs(horizontal) > 0.05f && Mathf.Abs(vertical) > 0.05f)
@@ -146,11 +156,26 @@ public class PlayerTankMovement : MonoBehaviour
         }
         else
         {
-            if (displaySpeed <= 6) CurrentGear = "1速";
-            else if (displaySpeed <= 15) CurrentGear = "2速";
-            else if (displaySpeed <= 25) CurrentGear = "3速";
-            else if (displaySpeed <= 35) CurrentGear = "4速";
-            else CurrentGear = "5速";
+            if (displaySpeed <= 6)
+            {
+                CurrentGear = "1速";
+            }
+            else if (displaySpeed <= 15)
+            {
+                CurrentGear = "2速";
+            }
+            else if (displaySpeed <= 25)
+            {
+                CurrentGear = "3速";
+            }
+            else if (displaySpeed <= 35)
+            {
+                CurrentGear = "4速";
+            }
+            else
+            {
+                CurrentGear = "5速";
+            }
         }
 
         if (CurrentGear != previousGear)

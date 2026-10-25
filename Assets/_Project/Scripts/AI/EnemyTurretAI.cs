@@ -1,18 +1,18 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 
 public class EnemyTurretAI : MonoBehaviour
 {
     private EnemyTankAI _aiMovement;
 
-    [Header("–C“ƒE–CgƒIƒuƒWƒFƒNƒgİ’è")]
+    [Header("ç ²å¡”ãƒ»ç ²èº«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè¨­å®š")]
     [SerializeField] private Transform turretObject;
     [SerializeField] private Transform barrelObject;
-    [SerializeField] private Transform muzzlePoint; // ƒvƒŒƒCƒ„[‚Ì"Fire_Point"‚Æ“¯‚¶
+    [SerializeField] private Transform muzzlePoint; // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®"Fire_Point"ã¨åŒã˜
 
-    [Header("ËŒ‚E–C“ƒƒXƒyƒbƒN")]
-    [SerializeField] private GameObject shellPrefab; // ƒvƒŒƒCƒ„[‚Æ“¯‚¶’e‚ÌƒvƒŒƒnƒu
-    [SerializeField] private GameObject firePrefab;  // ƒvƒŒƒCƒ„[‚Æ“¯‚¶”­–CƒGƒtƒFƒNƒg‚ÌƒvƒŒƒnƒu
+    [Header("å°„æ’ƒãƒ»ç ²å¡”ã‚¹ãƒšãƒƒã‚¯")]
+    [SerializeField] private GameObject shellPrefab; // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨åŒã˜å¼¾ã®ãƒ—ãƒ¬ãƒãƒ–
+    [SerializeField] private GameObject firePrefab;  // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨åŒã˜ç™ºç ²ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ¬ãƒãƒ–
     [SerializeField] private float attackForce = 100.0f;
     [SerializeField] private float bulletVelocity = 250.0f;
     [SerializeField] private float spawnOffset = 1.0f;
@@ -21,9 +21,9 @@ public class EnemyTurretAI : MonoBehaviour
     [SerializeField] private float maxElevation = 20f;
     [SerializeField] private float maxDepression = -8f;
 
-    [Header("”­–CƒI[ƒfƒBƒIİ’è")]
-    [SerializeField] private AudioSource shotAudioSource; // šVİF”­–C‰¹‚ğ–Â‚ç‚·‚½‚ß‚ÌƒXƒs[ƒJ[
-    [SerializeField] private AudioClip shotClip;         // šVİFå–C‚Ì”­–C‰¹iSEj
+    [Header("ç™ºç ²ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªè¨­å®š")]
+    [SerializeField] private AudioSource shotAudioSource; // â˜…æ–°è¨­ï¼šç™ºç ²éŸ³ã‚’é³´ã‚‰ã™ãŸã‚ã®ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼
+    [SerializeField] private AudioClip shotClip;         // â˜…æ–°è¨­ï¼šä¸»ç ²ã®ç™ºç ²éŸ³ï¼ˆSEï¼‰
 
     private float _fireTimer = 0f;
 
@@ -34,24 +34,27 @@ public class EnemyTurretAI : MonoBehaviour
 
     private void Update()
     {
-        if (_aiMovement == null || _aiMovement.AttackTarget == null) return;
+        if (_aiMovement == null || _aiMovement.AttackTarget == null)
+        {
+            return;
+        }
 
         Transform target = _aiMovement.AttackTarget;
 
-        // 1. –C“ƒ‚Ì¶‰Eù‰ñŒvZ
+        // 1. ç ²å¡”ã®å·¦å³æ—‹å›è¨ˆç®—
         Vector3 targetPosLocal = transform.InverseTransformPoint(target.position);
         targetPosLocal.y = 0f;
         Quaternion targetTurretRot = Quaternion.LookRotation(targetPosLocal, Vector3.up);
         turretObject.localRotation = Quaternion.RotateTowards(turretObject.localRotation, targetTurretRot, turretRotateSpeed * Time.deltaTime);
 
-        // 2. –Cg‚Ìã‰º˜ë‹ÂŒvZ
+        // 2. ç ²èº«ã®ä¸Šä¸‹ä¿¯ä»°è¨ˆç®—
         Vector3 targetPosTurretLocal = turretObject.InverseTransformPoint(target.position);
         float flatDistance = new Vector2(targetPosTurretLocal.x, targetPosTurretLocal.z).magnitude;
         float targetPitchAngle = -Mathf.Atan2(targetPosTurretLocal.y, flatDistance) * Mathf.Rad2Deg;
         targetPitchAngle = Mathf.Clamp(targetPitchAngle, -maxElevation, -maxDepression);
         barrelObject.localRotation = Quaternion.RotateTowards(barrelObject.localRotation, Quaternion.Euler(targetPitchAngle, 0f, 0f), turretRotateSpeed * Time.deltaTime);
 
-        // 3. ©“®ËŒ‚ƒƒWƒbƒN
+        // 3. è‡ªå‹•å°„æ’ƒãƒ­ã‚¸ãƒƒã‚¯
         _fireTimer += Time.deltaTime;
 
         if (_aiMovement.HasLineOfSight && _fireTimer >= fireInterval)
@@ -70,7 +73,9 @@ public class EnemyTurretAI : MonoBehaviour
     public bool CheckMuzzleLineOfSight()
     {
         if (_aiMovement == null || _aiMovement.AttackTarget == null || muzzlePoint == null)
+        {
             return false;
+        }
 
         Transform target = _aiMovement.AttackTarget;
         Vector3 startPos = muzzlePoint.position;
@@ -87,26 +92,29 @@ public class EnemyTurretAI : MonoBehaviour
 
     private IEnumerator Generate_Enemy_Bullet()
     {
-        if (shellPrefab == null || muzzlePoint == null) yield break;
+        if (shellPrefab == null || muzzlePoint == null)
+        {
+            yield break;
+        }
 
-        // šyC³ƒ|ƒCƒ“ƒg1z”­–C‰¹‚ğÄ¶id‚È‚Á‚Ä‚àãY—í‚É–Â‚éPlayOneShotj
+        // â˜…ã€ä¿®æ­£ãƒã‚¤ãƒ³ãƒˆ1ã€‘ç™ºç ²éŸ³ã‚’å†ç”Ÿï¼ˆé‡ãªã£ã¦ã‚‚ç¶ºéº—ã«é³´ã‚‹PlayOneShotï¼‰
         if (shotAudioSource != null && shotClip != null)
         {
             shotAudioSource.PlayOneShot(shotClip);
         }
 
-        // šyC³ƒ|ƒCƒ“ƒg2z”­–C‰ŠƒGƒtƒFƒNƒg‚ğƒvƒŒƒCƒ„[‚Æu‘S‚­“¯‚¶eqŠÖŒWv‚Å¶¬
+        // â˜…ã€ä¿®æ­£ãƒã‚¤ãƒ³ãƒˆ2ã€‘ç™ºç ²ç‚ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨ã€Œå…¨ãåŒã˜è¦ªå­é–¢ä¿‚ã€ã§ç”Ÿæˆ
         if (firePrefab != null)
         {
-            // ƒvƒŒƒCƒ„[‚ÌƒR[ƒh(Instantiate(..., thisTransform))‚É‡‚í‚¹AmuzzlePoint‚ğe‚É‚µ‚Ä¶¬
+            // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚³ãƒ¼ãƒ‰(Instantiate(..., thisTransform))ã«åˆã‚ã›ã€muzzlePointã‚’è¦ªã«ã—ã¦ç”Ÿæˆ
             Instantiate(firePrefab, muzzlePoint.position, muzzlePoint.rotation, muzzlePoint);
         }
 
-        // ’eƒvƒŒƒnƒu‚Ì¶¬
+        // å¼¾ãƒ—ãƒ¬ãƒãƒ–ã®ç”Ÿæˆ
         Vector3 spawnPosition = muzzlePoint.position + muzzlePoint.forward * spawnOffset;
         GameObject bulletObject = Instantiate(shellPrefab, spawnPosition, muzzlePoint.rotation);
 
-        var bulletScript = bulletObject.GetComponent<ChobiAssets.KTP.Bullet_Nav_CS>();
+        ChobiAssets.KTP.Bullet_Nav_CS bulletScript = bulletObject.GetComponent<ChobiAssets.KTP.Bullet_Nav_CS>();
         if (bulletScript != null)
         {
             bulletScript.attackForce = attackForce;
