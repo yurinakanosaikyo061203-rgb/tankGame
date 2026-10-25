@@ -1,0 +1,1263 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>戦車ゲームのコード読本</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Maru+Gothic:wght@700;900&family=Klee+One:wght@600&family=M+PLUS+1+Code:wght@400;600&display=swap">
+<script>
+  window.MathJax = { tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" defer></script>
+<style>
+/* レイアウト: 方眼ノート(ライト)と黒板(ダーク)の1列の授業ノート。左にSTEP札、コードと板書は枠の中だけ横スクロール */
+:root {
+  --bg: #f6f8f2;
+  --grid: rgba(60, 110, 160, 0.10);
+  --paper: #ffffff;
+  --fg: #1d2a33;
+  --muted: #56646e;
+  --line: #c9d3d8;
+  --accent: #1f5fae;
+  --accent-soft: rgba(31, 95, 174, 0.08);
+  --red: #c23a2b;
+  --red-soft: rgba(194, 58, 43, 0.06);
+  --green: #2e7d4f;
+  --green-soft: rgba(46, 125, 79, 0.14);
+  --amber: #b26a00;
+  --amber-soft: rgba(178, 106, 0, 0.13);
+  --marker: rgba(255, 214, 64, 0.55);
+  --code-bg: #f1f3ee;
+  --code-fg: #22303a;
+  --code-ln: #9aa6ad;
+  --code-hl: rgba(255, 214, 64, 0.32);
+  --hud-bg: rgba(40, 52, 70, 0.88);
+  --hud-fg: #ffffff;
+  --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "BIZ UDPGothic", sans-serif;
+  --font-body: "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  --font-hand: "Klee One", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-code: "M PLUS 1 Code", "Consolas", "Menlo", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1d2924;
+    --grid: rgba(230, 240, 230, 0.05);
+    --paper: #24332d;
+    --fg: #e9efe6;
+    --muted: #a9b8ad;
+    --line: #3d5048;
+    --accent: #8fbcff;
+    --accent-soft: rgba(143, 188, 255, 0.10);
+    --red: #ff8f80;
+    --red-soft: rgba(255, 143, 128, 0.07);
+    --green: #8fdcaa;
+    --green-soft: rgba(143, 220, 170, 0.14);
+    --amber: #f2c46d;
+    --amber-soft: rgba(242, 196, 109, 0.14);
+    --marker: rgba(255, 226, 120, 0.28);
+    --code-bg: #17201c;
+    --code-fg: #dfe8dc;
+    --code-ln: #6f8277;
+    --code-hl: rgba(255, 226, 120, 0.16);
+    --hud-bg: rgba(10, 16, 14, 0.85);
+    --hud-fg: #f2f6f0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1d2924;
+  --grid: rgba(230, 240, 230, 0.05);
+  --paper: #24332d;
+  --fg: #e9efe6;
+  --muted: #a9b8ad;
+  --line: #3d5048;
+  --accent: #8fbcff;
+  --accent-soft: rgba(143, 188, 255, 0.10);
+  --red: #ff8f80;
+  --red-soft: rgba(255, 143, 128, 0.07);
+  --green: #8fdcaa;
+  --green-soft: rgba(143, 220, 170, 0.14);
+  --amber: #f2c46d;
+  --amber-soft: rgba(242, 196, 109, 0.14);
+  --marker: rgba(255, 226, 120, 0.28);
+  --code-bg: #17201c;
+  --code-fg: #dfe8dc;
+  --code-ln: #6f8277;
+  --code-hl: rgba(255, 226, 120, 0.16);
+  --hud-bg: rgba(10, 16, 14, 0.85);
+  --hud-fg: #f2f6f0;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16.5px;
+  line-height: 1.9;
+}
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 80px;
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.4; }
+h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); margin: 0 0 8px; font-weight: 900; }
+h2 { font-size: 1.45rem; margin: 0 0 12px; }
+h3 { font-size: 1.1rem; margin: 22px 0 6px; }
+p { margin: 0 0 12px; max-width: 68ch; }
+a { color: var(--accent); }
+.lead { color: var(--muted); font-size: 1.02rem; }
+.mk { background: linear-gradient(transparent 55%, var(--marker) 55%); font-weight: 700; }
+code.i { font-family: var(--font-code); font-size: 0.92em; background: var(--code-bg); color: var(--code-fg); padding: 1px 5px; border-radius: 4px; word-break: break-all; }
+.path { font-family: var(--font-code); font-size: 0.85rem; color: var(--muted); word-break: break-all; }
+
+.section { margin-top: 52px; }
+.kicker { font-family: var(--font-display); font-size: 0.82rem; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 4px; }
+
+.goal { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px; }
+.goal ol { margin: 6px 0 14px; padding-left: 1.4em; }
+.goal li { margin-bottom: 4px; }
+.prereq { border-top: 1px dashed var(--line); padding-top: 12px; color: var(--muted); }
+
+/* 読み方の作戦 */
+.plan { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 14px 0; }
+.plan div { background: var(--paper); border: 1.5px solid var(--line); border-radius: 6px; padding: 12px 14px; min-width: 0; }
+.plan b { font-family: var(--font-display); display: block; color: var(--accent); }
+@media (max-width: 600px) { .plan { grid-template-columns: minmax(0, 1fr); } }
+
+/* ファイル地図 */
+.files { border-collapse: collapse; width: 100%; background: var(--paper); font-size: 0.93rem; }
+.files th, .files td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+.files th { font-family: var(--font-display); background: var(--accent-soft); }
+.files td:first-child { font-family: var(--font-code); font-size: 0.85rem; white-space: nowrap; }
+.files .grp td { background: var(--code-bg); font-family: var(--font-display); font-weight: 700; white-space: normal; }
+.files td.st { font-family: var(--font-code); white-space: nowrap; text-align: center; }
+.files tr.sub td { color: var(--muted); }
+
+/* STEP */
+.step { margin-top: 56px; display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 18px; }
+.tag { font-family: var(--font-display); text-align: center; border: 2px solid var(--fg); border-radius: 50%; width: 68px; height: 68px; display: flex; flex-direction: column; justify-content: center; line-height: 1.1; background: var(--paper); position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+.tag small { font-size: 0.66rem; letter-spacing: 0.1em; }
+.tag b { font-size: 1.6rem; }
+.step-body { min-width: 0; }
+.part { margin-top: 64px; padding-bottom: 6px; border-bottom: 2px solid var(--fg); }
+.part h2 { margin: 0; }
+@media (max-width: 560px) {
+  .step { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .tag { position: static; width: auto; height: auto; border-radius: 4px; flex-direction: row; gap: 8px; justify-content: flex-start; padding: 2px 10px; width: fit-content; align-items: baseline; }
+  .tag b { font-size: 1.1rem; }
+}
+
+/* コード */
+.code-box { margin: 14px 0 16px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--code-bg); }
+.code-head { font-family: var(--font-code); font-size: 0.8rem; padding: 6px 12px; border-bottom: 1px solid var(--line); color: var(--muted); background: var(--paper); word-break: break-all; }
+pre.code { margin: 0; padding: 10px 0; overflow-x: auto; font-family: var(--font-code); font-size: 0.84rem; line-height: 1.65; color: var(--code-fg); }
+pre.code .l { display: block; padding-right: 14px; white-space: pre; }
+pre.code .l.hl { background: var(--code-hl); }
+pre.code .ln { display: inline-block; width: 3.4em; padding-right: 0.9em; text-align: right; color: var(--code-ln); user-select: none; }
+pre.code .c { color: var(--muted); }
+
+/* 板書枠と表 */
+.board { background: var(--paper); border: 2px solid var(--fg); border-radius: 4px; padding: 10px 16px; margin: 14px 0 6px; overflow-x: auto; }
+table.sym { border-collapse: collapse; width: 100%; margin: 6px 0 16px; font-size: 0.95rem; background: var(--paper); }
+table.sym th, table.sym td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+table.sym th { font-family: var(--font-display); font-weight: 700; background: var(--accent-soft); }
+.tbl { overflow-x: auto; }
+@media (max-width: 560px) {
+  table.sym.stack thead { display: none; }
+  table.sym.stack tr { display: block; border: 1px solid var(--line); margin-bottom: 8px; }
+  table.sym.stack td { display: block; border: none; border-bottom: 1px dashed var(--line); }
+  table.sym.stack td:last-child { border-bottom: none; }
+  table.sym.stack td::before { content: attr(data-h); display: block; font-size: 0.75rem; color: var(--muted); }
+}
+.calc { background: var(--accent-soft); border-left: 4px solid var(--accent); padding: 10px 14px; margin: 10px 0 14px; border-radius: 0 6px 6px 0; overflow-x: auto; }
+.calc .h { font-family: var(--font-display); color: var(--accent); font-weight: 700; }
+
+/* つまずき・先生メモ・やってみよう */
+.trip { border: 2px dashed var(--red); background: var(--red-soft); border-radius: 6px; padding: 12px 16px; margin: 16px 0; }
+.trip .h { font-family: var(--font-display); color: var(--red); font-weight: 700; margin-bottom: 4px; }
+.memo { border: 2px solid var(--accent); border-radius: 10px; padding: 12px 16px; margin: 16px 0; font-family: var(--font-hand); font-weight: 600; font-size: 1.04rem; line-height: 1.85; background: var(--paper); }
+.memo .h { color: var(--accent); margin-bottom: 4px; }
+.memo p { max-width: none; }
+.try { border: 1.5px solid var(--green); background: var(--green-soft); border-radius: 6px; padding: 10px 16px; margin: 16px 0; }
+.try .h { font-family: var(--font-display); color: var(--green); font-weight: 700; margin-bottom: 4px; }
+
+/* 状態の流れ */
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 14px 0; }
+.flow .st { background: var(--paper); border: 1.5px solid var(--fg); border-radius: 20px; padding: 6px 14px; font-family: var(--font-display); font-size: 0.95rem; }
+.flow .st small { display: block; font-family: var(--font-body); font-size: 0.75rem; color: var(--muted); }
+.flow .ar { color: var(--accent); font-weight: 700; }
+
+/* デモ */
+.demo { border: 2px solid var(--accent); border-radius: 8px; background: var(--paper); padding: 16px; margin: 20px 0; }
+.demo h3 { margin-top: 0; color: var(--accent); }
+.ctrls { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px 20px; margin-bottom: 12px; }
+.ctrls label { display: block; font-size: 0.9rem; }
+.ctrls output { font-family: var(--font-code); font-weight: 600; color: var(--accent); }
+.ctrls input[type="range"] { width: 100%; accent-color: var(--accent); }
+input[type="range"]:focus-visible, summary:focus-visible, canvas:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.demo canvas { width: 100%; display: block; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); }
+#lerp-canvas { height: 240px; }
+#angle-canvas { height: 280px; cursor: crosshair; touch-action: none; }
+.readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-top: 10px; }
+.readout div { border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; font-size: 0.85rem; color: var(--muted); }
+.readout b { display: block; font-family: var(--font-code); font-size: 1.15rem; color: var(--fg); font-variant-numeric: tabular-nums; }
+.hud { font-family: var(--font-body); background: var(--hud-bg); color: var(--hud-fg); border-radius: 6px; padding: 12px 18px; display: inline-block; font-size: 1.2rem; line-height: 1.6; font-variant-numeric: tabular-nums; margin: 6px 0 10px; }
+.gear-row.on td { background: var(--marker); font-weight: 700; }
+.note-s { font-size: 0.85rem; color: var(--muted); }
+
+/* 確認問題 */
+.quiz { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 14px 18px; margin-bottom: 12px; }
+.quiz .q { font-weight: 700; }
+details { margin-top: 8px; }
+summary { cursor: pointer; color: var(--accent); font-family: var(--font-display); }
+details[open] summary { margin-bottom: 6px; }
+
+/* コツ */
+.tips { display: grid; gap: 12px; margin-top: 12px; }
+.tips div { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 12px 16px; }
+.tips b { font-family: var(--font-display); }
+
+/* まとめ */
+.final { border: 3px double var(--fg); background: var(--paper); border-radius: 6px; padding: 20px 22px; margin-top: 56px; }
+.final ol { padding-left: 1.4em; }
+.final li { margin-bottom: 8px; }
+.final .concl { border-top: 1px dashed var(--line); padding-top: 12px; margin-top: 12px; }
+.source { margin-top: 36px; font-size: 0.85rem; color: var(--muted); }
+.source ul { padding-left: 1.2em; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+
+<header>
+  <h1>戦車ゲームのコード読本</h1>
+  <p class="lead">自分で作っているゲームのコードを、上から順に読めるようになるための資料です。Unityでコードを開いて、横に並べながら読んでください。</p>
+</header>
+
+<section class="section">
+  <div class="goal">
+    <h2>この授業のゴール</h2>
+    <p>読み終わったら、次のことを自分の言葉で説明できるようになります。</p>
+    <ol>
+      <li>コードの中の「変数」「if」「関数」が何をしているか</li>
+      <li>Wキーを押してから戦車が前に進むまでに、コードのどこを通るか</li>
+      <li>画面の「速度」と「ギア」の数字が、どんな計算で決まるか</li>
+      <li>敵の戦車が相手を選び、追いかけ、撃つまでの流れ</li>
+    </ol>
+    <div class="prereq">
+      <b>前提知識</b><br>
+      小学校の算数（かけ算、わり算、小数、四捨五入、速さ）と、中学1年のマイナスの数が分かれば読めます。プログラミングの言葉は、この資料の中で1つずつ説明します。物理（理科の「力」の計算）は使いません。
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>AIが書いたコードを、自分のコードにする</h2>
+  <p>このゲームのコードには、AIに書いてもらった部分がたくさんあります。動くけれど、どうして動くのかが分からない。そんな状態を、1行ずつ読んで「分かる」に変えていくのが今日の目標です。</p>
+  <p>コードを全部いっぺんに読む必要はありません。どのファイルを読むときも、次の3つだけを探します。</p>
+  <div class="plan">
+    <div><b>1. いつ呼ばれるか</b>Unityがどのタイミングでこの部分を動かすのか</div>
+    <div><b>2. 何の数を作るか</b>「前後」「左右」「速さ」など、どんな数を計算しているのか</div>
+    <div><b>3. だれに頼むか</b>作った数を、どの部品に渡して戦車を動かすのか</div>
+  </div>
+
+  <h3>ファイルの地図</h3>
+  <p>自分で作ったスクリプトは、すべて<span class="path">Assets/_Project/Scripts</span>の下にあります。</p>
+  <div class="tbl"><table class="files">
+    <thead><tr><th>ファイル</th><th>やっていること</th><th>STEP</th></tr></thead>
+    <tbody>
+      <tr class="grp"><td colspan="3">Player（プレイヤーが操作するもの）</td></tr>
+      <tr><td>PlayerTankMovement.cs</td><td>キー入力でプレイヤーの戦車を動かす。速さとギアも計算する</td><td class="st">1〜8</td></tr>
+      <tr><td>TankUIManager.cs</td><td>画面左下の速度とギアを表示する。Mキーでスペック表を開く</td><td class="st">6</td></tr>
+      <tr class="sub"><td>CameraZoom.cs</td><td>マウスホイールでカメラを寄せたり離したりする</td><td class="st"></td></tr>
+      <tr class="sub"><td>ScopeOverlay.cs</td><td>右クリックを押している間だけ照準器の画像を出す</td><td class="st"></td></tr>
+      <tr class="sub"><td>Reticle.cs</td><td>左Ctrlキーを押すと照準マークを表示する</td><td class="st"></td></tr>
+      <tr class="sub"><td>SimpleTankMovement.cs</td><td>昔の簡単な動かし方。今のプレイヤーはPlayerTankMovementで動いている</td><td class="st"></td></tr>
+      <tr class="grp"><td colspan="3">AI（コンピューターが動かすもの）</td></tr>
+      <tr><td>EnemyTankAI.cs</td><td>敵の戦車の足まわり。相手を探して追いかける</td><td class="st">9〜11</td></tr>
+      <tr><td>EnemyTurretAI.cs</td><td>敵の砲塔を回して、弾を撃つ</td><td class="st">12</td></tr>
+      <tr><td>CompanionTankAI.cs</td><td>味方の戦車。プレイヤーについて行き、近くの敵に向かう</td><td class="st">13</td></tr>
+      <tr class="grp"><td colspan="3">Common（みんなで使うもの）</td></tr>
+      <tr><td>TankDrive.cs</td><td>3種類の戦車が共通で使う「運転係」</td><td class="st">5, 7, 8</td></tr>
+      <tr class="sub"><td>LeftWheelSpin.cs<br>RightWheelSpin.cs</td><td>キーを押している間、車輪の模型をくるくる回す（見た目だけ）</td><td class="st"></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ 第1部 ============ -->
+<div class="part"><h2>コードを読むための道具</h2></div>
+
+<!-- STEP 1 -->
+<section class="step">
+  <div class="tag"><small>STEP</small><b>1</b></div>
+  <div class="step-body">
+    <h2>変数は「名前のついた箱」</h2>
+    <p>プログラムは、数や文字を「変数」という箱に入れて使います。箱には名前と、入れられるものの種類（型）が決まっています。</p>
+    <div class="code-box">
+      <div class="code-head">Player/PlayerTankMovement.cs</div>
+<pre class="code" data-start="10" data-hl="11,23">[Header("戦車のスペック設定")]
+[SerializeField] private float horsepower = 500f;     // 500馬力固定
+[SerializeField] private float maxSpeed = 14f;         // 最高時速 約50km/h固定
+[SerializeField] private float maxBackSpeed = 3f;      // 後退時の最高速度
+[SerializeField] private float rotateSpeed = 65.0f;    // 旋回速度
+
+[Tooltip("旋回時に自動で加える前進の強さ（信地旋回のふくらみ具合）")]
+[SerializeField] private float turnForwardPower = 1.0f;
+
+[Header("オーディオ設定")]
+[SerializeField] private AudioSource audioSource;
+[SerializeField] private AudioSource shiftSoundSource;
+[SerializeField] private AudioClip gearShiftClip;
+private bool isAccelerating = false;</pre>
+    </div>
+    <p>11行目を分解して読んでみます。</p>
+    <div class="tbl"><table class="sym stack">
+      <thead><tr><th>書いてあること</th><th>意味</th></tr></thead>
+      <tbody>
+        <tr><td data-h="書いてあること"><code class="i">float</code></td><td data-h="意味">箱の種類。小数を入れられる箱</td></tr>
+        <tr><td data-h="書いてあること"><code class="i">horsepower</code></td><td data-h="意味">箱の名前。英語で「馬力」</td></tr>
+        <tr><td data-h="書いてあること"><code class="i">= 500f</code></td><td data-h="意味">最初に500を入れておく。<code class="i">f</code>は「float型の数です」という印</td></tr>
+        <tr><td data-h="書いてあること"><code class="i">;</code></td><td data-h="意味">文の終わり。日本語の「。」と同じ</td></tr>
+        <tr><td data-h="書いてあること"><code class="i">// 500馬力固定</code></td><td data-h="意味">コメント。<code class="i">//</code>から後ろは人間向けのメモで、コンピューターは読まない</td></tr>
+      </tbody>
+    </table></div>
+    <p>このコードには、ほかの種類の箱も出てきます。</p>
+    <div class="tbl"><table class="sym stack">
+      <thead><tr><th>型</th><th>入れられるもの</th><th>このゲームでの例</th></tr></thead>
+      <tbody>
+        <tr><td data-h="型"><code class="i">float</code></td><td data-h="入れられるもの">小数</td><td data-h="例">最高速度<code class="i">maxSpeed = 14f</code></td></tr>
+        <tr><td data-h="型"><code class="i">int</code></td><td data-h="入れられるもの">整数</td><td data-h="例">画面に出す速度<code class="i">displaySpeed</code></td></tr>
+        <tr><td data-h="型"><code class="i">bool</code></td><td data-h="入れられるもの"><code class="i">true</code>（はい）か<code class="i">false</code>（いいえ）だけ</td><td data-h="例">エンジンをふかしているか<code class="i">isAccelerating</code></td></tr>
+        <tr><td data-h="型"><code class="i">string</code></td><td data-h="入れられるもの">文字</td><td data-h="例">ギアの名前<code class="i">"1速"</code></td></tr>
+      </tbody>
+    </table></div>
+    <p><code class="i">[SerializeField]</code>が付いた変数は、Unityの「インスペクタ」という欄に表示されます。コードを書きかえなくても、インスペクタで数字を変えられます。</p>
+    <div class="trip">
+      <div class="h">つまずきポイント</div>
+      <p>コードに書いた<code class="i">500f</code>は「最初の値」です。インスペクタで別の数字にすると、ゲームではインスペクタの数字が使われます。コードとゲームの動きが合わないときは、まずインスペクタを見てください。</p>
+      <p>名前の前に<code class="i">_</code>（アンダーバー）が付いた<code class="i">_rigidbody</code>のような変数もあります。これは「このファイルの中だけで使う箱」の目印として付けられています。付けなくても動きは同じです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 2 -->
+<section class="step">
+  <div class="tag"><small>STEP</small><b>2</b></div>
+  <div class="step-body">
+    <h2>ifは「もし〜なら」</h2>
+    <p>ゲームでは「キーが押されていたら進む」のように、条件によってやることを変えます。そのときに使うのが<code class="i">if</code>です。</p>
+    <div class="code-box">
+      <div class="code-head">Player/PlayerTankMovement.cs（ギアが変わったら音を鳴らす部分）</div>
+<pre class="code" data-start="181" data-hl="181,183">if (CurrentGear != previousGear)
+{
+    if (shiftSoundSource != null &amp;&amp; gearShiftClip != null)
+    {
+        shiftSoundSource.PlayOneShot(gearShiftClip);
+    }
+    previousGear = CurrentGear;
+}</pre>
+    </div>
+    <p><code class="i">( )</code>の中が正しいときだけ、そのすぐ下の<code class="i">{ }</code>の中が実行されます。181行目は「今のギアが、前のギアと違ったら」という意味です。</p>
+    <div class="tbl"><table class="sym stack">
+      <thead><tr><th>記号</th><th>読み方</th><th>例</th></tr></thead>
+      <tbody>
+        <tr><td data-h="記号"><code class="i">==</code> ／ <code class="i">!=</code></td><td data-h="読み方">等しい ／ 等しくない</td><td data-h="例"><code class="i">CurrentGear != previousGear</code></td></tr>
+        <tr><td data-h="記号"><code class="i">&lt;</code> ／ <code class="i">&lt;=</code></td><td data-h="読み方">より小さい ／ 以下</td><td data-h="例"><code class="i">displaySpeed &lt;= 6</code></td></tr>
+        <tr><td data-h="記号"><code class="i">&amp;&amp;</code></td><td data-h="読み方">かつ（両方とも正しい）</td><td data-h="例">183行目</td></tr>
+        <tr><td data-h="記号"><code class="i">||</code></td><td data-h="読み方">または（どちらかが正しい）</td><td data-h="例">62行目</td></tr>
+        <tr><td data-h="記号"><code class="i">!</code></td><td data-h="読み方">〜ではない（正しいと正しくないを入れかえる）</td><td data-h="例"><code class="i">!_isBacking</code>（下がっていない）</td></tr>
+        <tr><td data-h="記号"><code class="i">null</code></td><td data-h="読み方">「何も入っていない」という意味</td><td data-h="例"><code class="i">shiftSoundSource != null</code></td></tr>
+      </tbody>
+    </table></div>
+    <p>183行目は「音を鳴らすスピーカーがあって、かつ、鳴らす音も入っていたら」という意味です。インスペクタで音を入れ忘れても、ゲームが止まらないようにしています。</p>
+    <p>もう1つよく出てくるのが<code class="i">Mathf.Abs</code>です。これは中学1年で習う「絶対値」で、マイナスを取った大きさを返します。$|-1| = 1$、$|0.3| = 0.3$です。</p>
+    <div class="trip">
+      <div class="h">つまずきポイント</div>
+      <p><code class="i">=</code>（1つ）と<code class="i">==</code>（2つ）は意味が違います。<code class="i">=</code>は「右の値を左の箱に入れる」、<code class="i">==</code>は「同じかどうか比べる」です。187行目の<code class="i">previousGear = CurrentGear;</code>は、今のギアを「前のギア」の箱にしまっています。</p>
+    </div>
+    <div class="memo">
+      <div class="h">先生メモ</div>
+      <p>「雨が降っていて、かつ、傘を持っていたら、傘をさす」。&amp;&amp;はこの「かつ」なんだ。どちらか片方だけだと傘はささないよね。</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 3 -->
+<section class="step">
+  <div class="tag"><small>STEP</small><b>3</b></div>
+  <div class="step-body">
+    <h2>関数は「命令のまとまり」、呼ばれる時間が決まっている</h2>
+    <p>いくつかの命令をまとめて名前をつけたものを「関数」といいます。<code class="i">private void Awake()</code>から<code class="i">}</code>までが、Awakeという名前の関数です。</p>
+    <p>Unityは、決まった名前の関数を決まった時間に自動で呼びます。自分で「動け」と書かなくても動くのはこのためです。</p>
+    <div class="tbl"><table class="sym stack">
+      <thead><tr><th>関数の名前</th><th>呼ばれるとき</th><th>この戦車での使いみち</th></tr></thead>
+      <tbody>
+        <tr><td data-h="関数の名前"><code class="i">Awake</code></td><td data-h="呼ばれるとき">ゲーム開始時に1回（一番さき）</td><td data-h="使いみち">使う部品を手元に用意する</td></tr>
+        <tr><td data-h="関数の名前"><code class="i">Start</code></td><td data-h="呼ばれるとき">ゲーム開始時に1回（Awakeのあと）</td><td data-h="使いみち">戦車の重さを32000 kgに決める</td></tr>
+        <tr><td data-h="関数の名前"><code class="i">Update</code></td><td data-h="呼ばれるとき">画面を1枚描くたびに1回</td><td data-h="使いみち">エンジン音の高さを変える</td></tr>
+        <tr><td data-h="関数の名前"><code class="i">FixedUpdate</code></td><td data-h="呼ばれるとき">0.02秒ごとに1回（1秒に50回）</td><td data-h="使いみち">戦車を押して動かす</td></tr>
+      </tbody>
+    </table></div>
+    <div class="code-box">
+      <div class="code-head">Player/PlayerTankMovement.cs</div>
+<pre class="code" data-start="33" data-hl="37,42">private void Awake()
+{
+    _rigidbody = GetComponent&lt;Rigidbody&gt;();
+    _transform = transform;
+    _drive = new TankDrive(_rigidbody, 1f);
+}
+
+private void Start()
+{
+    _rigidbody.mass = 32000f; // 32トン固定
+    _rigidbody.linearDamping = 1.0f;
+    _rigidbody.angularDamping = 4.0f;
+}</pre>
+    </div>
+    <p>35行目の<code class="i">Rigidbody</code>（リジッドボディ）は、Unityが用意している部品です。重さや押す強さをもとに、物がどう動くかを自動で計算してくれます。戦車を動かすときは、この部品に「押して」と頼みます。</p>
+    <p>37行目では、STEP 5で読む運転係<code class="i">TankDrive</code>を1台分つくっています。<code class="i">new</code>は「新しく1つ作る」という意味です。</p>
+    <p>43行目の<code class="i">linearDamping</code>は、何もしないと速さが少しずつ減っていく設定です。44行目の<code class="i">angularDamping</code>は、回転が少しずつ止まっていく設定です。</p>
+    <div class="trip">
+      <div class="h">つまずきポイント</div>
+      <p><code class="i">Update</code>が1秒に何回呼ばれるかは、パソコンの速さで変わります。<code class="i">FixedUpdate</code>は、どのパソコンでもいつも0.02秒ごとです。</p>
+      <p>だから「押す」処理は<code class="i">FixedUpdate</code>に書きます。<code class="i">Update</code>に書くと、速いパソコンほどたくさん押されて、戦車が速くなってしまいます。</p>
+    </div>
+    <div class="memo">
+      <div class="h">先生メモ</div>
+      <p>Updateはパラパラ漫画の「ページをめくるたび」なんだ。めくる速さは人によって違うよね。FixedUpdateはメトロノーム。いつも同じリズムで鳴るから、行進の歩幅をそろえたいときはこっちを使うんです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 第2部 ============ -->
+<div class="part"><h2>プレイヤーの戦車が動くまで</h2></div>
+
+<!-- STEP 4 -->
+<section class="step">
+  <div class="tag"><small>STEP</small><b>4</b></div>
+  <div class="step-body">
+    <h2>キー入力を「−1から1の数」で受け取る</h2>
+    <p>戦車を動かす最初の仕事は、どのキーが押されているかを知ることです。Unityはキーの状態を数で教えてくれます。</p>
+    <div class="code-box">
+      <div class="code-head">Player/PlayerTankMovement.cs（FixedUpdateの中）</div>
+<pre class="code" data-start="88" data-hl="92,94">float horizontal = Input.GetAxis("Horizontal");
+float vertical = Input.GetAxis("Vertical");
+
+// 旋回時（左右入力あり）かつ前後入力がない時、自動で前進パワーを代入
+if (Mathf.Abs(horizontal) &gt; 0.05f &amp;&amp; Mathf.Abs(vertical) &lt;= 0.05f)
+{
+    vertical = turnForwardPower;
+}</pre>
+    </div>
+    <div class="tbl"><table class="sym stack">
+      <thead><tr><th>変数</th><th>押したキー</th><th>入る数</th></tr></thead>
+      <tbody>
+        <tr><td data-h="変数"><code class="i">vertical</code>（前後）</td><td data-h="押したキー">W／S／ どちらも押さない</td><td data-h="入る数">1／−1／0</td></tr>
+        <tr><td data-h="変数"><code class="i">horizontal</code>（左右）</td><td data-h="押したキー">D／A／ どちらも押さない</td><td data-h="入る数">1／−1／0</td></tr>
+      </tbody>
+    </table></div>
+    <p>92〜95行目は「左右のキーだけ押していて、前後のキーは押していない」ときの処理です。このとき<code class="i">vertical</code>に<code class="i">turnForwardPower</code>（1.0）を入れます。だからAやDだけを押しても、戦車は前に出ながら曲がります。</p>
+    <p>ここから先、プレイヤーの戦車はこの2つの数だけを見て動きます。<span class="mk">キー入力は「前後」と「左右」の2つの数に直される</span>と覚えておいてください。</p>
+    <div class="trip">
+      <div class="h">つまずきポイント</div>
+      <p><code class="i">GetAxis</code>の数は、キーを押した瞬間に1になるわけではありません。0、0.3、0.7、1のように少しずつ変わります。</p>
+      <p>同じファイルの<code class="i">Update</code>（59〜60行目）では<code class="i">GetAxisRaw</code>を使っています。こちらは押した瞬間に1になります。名前は似ていますが別の関数です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 5 -->
+<section class="step">
+  <div class="tag"><small>STEP</small><b>5</b></div>
+  <div class="step-body">
+    <h2>運転係TankDriveに「押して」「曲がって」と頼む</h2>
+    <p>2つの数ができたら、次は戦車を動かします。プレイヤーのコードは、自分で戦車を動かさずに運転係の<code class="i">_drive</code>に頼みます。</p>
+    <div class="code-box">
+      <div class="code-head">Player/PlayerTankMovement.cs</div>
+<pre class="code" data-start="103" data-hl="106,116">// 1. 旋回（回転）処理
+if (Mathf.Abs(horizontal) &gt; 0.05f &amp;&amp; Mathf.Abs(vertical) &gt; 0.05f)
+{
+    _drive.Turn(horizontal, rotateSpeed);
+}
+
+// 2. 移動処理
+float totalForce = horsepower * 1200f;
+
+if (vertical &gt; 0.05f)
+{
+    if (CurrentForwardSpeed &lt; maxSpeed)
+    {
+        _drive.Push(totalForce * vertical);</pre>
+    </div>
+    <p>116行目は「今の速さが最高速度より小さいなら、前に押して」という意味です。最高速度に届いたら、もう押しません。</p>
+    <p>頼まれた運転係のほうを見てみます。</p>
+    <div class="code-box">
+      <div class="code-head">Common/TankDrive.cs</div>
+<pre class="code" data-start="26" data-hl="28,35">public void Turn(float horizontal, float rotateSpeed)
+{
+    Quaternion turnRotation = Quaternion.Euler(0f, horizontal * rotateSpeed * Time.fixedDeltaTime, 0f);
+    _rigidbody.MoveRotation(_rigidbody.rotation * turnRotation);
+}
+
+// 正の値で前進方向、負の値で後退方向に力をかける
+public void Push(float force)
+{
+    _rigidbody.AddRelativeForce(Vector3.forward * (_facing * force), ForceMode.Force);
+}</pre>
+    </div>
+    <h3>曲がる角度を計算してみる</h3>
+    <p><code class="i">Turn</code>は、0.02秒ごとに少しずつ戦車の向きを変えます。1回に回す角度は、28行目の3つの数のかけ算で決まります。</p>
+    <div class="board">
+      $$\text{1回の角度} = \text{horizontal} \times \text{rotateSpeed} \times 0.02$$
+    </div>
+    <div class="tbl"><table class="sym">
+      <thead><tr><th>記号</th><th>意味</th></tr></thead>
+      <tbody>
+        <tr><td>horizontal</td><td>左右の数。Dなら1、Aなら−1</td></tr>
+        <tr><td>rotateSpeed</td><td>1秒に回る角度。プレイヤーは65度</td></tr>
+        <tr><td>0.02</td><td>FixedUpdateの間隔（<code class="i">Time.fixedDeltaTime</code>）</td></tr>
+      </tbody>
+    </table></div>
+    <div class="calc">Dを押しているとき、$1 \times 65 \times 0.02 = 1.3$度。1秒には50回呼ばれるので、$1.3 \times 50 = 65$度回ります。ちゃんと「1秒に65度」になりました。Aならマイナスなので、反対向きに回ります。</div>
+    <h3>押す強さ</h3>
+    <p><code class="i">Push</code>は、35行目で<code class="i">Rigidbody</code>に「戦車の前向きに押して」と頼んでいます。<code class="i">Vector3.forward</code>は「戦車から見た前」という向きです。</p>
+    <p>押す強さは110行目の「馬力 × 1200」です。プレイヤーは500馬力なので、$500 \times 1200 = 600000$になります。この数の単位は気にしなくて大丈夫です。「大きいほど強く押す」とだけ覚えてください。</p>
+    <div class="trip">
+      <div class="h">つまずきポイント</div>
+      <p>押したぶんだけ、すぐ速くなるわけではありません。どれだけ速くなるかは、戦車の重さ（32000 kg）や、速さが自然に減る設定（STEP 3）も関係します。その計算は<code class="i">Rigidbody</code>が全部やってくれます。</p>
+      <p>「× 1200」は、馬力を「押す強さ」の数に直すためにかけている倍率です。なぜ1200なのかは、コードに書かれていません。</p>
+    </div>
+    <div class="memo">
+      <div class="h">先生メモ</div>
+      <p>空っぽのショッピングカートと、お米を積んだカートを同じ強さで押してみよう。重いほうは、なかなか速くならないよね。このゲームでも同じことが起きていて、その計算をUnityが代わりにやってくれているんです。</p>
+      <p>Pushの中の<code class="i">_facing</code>は味方の戦車のための工夫。味方のモデルは後ろ向きに作られているから、−1をかけて前と後ろを入れかえているんだ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 6 -->
+<section class="step">
+  <div class="tag"><small>STEP</small><b>6</b></div>
+  <div class="step-body">
+    <h2>画面の「速度」と「ギア」</h2>
+    <p>画面左下には「速度: 50 km/h」「ギア: 5速」のような表示が出ます。この数字は、戦車の今の速さから計算しています。</p>
+    <p>コードの中の速さはm/s（1秒に何m進むか）です。これを、ふだん車で使うkm/h（1時間に何km進むか）に直します。</p>
+    <div class="board">
+      $$\text{km/h} = \text{m/s} \times 3.6$$
+    </div>
+    <div class="calc">1時間は3600秒なので、1時間に進む道のりは$\text{秒速} \times 3600$ mです。kmに直すと1000でわるので、$\text{秒速} \times 3600 \div 1000 = \text{秒速} \times 3.6$になります。<br>最高速度14 m/sなら$14 \times 3.6 = 50.4$。四捨五入して50 km/hです。12行目のコメント「最高時速 約50km/h」と合っています。</div>
+    <div class="code-box">
+      <div class="code-head">Player/PlayerTankMovement.cs</div>
+<pre class="code" data-start="148" data-hl="150,151,153">private void UpdateGearLogic()
+{
+    float kmh = Mathf.Abs(CurrentForwardSpeed) * 3.6f;
+    int displaySpeed = Mathf.RoundToInt(kmh);
+
+    if (CurrentForwardSpeed &lt; -0.1f)
+    {
+        CurrentGear = "後進一速";
+    }
+    else
+    {
+        if (displaySpeed &lt;= 6)
+        {
+            CurrentGear = "1速";
+        }
+        else if (displaySpeed &lt;= 15)
+        {
+            CurrentGear = "2速";
+        }
+        else if (displaySpeed &lt;= 25)
+        {
+            CurrentGear = "3速";
+        }
+        else if (displaySpeed &lt;= 35)
+        {
+            CurrentGear = "4速";
+        }
+        else
+        {
+            CurrentGear = "5速";
+        }
+    }</pre>
+    </div>
+    <p>151行目の<code class="i">Mathf.RoundToInt</code>は「四捨五入して整数にする」関数です。<code class="i">else if</code>は「そうでなくて、もし〜なら」で、上から順に調べて最初に当てはまったところだけが実行されます。</p>
+    <p>画面に文字を出しているのは、別のファイルの<code class="i">TankUIManager</code>です。プレイヤーの戦車から速さとギアを受け取って、文字にしています。</p>
+    <div class="code-box">
+      <div class="code-head">Player/TankUIManager.cs（Updateの中）</div>
+<pre class="code" data-start="46">float kmh = Mathf.Abs(tankScript.CurrentForwardSpeed) * 3.6f;
+int displaySpeed = Mathf.RoundToInt(kmh);
+speedAndGearText.text = $"速度: {displaySpeed} km/h\nギア: {tankScript.CurrentGear}";</pre>
+    </div>
+    <p>48行目の<code class="i">{ }</code>の部分には、変数の中身が入ります。<code class="i">\n</code>は「ここで改行」という印です。</p>
+    <div class="demo" id="gear-demo">
+      <h3>速さを変えて、表示とギアを見る</h3>
+      <div class="ctrls">
+        <label for="gv">戦車の速さ <output id="gvo">14.0</output> m/s<input type="range" id="gv" min="-3" max="15" step="0.1" value="14"></label>
+      </div>
+      <div class="hud" id="hud" aria-live="polite">速度: 50 km/h<br>ギア: 5速</div>
+      <div class="calc" id="gcalc" style="margin-top:4px;">-</div>
+      <div class="tbl"><table class="sym" id="gear-table">
+        <thead><tr><th>条件</th><th>ギア</th></tr></thead>
+        <tbody>
+          <tr class="gear-row" data-g="後進一速"><td>速さが−0.1 m/sより小さい（後ろに進んでいる）</td><td>後進一速</td></tr>
+          <tr class="gear-row" data-g="1速"><td>表示が6 km/h以下</td><td>1速</td></tr>
+          <tr class="gear-row" data-g="2速"><td>表示が7〜15 km/h</td><td>2速</td></tr>
+          <tr class="gear-row" data-g="3速"><td>表示が16〜25 km/h</td><td>3速</td></tr>
+          <tr class="gear-row" data-g="4速"><td>表示が26〜35 km/h</td><td>4速</td></tr>
+          <tr class="gear-row" data-g="5速"><td>表示が36 km/h以上</td><td>5速</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="trip">
+      <div class="h">つまずきポイント</div>
+      <p>このギアは、表示と効果音のためだけのものです。ギアが変わっても、戦車を押す強さは変わりません。<code class="i">CurrentGear</code>を使っているのは、画面の表示とギアチェンジの音（181〜188行目）だけです。</p>
+      <p>速度の表示は<code class="i">Mathf.Abs</code>でマイナスを取っています。だから後ろに進んでいても、表示はプラスの数になります。</p>
+    </div>
+    <div class="try">
+      <div class="h">やってみよう</div>
+      <p>Unityでプレイヤーの戦車を選び、インスペクタのMax Speedを14から7に変えて遊んでみましょう。$7 \times 3.6 = 25.2$なので、速度表示は25 km/hくらいまでしか上がらず、ギアは3速で止まるはずです。確かめたら14に戻してください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 7 -->
+<section class="step">
+  <div class="tag"><small>STEP</small><b>7</b></div>
+  <div class="step-body">
+    <h2>最高速度へ少しずつ近づける（Lerp）</h2>
+    <p>押すだけだと、最高速度のところでぴたりと止まりにくくなります。そこで速さが6 m/sを超えたら、速さそのものを目標の速さへ少しずつ近づけます。</p>
+    <div class="code-box">
+      <div class="code-head">Player/PlayerTankMovement.cs</div>
+<pre class="code" data-start="118" data-hl="126">float startBrakeSpeed = 6.0f - (pitchAngle * 0.2f);
+startBrakeSpeed = Mathf.Clamp(startBrakeSpeed, 2.0f, maxSpeed - 1f);
+
+if (CurrentForwardSpeed &gt; startBrakeSpeed)
+{
+    float slopeWeight = 1.5f + (pitchAngle * 0.1f);
+    slopeWeight = Mathf.Clamp(slopeWeight, 0.2f, 5.0f);
+
+    _drive.ApproachSpeed(maxSpeed, Time.fixedDeltaTime * slopeWeight);
+}</pre>
+    </div>
+    <p><code class="i">pitchAngle</code>は、戦車が前後にどれだけ傾いているか（坂の角度）です。平らな道では0なので、<code class="i">startBrakeSpeed</code>は6、<code class="i">slopeWeight</code>は1.5になります。<code class="i">Mathf.Clamp</code>は「数が決めた範囲からはみ出さないようにする」関数です。ここからは平らな道で考えます。</p>
+    <div class="code-box">
+      <div class="code-head">Common/TankDrive.cs</div>
+<pre class="code" data-start="38" data-hl="41">public void ApproachSpeed(float targetSpeed, float t)
+{
+    Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
+    localVelocity.z = Mathf.Lerp(localVelocity.z, _facing * targetSpeed, t);
+    _rigidbody.linearVelocity = _transform.TransformDirection(localVelocity);
+}</pre>
+    </div>
+    <p>41行目の<code class="i">Mathf.Lerp</code>（ラープ）がこのSTEPの主役です。「今の値から目標の値へ、残りの差のt倍だけ近づける」計算をします。</p>
+    <div class="board">
+      $$v_{\text{新}} = v + (v_{\text{目標}} - v) \times t$$
+    </div>
+    <div class="tbl"><table class="sym">
+      <thead><tr><th>記号</th><th>意味</th></tr></thead>
+      <tbody>
+        <tr><td>$v$（ブイ）</td><td>今の速さ（m/s）。英語のvelocity（速さ）の頭文字</td></tr>
+        <tr><td>$v_{\text{目標}}$</td><td>目標の速さ。ここではmaxSpeed ＝ 14</td></tr>
+        <tr><td>$t$</td><td>近づける割合。$0.02 \times 1.5 = 0.03$で、「残りの差の3%だけ近づく」という意味</td></tr>
+        <tr><td>$v_{\text{新}}$</td><td>1回近づけたあとの速さ</td></tr>
+      </tbody>
+    </table></div>
+    <div class="calc">
+      今の速さが10 m/sのとき<br>
+      1回目: $10 + (14 - 10) \times 0.03 = 10 + 0.12 = 10.12$<br>
+      2回目: $10.12 + (14 - 10.12) \times 0.03 = 10.12 + 0.1164 = 10.2364$<br>
+      1回目は0.12増えましたが、2回目は0.1164しか増えていません。目標に近づくほど、1回で増える量が小さくなります。
+    </div>
+    <div class="trip">
+      <div class="h">つまずきポイント</div>
+      <p>Lerpは一気に目標の値にはしません。毎回「残りの差の3%」だけ近づくので、ゆっくり目標に寄っていきます。</p>
+      <p>tには0から1までの数を入れます。t ＝ 1なら一気に目標の値になり、t ＝ 0なら何も変わりません。</p>
+      <p>40行目と42行目の<code class="i">InverseTransformDirection</code>と<code class="i">TransformDirection</code>は、向きの言いかえです。「地図で見て北へ何m/s」を「戦車から見て前へ何m/s」に直してから計算し、また地図の向きに戻しています。<code class="i">z</code>が「戦車から見た前後」です。</p>
+    </div>
+    <div class="demo" id="lerp-demo">
+      <h3>Lerpで速さが目標に近づくようす</h3>
+      <div class="ctrls">
+        <label for="lv0">今の速さ <output id="lv0o">6.0</output> m/s<input type="range" id="lv0" min="0" max="20" step="0.5" value="6"></label>
+        <label for="lvt">目標の速さ <output id="lvto">14.0</output> m/s<input type="range" id="lvt" min="0" max="20" step="0.5" value="14"></label>
+        <label for="lt">近づける割合t <output id="lto">0.03</output><input type="range" id="lt" min="0.01" max="0.3" step="0.01" value="0.03"></label>
+      </div>
+      <canvas id="lerp-canvas" aria-label="Lerpをくり返したときの速さのグラフ"></canvas>
+      <div class="readout">
+        <div>1回目のあと<b id="r1">-</b></div>
+        <div>50回目（1秒後）<b id="r50">-</b></div>
+        <div>100回目（2秒後）<b id="r100">-</b></div>
+      </div>
+    </div>
+    <div class="memo">
+      <div class="h">先生メモ</div>
+      <p>夏休みの宿題を「残っている量の3割」ずつ毎日片付けるとしよう。最初の日はたくさん減るけど、残りが少なくなるほど1日に減る量も小さくなるよね。Lerpはこれと同じ形なんです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 8 -->
+<section class="step">
+  <div class="tag"><small>STEP</small><b>8</b></div>
+  <div class="step-body">
+    <h2>キーを離したらブレーキ（Brake）</h2>
+    <p>前後どちらのキーも押していないと、142〜145行目で<code class="i">_drive.Brake()</code>が呼ばれます。Mキーでスペック表を開いている間も、82〜86行目で同じブレーキがかかります。</p>
+    <div class="code-box">
+      <div class="code-head">Common/TankDrive.cs</div>
+<pre class="code" data-start="45" data-hl="50,54">public void Brake()
+{
+    Vector3 localVelocity = _transform.InverseTransformDirection(_rigidbody.linearVelocity);
+    if (Mathf.Abs(_facing * localVelocity.z) &gt; 0.1f)
+    {
+        _rigidbody.AddRelativeForce(Vector3.back * (_facing * localVelocity.z * 25000f), ForceMode.Force);
+    }
+    else
+    {
+        localVelocity.z = 0f;
+        _rigidbody.linearVelocity = _transform.TransformDirection(localVelocity);
+    }
+}</pre>
+    </div>
+    <p>ブレーキは2段階になっています。</p>
+    <p>1段階目は、速さが0.1 m/sより大きいときです。50行目で、戦車を後ろ向き（<code class="i">Vector3.back</code>）に押します。押す強さは「速さ × 25000」です。</p>
+    <div class="board">
+      $$\text{ブレーキの強さ} = \text{速さ} \times 25000$$
+    </div>
+    <div class="calc">10 m/sなら$10 \times 25000 = 250000$、2 m/sなら$2 \times 25000 = 50000$です。速さが5分の1になると、ブレーキも5分の1になります。中学1年で習う「比例」の形です。</div>
+    <p>2段階目は、速さが0.1 m/s以下になったときです。54行目で前後の速さを0にして、ぴたりと止めます。</p>
+    <div class="trip">
+      <div class="h">つまずきポイント</div>
+      <p>0にしているのは<code class="i">z</code>（戦車から見た前後の速さ）だけです。<code class="i">x</code>（横すべり）と<code class="i">y</code>（上下。坂から落ちるときなど）は、そのまま残ります。</p>
+    </div>
+    <div class="memo">
+      <div class="h">先生メモ</div>
+      <p>自転車で坂を下っているとき、スピードが出ているほどブレーキを強くにぎるよね。そして最後は、足を地面について止まる。このBrakeは、その2つを順番にやっているんだ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 第3部 ============ -->
+<div class="part"><h2>AIの戦車が考えていること</h2></div>
+
+<!-- STEP 9 -->
+<section class="step">
+  <div class="tag"><small>STEP</small><b>9</b></div>
+  <div class="step-body">
+    <h2>タイマーで0.5秒ごとに「一番近い相手」を探す</h2>
+    <p>敵の戦車には、キーを押す人がいません。代わりに、自分で相手を探して、自分で「前後」と「左右」の数を作ります。まずは相手探しです。</p>
+    <div class="code-box">
+      <div class="code-head">AI/EnemyTankAI.cs（Updateの最初）</div>
+<pre class="code" data-start="90" data-hl="90,91,93">_scanTimer += Time.deltaTime;
+if (_scanTimer &gt;= 0.5f)
+{
+    _scanTimer = 0f;
+    FindNearestTarget();
+
+    // ★【修正】自分（足元）からの視線ではなく、大砲（マズル）から狙えるかをチェックする
+    if (_turretAI != null)
+    {
+        _hasLineOfSight = _turretAI.CheckMuzzleLineOfSight();
+    }
+    else
+    {
+        _hasLineOfSight = false;
+    }
+}</pre>
+    </div>
+    <p><code class="i">_scanTimer</code>は、キッチンタイマーのような変数です。<code class="i">Time.deltaTime</code>は「前の画面から今の画面までにかかった秒数」です。これを毎回足していき、0.5秒たまったら相手を探して、93行目で0に戻します。<code class="i">+=</code>は「今の値に足す」という書き方です。</p>
+    <div class="calc">画面が1秒に60枚なら、1回の<code class="i">Time.deltaTime</code>は約0.0167秒です。$0.5 \div 0.0167 \approx 30$なので、30回に1回くらい相手を探します。</div>
+    <div class="code-box">
+      <div class="code-head">AI/EnemyTankAI.cs（FindNearestTargetの後半）</div>
+<pre class="code" data-start="275" data-hl="280">float closestDistance = scanRadius;
+Transform closestTarget = null;
+foreach (Transform t in potentialTargets)
+{
+    float distance = Vector3.Distance(_transform.position, t.position);
+    if (distance &lt; closestDistance)
+    {
+        closestDistance = distance;
+        closestTarget = t;
+    }
+}
+_attackTarget = closestTarget;</pre>
+    </div>
+    <p>候補は、プレイヤーと味方の戦車全部です（262〜273行目）。<code class="i">foreach</code>は「候補を1つずつ取り出して、全部に同じことをする」という書き方です。そのたびに距離を測り、今までで一番近ければ記録を書きかえます。</p>
+    <div class="calc">候補までの距離が120 m、80 m、300 mのとき。最初の「一番近い距離」はscanRadiusの1000 mです。<br>120 &lt; 1000なので120に書きかえ。80 &lt; 120なので80に書きかえ。300は80より大きいので書きかえません。答えは80 mの相手です。</div>
+    <p>相手が決まったら、大砲の先から相手まで、間に壁がないかも調べます（99行目）。中身は<code class="i">EnemyTurretAI.cs</code>の73〜91行目で、<code class="i">Physics.Raycast</code>（見えない線を引いて、途中で何かに当たるか調べる命令）を使っています。</p>
+    <div class="trip">
+      <div class="h">つまずきポイント</div>
+      <p>1000 mより遠い相手しかいないと、<code class="i">closestTarget</code>は<code class="i">null</code>（何もない）のままです。このとき敵は、192〜196行目でブレーキをかけて止まります。</p>
+      <p>毎回ではなく0.5秒ごとに探す理由は、コードには書かれていません。探す処理は重いので、回数を減らしていると考えられます。</p>
+    </div>
+    <div class="memo">
+      <div class="h">先生メモ</div>
+      <p>クラスで一番背の高い人を探すとき、最初の人の身長をメモして、もっと高い人が来たらメモを書きかえるよね。最後にメモに残っていた人が一番。このコードは「背が高い」の代わりに「距離が短い」で同じことをしているんだ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 10 -->
+<section class="step">
+  <div class="tag"><small>STEP</small><b>10</b></div>
+  <div class="step-body">
+    <h2>角度を見て、AIが自分で「キー」を押す</h2>
+    <p>敵は、相手のところまでの道を<code class="i">NavMeshAgent</code>（ナブメッシュ・エージェント）というUnityの道案内係に探してもらいます。建物をよけた道を作ってくれて、次に向かう曲がり角を教えてくれます。</p>
+    <p>敵の戦車は、その曲がり角が自分から見て何度ずれているかを計算します。そして、その角度から「前後」と「左右」の数を作ります。</p>
+    <div class="code-box">
+      <div class="code-head">AI/EnemyTankAI.cs（FixedUpdateの中）</div>
+<pre class="code" data-start="230" data-hl="231,234,247,252">Vector3 localDir = _transform.InverseTransformDirection(targetDirection);
+float angleToTarget = Mathf.Atan2(localDir.x, localDir.z) * Mathf.Rad2Deg;
+
+float horizontalInput = 0f;
+if (Mathf.Abs(angleToTarget) &gt; 8f)
+{
+    if (angleToTarget &gt; 0f)
+    {
+        horizontalInput = 1f;
+    }
+    else
+    {
+        horizontalInput = -1f;
+    }
+}
+
+float verticalInput = 0f;
+if (Mathf.Abs(angleToTarget) &lt; 45f)
+{
+    verticalInput = 1f;
+}
+
+if (Mathf.Abs(horizontalInput) &gt; 0.05f &amp;&amp; Mathf.Abs(verticalInput) &lt;= 0.05f)
+{
+    verticalInput = turnForwardPower;
+}</pre>
+    </div>
+    <p>231行目の<code class="i">Mathf.Atan2</code>（アークタンジェント・ツー）は、「右にどれだけ」と「前にどれだけ」の2つの長さから角度を出す道具です。中の計算は高校で習うので、今は「分度器のように角度を測ってくれる道具」と思っておけば大丈夫です。右にずれていればプラス、左ならマイナスの角度になります。</p>
+    <p>233〜255行目は、STEP 4のキー入力をAIが自分で作っている部分です。角度によって次のように決まります。</p>
+    <div class="tbl"><table class="sym stack">
+      <thead><tr><th>ずれの大きさ</th><th>horizontal（左右）</th><th>vertical（前後）</th><th>押すキー</th></tr></thead>
+      <tbody>
+        <tr><td data-h="ずれの大きさ">8度以下</td><td data-h="左右">0</td><td data-h="前後">1</td><td data-h="押すキー">Wだけ</td></tr>
+        <tr><td data-h="ずれの大きさ">8度より大きく、45度より小さい</td><td data-h="左右">ずれている側へ1か−1</td><td data-h="前後">1</td><td data-h="押すキー">WとD（またはA）</td></tr>
+        <tr><td data-h="ずれの大きさ">45度以上</td><td data-h="左右">ずれている側へ1か−1</td><td data-h="前後">0.5（turnForwardPower）</td><td data-h="押すキー">D（またはA）だけ。ゆっくり前へ出る</td></tr>
+      </tbody>
+    </table></div>
+    <div class="demo" id="angle-demo">
+      <h3>曲がり角の場所と、AIが押す「キー」</h3>
+      <div class="ctrls">
+        <label for="av">ずれの角度 <output id="avo">30</output> 度<input type="range" id="av" min="-180" max="180" step="1" value="30"></label>
+      </div>
+      <canvas id="angle-canvas" tabindex="0" aria-label="戦車と曲がり角を上から見た図"></canvas>
+      <div class="readout">
+        <div>angleToTarget<b id="a-ang">-</b></div>
+        <div>horizontalInput<b id="a-h">-</b></div>
+        <div>verticalInput<b id="a-v">-</b></div>
+        <div>押すキー<b id="a-key">-</b></div>
+      </div>
+    </div>
+    <p>こうして作った2つの数を<code class="i">ExecuteMovement</code>（289〜319行目）に渡します。その中身はSTEP 5〜8と同じで、運転係の<code class="i">_drive</code>に「押して」「曲がって」「止まって」と頼んでいます。</p>
+    <div class="trip">
+      <div class="h">つまずきポイント</div>
+      <p>敵の押す強さは「馬力 × 1800」で、プレイヤーの「× 1200」とは違います（292行目）。敵の馬力は700なので、$700 \times 1800 = 1260000$です。ただし敵は53000 kgとプレイヤーより重いので、それだけで速いとは言えません。</p>
+    </div>
+    <div class="memo">
+      <div class="h">先生メモ</div>
+      <p>人がキーボードで「Dを押す」代わりに、AIは「角度が8度より大きいから、horizontalに1を入れよう」と決めているんです。運転係のTankDriveから見ると、人が運転しているのかAIなのか区別がつかない。だから同じ運転係を使い回せるんだね。</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 11 -->
+<section class="step">
+  <div class="tag"><small>STEP</small><b>11</b></div>
+  <div class="step-body">
+    <h2>引っかかったら脱出する</h2>
+    <p>敵の戦車が、壁や建物に引っかかって動けなくなることがあります。そのために「動いているはずなのに動いていない」状態を見張っています。</p>
+    <div class="code-box">
+      <div class="code-head">AI/EnemyTankAI.cs（Updateの中）</div>
+<pre class="code" data-start="131" data-hl="139,142">if (!_isBacking &amp;&amp; !_isEscapingTurn &amp;&amp; !_isEscapingForward)
+{
+    bool shouldMove = _agent.hasPath &amp;&amp; (!_hasLineOfSight || distanceToTarget &gt; attackDistance);
+    _posCheckTimer += Time.deltaTime;
+    if (_posCheckTimer &gt;= 0.2f)
+    {
+        _posCheckTimer = 0f;
+        float checkDist = Vector3.Distance(_transform.position, _lastPosition);
+        if (shouldMove &amp;&amp; checkDist &lt; 0.12f)
+        {
+            _stuckTimer += 0.2f;
+            if (_stuckTimer &gt; 1.5f)
+            {
+                _isBacking = true;
+                _backTimer = 1.5f;
+                _stuckTimer = 0f;
+            }
+        }
+        else
+        {
+            _stuckTimer = 0f;
+        }
+        _lastPosition = _transform.position;
+    }
+}</pre>
+    </div>
+    <p>0.2秒ごとに、前の位置からどれだけ動いたかを測ります。動くべきなのに0.12 mも動いていなければ、<code class="i">_stuckTimer</code>に0.2を足します。少しでも動いていれば0に戻します。</p>
+    <div class="calc">142行目は、1.5を「超えた」ら脱出を始めるという意味です。0.2を7回足すと1.4で、まだ超えません。8回足すと1.6で超えます。つまり「動けない」が8回続けて見つかったら脱出です。$8 \times 0.2 = 1.6$秒かかります。</div>
+    <p>脱出は次の順番で進みます。156〜187行目でタイマーを減らし、197〜211行目で実際に動かしています。</p>
+    <div class="flow" aria-label="脱出の流れ">
+      <div class="st">ふつうに走る<small>0.2秒ごとに見張る</small></div><span class="ar">→</span>
+      <div class="st">後ろに下がる<small>1.5秒</small></div><span class="ar">→</span>
+      <div class="st">その場で右に回る<small>1.0秒</small></div><span class="ar">→</span>
+      <div class="st">前に出る<small>1.0秒</small></div><span class="ar">→</span>
+      <div class="st">ふつうに走る<small>道を探し直す</small></div>
+    </div>
+    <div class="trip">
+      <div class="h">つまずきポイント</div>
+      <p>「今どの段階か」は、<code class="i">_isBacking</code>、<code class="i">_isEscapingTurn</code>、<code class="i">_isEscapingForward</code>という3つのboolの変数で覚えています。trueになるのは、いつも多くて1つだけです。</p>
+      <p>相手の近くで止まって撃っているとき（<code class="i">shouldMove</code>がfalseのとき）は、動いていなくても「引っかかった」とは数えません。</p>
+    </div>
+    <div class="memo">
+      <div class="h">先生メモ</div>
+      <p>お掃除ロボットが家具の脚にはまったとき、ちょっと下がって、向きを変えて、また進むよね。あれと同じことを、タイマーを3つ使ってやっているんです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 12 -->
+<section class="step">
+  <div class="tag"><small>STEP</small><b>12</b></div>
+  <div class="step-body">
+    <h2>砲塔を相手に向けて撃つ</h2>
+    <p>敵の砲塔（大砲が載っている、くるっと回る部分）は<code class="i">EnemyTurretAI.cs</code>が動かしています。狙う相手は、STEP 9で<code class="i">EnemyTankAI</code>が決めた<code class="i">AttackTarget</code>をそのまま使います。</p>
+    <div class="code-box">
+      <div class="code-head">AI/EnemyTurretAI.cs（Updateの中）</div>
+<pre class="code" data-start="57" data-hl="60,65">// 3. 自動射撃ロジック
+_fireTimer += Time.deltaTime;
+
+if (_aiMovement.HasLineOfSight &amp;&amp; _fireTimer &gt;= fireInterval)
+{
+    Vector3 forwardVector = turretObject.forward;
+    Vector3 targetDir = (target.position - turretObject.position).normalized;
+
+    if (Vector3.Angle(forwardVector, targetDir) &lt; 5f)
+    {
+        StartCoroutine(Generate_Enemy_Bullet());
+        _fireTimer = 0f;
+    }
+}</pre>
+    </div>
+    <p>撃つ条件は3つあって、全部そろったときだけ撃ちます。</p>
+    <div class="tbl"><table class="sym stack">
+      <thead><tr><th>条件</th><th>コード</th></tr></thead>
+      <tbody>
+        <tr><td data-h="条件">大砲の先から相手まで、間に壁がない</td><td data-h="コード"><code class="i">HasLineOfSight</code></td></tr>
+        <tr><td data-h="条件">前に撃ってから7秒以上たった</td><td data-h="コード"><code class="i">_fireTimer &gt;= fireInterval</code>（fireIntervalは7）</td></tr>
+        <tr><td data-h="条件">砲塔の向きと相手の方向のずれが5度より小さい</td><td data-h="コード"><code class="i">Vector3.Angle(...) &lt; 5f</code></td></tr>
+      </tbody>
+    </table></div>
+    <p>砲塔は44〜48行目で、1秒に15度（<code class="i">turretRotateSpeed</code>）ずつ相手のほうへ回ります。<code class="i">Quaternion.RotateTowards</code>は「決まった角度だけ、目標の向きへ回す」命令です。</p>
+    <div class="calc">相手が真横（90度）にいるとき、砲塔が向くまで$90 \div 15 = 6$秒かかります。向いたあとでも、前に撃ってから7秒たっていなければ撃ちません。</div>
+    <p>撃つときは<code class="i">Generate_Enemy_Bullet</code>（93〜133行目）が、発射音を鳴らし、大砲の先に炎を出し、弾を作ります。弾は1回分だけ待ってから、1秒に250 mの速さで飛び出します。</p>
+    <div class="trip">
+      <div class="h">つまずきポイント</div>
+      <p>STEP 7のLerpは「残りの差の何%」ずつ近づきました。こちらのRotateTowardsは「毎回同じ角度」ずつ近づきます。だから砲塔は最後までゆっくりにならず、同じ速さで回ります。</p>
+    </div>
+  </div>
+</section>
+
+<section class="step">
+  <div class="tag"><small>STEP</small><b>13</b></div>
+  <div class="step-body">
+  <h2>味方の戦車を読む</h2>
+  <p><code class="i">CompanionTankAI.cs</code>も、敵とほぼ同じ形です。「一番近い相手を探す」「角度で左右を決める」「引っかかったら下がる」が出てきます。違うところは次のとおりです。</p>
+  <div class="tbl"><table class="sym stack">
+    <thead><tr><th>味方だけのしくみ</th><th>どこを読むか</th></tr></thead>
+    <tbody>
+      <tr><td data-h="しくみ">150 m以内に敵がいれば敵へ、いなければプレイヤーへ向かう</td><td data-h="どこを読むか">FixedUpdateの<code class="i">targetPosition</code></td></tr>
+      <tr><td data-h="しくみ">プレイヤーから10 m以内なら止まる</td><td data-h="どこを読むか"><code class="i">followDistance</code></td></tr>
+      <tr><td data-h="しくみ">味方どうしがくっつきすぎないように、離れる向きを足す</td><td data-h="どこを読むか"><code class="i">ComputeSeparationForce</code></td></tr>
+      <tr><td data-h="しくみ">モデルが後ろ向きなので、運転係に−1を渡している</td><td data-h="どこを読むか">Awakeの<code class="i">new TankDrive(_rigidbody, -1f)</code></td></tr>
+    </tbody>
+  </table></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>AIに書いてもらったコードを読むとき</h2>
+  <div class="tips">
+    <div><b>コメントより、コードを信じる</b><br>「★【修正】」「★新設」のようなコメントは、直したときのメモです。その行が何をしているかの説明になっていないことがあります。迷ったらコメントは読み飛ばし、ifの条件を1つずつ日本語に直してみてください。たとえば<code class="i">shiftSoundSource != null &amp;&amp; gearShiftClip != null</code>は、STEP 2の記号の表を使うと「スピーカーがあって、かつ音も入っていたら」と読めます。</div>
+    <div><b>数字を1つ変えて、動きを見る</b><br>STEP 6の「やってみよう」のように、インスペクタで数字を1つだけ変えて遊んでみましょう。予想どおりに変われば、そのコードを読めたことになります。</div>
+    <div><b>Debug.Logで中身をのぞく</b><br>気になる行のすぐ下に<code class="i">Debug.Log(angleToTarget);</code>のように書くと、UnityのConsoleに変数の中身が表示されます。確かめたら、その行は消しておきます。</div>
+    <div><b>数字を決めた理由をコメントに残す</b><br>1200、1800、25000のような倍率は、なぜその数なのかがコードに書かれていません。決めた理由をコメントに書いておくと、あとで読み返したときに困りません。分からない数は、STEP 6の「やってみよう」のように数字を変えて動きを確かめましょう。</div>
+    <div><b>AIに質問するときは1か所ずつ</b><br>「このファイルを説明して」より「231行目のAtan2は何をしているの」のように、行を決めて聞くほうが分かりやすい答えが返ってきます。</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>確認問題</h2>
+  <div class="quiz">
+    <div class="q">問1. 戦車を押す処理は、UpdateではなくFixedUpdateに書かれています。それはなぜですか。</div>
+    <details><summary>答えを見る</summary>
+      <p>FixedUpdateは、パソコンの速さに関係なく0.02秒ごとに呼ばれるからです。Updateに書くと、呼ばれる回数がパソコンによって変わり、戦車の速さも変わってしまいます。（STEP 3）</p>
+    </details>
+  </div>
+  <div class="quiz">
+    <div class="q">問2. 戦車が前に5 m/sで進んでいます。画面の速度表示とギアはどうなりますか。</div>
+    <details><summary>答えを見る</summary>
+      <p>$5 \times 3.6 = 18$なので「速度: 18 km/h」です。18は16〜25の範囲なので「ギア: 3速」になります。（STEP 6）</p>
+    </details>
+  </div>
+  <div class="quiz">
+    <div class="q">問3. 今の速さが12 m/s、目標の速さが14 m/s、近づける割合tが0.03です。Lerpを1回したあとの速さは何m/sですか。</div>
+    <details><summary>答えを見る</summary>
+      <p>$12 + (14 - 12) \times 0.03 = 12 + 0.06 = 12.06$ m/sです。（STEP 7）</p>
+    </details>
+  </div>
+  <div class="quiz">
+    <div class="q">問4. 敵の戦車から見て、次の曲がり角が左に30度ずれています。horizontalInputとverticalInputはいくつになりますか。</div>
+    <details><summary>答えを見る</summary>
+      <p>左なのでangleToTargetは−30です。絶対値30は8より大きいのでhorizontalInputは−1、45より小さいのでverticalInputは1です。押すキーはWとAです。（STEP 10）</p>
+    </details>
+  </div>
+</section>
+
+<section class="final">
+  <h2>大事なところ</h2>
+  <ol>
+    <li><b>Unityは、決まった名前の関数を決まった時間に呼びます。</b>戦車を押す処理は、いつも0.02秒ごとに呼ばれるFixedUpdateに書きます。</li>
+    <li><b>どの戦車も、まず「前後」と「左右」の2つの数を作ります。</b>プレイヤーはキー入力から、敵と味方は角度の計算から、この2つの数を作ります。</li>
+    <li><b>戦車を動かすのは、みんな同じ運転係TankDriveです。</b>Pushで押し、Turnで曲がり、ApproachSpeedで速さを整え、Brakeで止まります。</li>
+    <li><b>画面の速度は、m/sに3.6をかけて四捨五入した数です。</b>ギアはその数で決まる表示と効果音のためのもので、押す強さは変えません。</li>
+    <li><b>敵はタイマーで、決まった間隔ごとに考えます。</b>0.5秒ごとに相手を探し、0.2秒ごとに引っかかりを見張り、7秒たつと次の弾を撃てるようになります。</li>
+  </ol>
+  <div class="concl">
+    <h3 style="margin-top:0;">結論</h3>
+    <p>このゲームの戦車は、キー入力やAIの判断を、まず「前後」と「左右」の2つの数に直します。その数を運転係のTankDriveが受け取り、UnityのRigidbodyに「押して」「曲がって」と頼んで戦車を動かしています。どのファイルを読むときも「2つの数をどうやって作っているか」を探すと、流れを追いやすくなります。</p>
+  </div>
+</section>
+
+<section class="source">
+  <b>出典</b>
+  <ul>
+    <li>tankGameリポジトリ、作業ブランチ<code class="i">takahira</code>の2026年10月24日時点の手元のコード（コーディング規約に合わせた整理のあと、コミット前）</li>
+    <li><span class="path">Assets/_Project/Scripts/Player/PlayerTankMovement.cs</span>、<span class="path">Player/TankUIManager.cs</span>、<span class="path">Common/TankDrive.cs</span>、<span class="path">AI/EnemyTankAI.cs</span>、<span class="path">AI/EnemyTurretAI.cs</span>、<span class="path">AI/CompanionTankAI.cs</span></li>
+    <li>どのスクリプトがオンになっているかは<span class="path">Assets/_Project/Scenes/SampleScene.unity</span>で確かめました。FixedUpdateの間隔0.02秒はプロジェクトのTime設定の値です。</li>
+    <li>行番号は上の時点のものです。コードを書きかえると行番号はずれます。</li>
+  </ul>
+</section>
+
+</div>
+
+<script>
+(function () {
+  // コードに行番号と強調行を付ける
+  document.querySelectorAll('pre.code').forEach(function (pre) {
+    var start = parseInt(pre.dataset.start || '1', 10);
+    var hl = (pre.dataset.hl || '').split(',').filter(Boolean).map(Number);
+    var lines = pre.innerHTML.replace(/\n$/, '').split('\n');
+    pre.innerHTML = lines.map(function (line, i) {
+      var n = start + i;
+      var body = line.replace(/(\/\/.*)$/, '<span class="c">$1</span>');
+      return '<span class="l' + (hl.indexOf(n) >= 0 ? ' hl' : '') + '"><span class="ln">' + n + '</span>' + (body || ' ') + '</span>';
+    }).join('');
+  });
+
+  function cssVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+  function setupCanvas(canvas) {
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    var ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    return { ctx: ctx, w: w, h: h };
+  }
+
+  // Lerp デモ
+  var lv0 = document.getElementById('lv0'), lvt = document.getElementById('lvt'), lt = document.getElementById('lt');
+  var lerpCanvas = document.getElementById('lerp-canvas');
+  function lerp(a, b, t) { t = Math.min(Math.max(t, 0), 1); return a + (b - a) * t; }
+  function drawLerp() {
+    var v0 = parseFloat(lv0.value), vt = parseFloat(lvt.value), t = parseFloat(lt.value);
+    document.getElementById('lv0o').textContent = v0.toFixed(1);
+    document.getElementById('lvto').textContent = vt.toFixed(1);
+    document.getElementById('lto').textContent = t.toFixed(2);
+    var N = 100, vals = [v0];
+    for (var i = 1; i <= N; i++) { vals.push(lerp(vals[i - 1], vt, t)); }
+    document.getElementById('r1').textContent = vals[1].toFixed(3) + ' m/s';
+    document.getElementById('r50').textContent = vals[50].toFixed(3) + ' m/s';
+    document.getElementById('r100').textContent = vals[100].toFixed(3) + ' m/s';
+
+    var c = setupCanvas(lerpCanvas), ctx = c.ctx, w = c.w, h = c.h;
+    var L = 44, R = 12, T = 14, B = 30;
+    var pw = w - L - R, ph = h - T - B, yMax = 20;
+    function X(i) { return L + pw * i / N; }
+    function Y(v) { return T + ph * (1 - v / yMax); }
+    var muted = cssVar('--muted'), line = cssVar('--line'), accent = cssVar('--accent'), red = cssVar('--red');
+    ctx.font = '12px ' + cssVar('--font-code');
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = line; ctx.fillStyle = muted;
+    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    [0, 5, 10, 15, 20].forEach(function (v) {
+      ctx.beginPath(); ctx.moveTo(L, Y(v)); ctx.lineTo(w - R, Y(v)); ctx.stroke();
+      ctx.fillText(String(v), L - 6, Y(v));
+    });
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    [0, 25, 50, 75, 100].forEach(function (i) { ctx.fillText(i + '回', X(i), h - B + 8); });
+    ctx.save(); ctx.translate(12, T + ph / 2); ctx.rotate(-Math.PI / 2); ctx.textBaseline = 'top'; ctx.fillText('m/s', 0, 0); ctx.restore();
+    ctx.setLineDash([6, 5]); ctx.strokeStyle = red; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(L, Y(vt)); ctx.lineTo(w - R, Y(vt)); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = red; ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+    ctx.fillText('目標' + vt.toFixed(1), w - R - 4, Y(vt) - 3);
+    ctx.strokeStyle = accent; ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    vals.forEach(function (v, i) { if (i === 0) { ctx.moveTo(X(i), Y(v)); } else { ctx.lineTo(X(i), Y(v)); } });
+    ctx.stroke();
+    ctx.fillStyle = accent;
+    [0, 50, 100].forEach(function (i) { ctx.beginPath(); ctx.arc(X(i), Y(vals[i]), 4, 0, Math.PI * 2); ctx.fill(); });
+  }
+  [lv0, lvt, lt].forEach(function (el) { el.addEventListener('input', drawLerp); });
+
+  // ギアのデモ（PlayerTankMovement.UpdateGearLogic と同じ判定）
+  function roundToInt(x) { // Mathf.RoundToInt はちょうど .5 のとき偶数に丸める
+    var f = Math.floor(x), d = x - f;
+    if (Math.abs(d - 0.5) < 1e-9) { return (f % 2 === 0) ? f : f + 1; }
+    return Math.round(x);
+  }
+  var gv = document.getElementById('gv');
+  function updateGear() {
+    var v = parseFloat(gv.value);
+    document.getElementById('gvo').textContent = v.toFixed(1);
+    var kmh = Math.abs(v) * 3.6, disp = roundToInt(kmh), gear;
+    if (v < -0.1) { gear = '後進一速'; }
+    else if (disp <= 6) { gear = '1速'; }
+    else if (disp <= 15) { gear = '2速'; }
+    else if (disp <= 25) { gear = '3速'; }
+    else if (disp <= 35) { gear = '4速'; }
+    else { gear = '5速'; }
+    document.getElementById('hud').innerHTML = '速度: ' + disp + ' km/h<br>ギア: ' + gear;
+    document.getElementById('gcalc').textContent = '|' + v.toFixed(1) + '| × 3.6 = ' + kmh.toFixed(2) + ' → 四捨五入して' + disp + ' km/h';
+    document.querySelectorAll('#gear-table .gear-row').forEach(function (tr) { tr.classList.toggle('on', tr.dataset.g === gear); });
+  }
+  gv.addEventListener('input', updateGear);
+
+  // 角度のデモ（EnemyTankAI.FixedUpdate と同じ判定。turnForwardPower は 0.5）
+  var av = document.getElementById('av');
+  var angleCanvas = document.getElementById('angle-canvas');
+  function decide(a) {
+    var hIn = 0, vIn = 0;
+    if (Math.abs(a) > 8) { hIn = a > 0 ? 1 : -1; }
+    if (Math.abs(a) < 45) { vIn = 1; }
+    if (Math.abs(hIn) > 0.05 && Math.abs(vIn) <= 0.05) { vIn = 0.5; }
+    return { h: hIn, v: vIn };
+  }
+  function keyName(r) {
+    var side = r.h > 0 ? 'D' : (r.h < 0 ? 'A' : '');
+    if (r.v === 1 && side === '') { return 'Wだけ'; }
+    if (r.v === 1) { return 'Wと' + side; }
+    return side + 'だけ';
+  }
+  function drawAngle() {
+    var a = parseInt(av.value, 10);
+    document.getElementById('avo').textContent = String(a);
+    var r = decide(a);
+    document.getElementById('a-ang').textContent = a + '度';
+    document.getElementById('a-h').textContent = String(r.h);
+    document.getElementById('a-v').textContent = String(r.v);
+    document.getElementById('a-key').textContent = keyName(r);
+
+    var c = setupCanvas(angleCanvas), ctx = c.ctx, w = c.w, h = c.h;
+    var cx = w / 2, cy = h / 2 + 10, rad = Math.min(w / 2 - 30, h / 2 - 24);
+    function toXY(deg, len) {
+      var t = deg * Math.PI / 180;
+      return { x: cx + Math.sin(t) * len, y: cy - Math.cos(t) * len };
+    }
+    function sector(from, to, color) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, rad, (from - 90) * Math.PI / 180, (to - 90) * Math.PI / 180);
+      ctx.closePath();
+      ctx.fill();
+    }
+    sector(-45, 45, cssVar('--amber-soft'));
+    sector(-8, 8, cssVar('--green-soft'));
+    ctx.strokeStyle = cssVar('--line'); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(cx, cy, rad, 0, Math.PI * 2); ctx.stroke();
+    [-45, -8, 8, 45].forEach(function (d) {
+      var p = toXY(d, rad);
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(p.x, p.y); ctx.stroke();
+    });
+    ctx.font = '12px ' + cssVar('--font-code');
+    ctx.fillStyle = cssVar('--muted'); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    [[-45, '-45'], [45, '45'], [-8, '-8'], [8, '8']].forEach(function (d) {
+      var p = toXY(d[0], rad + 14);
+      ctx.fillText(d[1], p.x, p.y);
+    });
+    ctx.fillText('前', cx, cy - rad - 12 < 8 ? 8 : cy - rad - 12);
+    // 戦車（上向き）
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.fillStyle = cssVar('--paper'); ctx.strokeStyle = cssVar('--fg'); ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.rect(-12, -18, 24, 36); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, -30); ctx.stroke();
+    ctx.restore();
+    // 曲がり角への線と点
+    var p = toXY(a, rad * 0.8);
+    ctx.strokeStyle = cssVar('--red'); ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(p.x, p.y); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = cssVar('--red');
+    ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, Math.PI * 2); ctx.fill();
+    ctx.font = '600 14px ' + cssVar('--font-body');
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = p.x >= cx ? 'left' : 'right';
+    ctx.fillText(keyName(r), p.x + (p.x >= cx ? 12 : -12), p.y);
+  }
+  av.addEventListener('input', drawAngle);
+  function pickAngle(ev) {
+    var rect = angleCanvas.getBoundingClientRect();
+    var x = ev.clientX - rect.left - rect.width / 2;
+    var y = ev.clientY - rect.top - (rect.height / 2 + 10);
+    if (Math.abs(x) < 1 && Math.abs(y) < 1) { return; }
+    var deg = Math.round(Math.atan2(x, -y) * 180 / Math.PI);
+    av.value = String(deg);
+    drawAngle();
+  }
+  angleCanvas.addEventListener('pointerdown', function (ev) {
+    pickAngle(ev);
+    angleCanvas.setPointerCapture(ev.pointerId);
+  });
+  angleCanvas.addEventListener('pointermove', function (ev) {
+    if (angleCanvas.hasPointerCapture(ev.pointerId)) { pickAngle(ev); }
+  });
+  angleCanvas.addEventListener('keydown', function (ev) {
+    var a = parseInt(av.value, 10);
+    if (ev.key === 'ArrowRight') { av.value = String(Math.min(180, a + 1)); drawAngle(); ev.preventDefault(); }
+    if (ev.key === 'ArrowLeft') { av.value = String(Math.max(-180, a - 1)); drawAngle(); ev.preventDefault(); }
+  });
+
+  function drawAll() { drawLerp(); drawAngle(); }
+  updateGear();
+  drawAll();
+  window.addEventListener('resize', drawAll);
+  if (window.matchMedia) {
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    if (mq.addEventListener) { mq.addEventListener('change', drawAll); }
+  }
+  new MutationObserver(drawAll).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
