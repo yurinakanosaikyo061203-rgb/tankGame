@@ -1,0 +1,28 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[haranoaji]{luatexja-preset}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\renewcommand{\familydefault}{\sfdefault}
+\ltjsetparameter{xkanjiskip=0pt}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\definecolor{accent}{RGB}{58,120,200}
+\begin{document}
+\begin{tikzpicture}[
+  font=\large,
+  box/.style={draw, rounded corners=3pt, line width=0.9pt, align=center, inner sep=7pt},
+  arr/.style={-{Stealth[length=7pt]}, line width=1.1pt, accent},
+  node distance=11mm
+]
+  \node[box, text width=33mm] (key) {プレイヤー\\[1pt]{\normalsize キー入力}};
+  \node[box, text width=33mm, right=6mm of key] (ai) {敵・味方のAI\\[1pt]{\normalsize 曲がり角の角度}};
+  \node[box, draw=accent, line width=1.6pt, fill=accent, fill opacity=0.12, text opacity=1,
+        text width=76mm, below=13mm of $(key.south)!0.5!(ai.south)$, anchor=north] (num)
+        {\textbf{2つの数}\\[2pt]{\normalsize vertical（前後）\quad horizontal（左右）}};
+  \node[box, text width=76mm, below=of num] (drive) {運転係TankDrive\\[1pt]{\normalsize Push\quad Turn\quad ApproachSpeed\quad Brake}};
+  \node[box, text width=76mm, below=of drive] (rb) {UnityのRigidbody\\[1pt]{\normalsize 重さを計算して戦車を動かす}};
+
+  \draw[arr] (key.south) -- (key.south |- num.north);
+  \draw[arr] (ai.south) -- (ai.south |- num.north);
+  \draw[arr] (num) -- (drive);
+  \draw[arr] (drive) -- (rb);
+\end{tikzpicture}
+\end{document}
