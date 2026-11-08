@@ -1,0 +1,40 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[haranoaji]{luatexja-preset}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\renewcommand{\familydefault}{\sfdefault}
+\ltjsetparameter{xkanjiskip=0pt}
+\usetikzlibrary{arrows.meta}
+\definecolor{accent}{RGB}{58,120,200}
+\definecolor{warn}{RGB}{210,70,55}
+\definecolor{bldg}{RGB}{140,140,140}
+% #1: x offset, #2: radius, #3: caption
+\newcommand{\panel}[3]{
+  \begin{scope}[shift={(#1,0)}]
+    \clip (-5,-4) rectangle (6,6.5);
+    \fill[accent, opacity=0.18, even odd rule] (-5,-4) rectangle (6,6.5)
+      {[rounded corners=#2*0.5cm] (-#2,-#2) rectangle (8+#2,5+#2)};
+    \fill[bldg, opacity=0.55] (0,0) rectangle (8,5);
+    \node at (3,2.5) {\large 建物};
+    \pgfmathsetmacro{\c}{-#2*0.7071}
+    \draw[accent, line width=1.4pt, dash pattern=on 5pt off 3pt] (-4,7) -- (\c,\c) -- (10,-3);
+    \begin{scope}[shift={(\c,\c)}, rotate=-38.5]
+      \draw[line width=1.1pt] (-2.25,-0.9) rectangle (2.25,0.9);
+    \end{scope}
+    \begin{scope}
+      \clip (0,0) rectangle (8,5);
+      \begin{scope}[shift={(\c,\c)}, rotate=-38.5]
+        \fill[warn] (-2.25,-0.9) rectangle (2.25,0.9);
+      \end{scope}
+    \end{scope}
+  \end{scope}
+  \draw[line width=0.6pt, opacity=0.5] (#1-5,-4) rectangle (#1+6,6.5);
+  \node[below, font=\large] at (#1+0.5,-4.2) {#3};
+}
+\begin{document}
+\begin{tikzpicture}[x=0.5cm, y=0.5cm]
+  \panel{0}{0.5}{半径 0.5 m}
+  \panel{12.5}{2.5}{半径 2.5 m}
+  \node[warn, font=\normalsize] (hit) at (-3.4,2.6) {ぶつかる};
+  \draw[warn, line width=0.9pt, -{Stealth[length=5pt]}] (hit.south east) to[bend right=20] (0.25,0.45);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,29 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[haranoaji]{luatexja-preset}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\renewcommand{\familydefault}{\sfdefault}
+\ltjsetparameter{xkanjiskip=0pt}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric}
+\definecolor{accent}{RGB}{58,120,200}
+\definecolor{warn}{RGB}{210,70,55}
+\begin{document}
+\begin{tikzpicture}[
+  font=\normalsize,
+  box/.style={draw, rounded corners=3pt, line width=0.9pt, align=center, inner sep=6pt, text width=62mm},
+  arr/.style={-{Stealth[length=6pt]}, line width=1.1pt, accent},
+  node distance=8mm
+]
+  \node[box] (scan) {0.5秒ごとに、一番近い相手を探す};
+  \node[box, below=of scan] (ray) {大砲の先から相手へ、見えない線を引く};
+  \node[draw=accent, line width=1.4pt, diamond, aspect=2.6, align=center, inner sep=1pt, below=of ray] (q) {見えていて\\200 m以内？};
+  \node[box, text width=46mm, anchor=north] (stop) at ([xshift=-3.6cm, yshift=-1.4cm]q.south) {その場で止まる\\{\small 向いて7秒たったら撃つ}};
+  \node[box, text width=46mm, anchor=north] (nav) at ([xshift=3.6cm, yshift=-1.4cm]q.south) {NavMeshに道を聞いて\\回り込む};
+  \node[box, text width=46mm, draw=warn, below=of nav] (stuck) {動けないのが続いたら\\下がって、回って、前に出る};
+
+  \draw[arr] (scan) -- (ray);
+  \draw[arr] (ray) -- (q);
+  \draw[arr] (q.west) -| node[pos=0.25, above] {はい} (stop.north);
+  \draw[arr] (q.east) -| node[pos=0.25, above] {いいえ} (nav.north);
+  \draw[arr] (nav) -- (stuck);
+\end{tikzpicture}
+\end{document}

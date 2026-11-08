@@ -1,0 +1,24 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[haranoaji]{luatexja-preset}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\renewcommand{\familydefault}{\sfdefault}
+\ltjsetparameter{xkanjiskip=0pt}
+\usetikzlibrary{arrows.meta}
+\definecolor{accent}{RGB}{58,120,200}
+\definecolor{warn}{RGB}{210,70,55}
+\begin{document}
+\begin{tikzpicture}[
+  font=\normalsize,
+  box/.style={draw, rounded corners=3pt, line width=0.9pt, align=center, inner sep=6pt, text width=44mm},
+  arr/.style={-{Stealth[length=6pt]}, line width=1.1pt, accent}
+]
+  \node[box, draw=warn, line width=1.4pt] (hit) at (0,3.2) {角すれすれの経路を\\全力で走り、角に当たる};
+  \node[box] (wait) at (5.4,0) {1.6秒動けないと\\脱出を始める};
+  \node[box] (esc) at (0,-3.2) {下がる、右に回る、\\まっすぐ前に出る};
+  \node[box] (path) at (-5.4,0) {同じ経路を\\もう一度もらう};
+  \draw[arr] (hit.east) to[bend left=25] (wait.north);
+  \draw[arr] (wait.south) to[bend left=25] (esc.east);
+  \draw[arr] (esc.west) to[bend left=25] (path.south);
+  \draw[arr] (path.north) to[bend left=25] (hit.west);
+\end{tikzpicture}
+\end{document}
