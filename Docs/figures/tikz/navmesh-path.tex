@@ -1,0 +1,44 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[haranoaji]{luatexja-preset}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\renewcommand{\familydefault}{\sfdefault}
+\ltjsetparameter{xkanjiskip=0pt}
+\usetikzlibrary{arrows.meta}
+\definecolor{accent}{RGB}{58,120,200}
+\definecolor{warn}{RGB}{210,70,55}
+\definecolor{bldg}{RGB}{140,140,140}
+\begin{document}
+\begin{tikzpicture}[x=0.5cm, y=0.5cm]
+  % 通れる床（建物から半径ぶん離した残り）
+  \fill[accent, opacity=0.16, even odd rule] (0,0) rectangle (20,12)
+    (4.5,3.5) rectangle (9.5,12) (10.5,0) rectangle (15.5,7.5);
+  % 床を分けた多角形のさかい目
+  \begin{scope}[accent, opacity=0.55, line width=0.5pt]
+    \draw (0,3.5) -- (4.5,3.5) (9.5,3.5) -- (10.5,3.5);
+    \draw (0,7.5) -- (4.5,7.5) (15.5,7.5) -- (20,7.5) (9.5,7.5) -- (10.5,7.5);
+    \draw (4.5,0) -- (4.5,3.5) (9.5,0) -- (9.5,3.5);
+    \draw (10.5,7.5) -- (10.5,12) (15.5,7.5) -- (15.5,12) (15.5,0) -- (15.5,7.5);
+  \end{scope}
+  \draw[line width=0.6pt, opacity=0.5] (0,0) rectangle (20,12);
+  % 建物
+  \fill[bldg, opacity=0.55] (5,4) rectangle (9,12);
+  \fill[bldg, opacity=0.55] (11,0) rectangle (15,7);
+  \node at (7,8) {建物};
+  \node at (13,3.5) {建物};
+  % 道
+  \draw[accent, line width=1.6pt] (2,9) -- (4.5,3.5) -- (9.5,3.5) -- (10.5,7.5) -- (15.5,7.5) -- (18,3);
+  \foreach \p in {(4.5,3.5),(9.5,3.5),(10.5,7.5),(15.5,7.5)} {
+    \fill[accent] \p circle (0.28);
+  }
+  % 敵と相手
+  \begin{scope}[shift={(2,9)}, rotate=-65]
+    \draw[line width=1.1pt] (-1.1,-0.45) rectangle (1.1,0.45);
+  \end{scope}
+  \node[above] at (2,10.1) {敵};
+  \fill[warn] (18,3) circle (0.45);
+  \node[below] at (18,2.4) {相手};
+  % 次の曲がり角
+  \node[warn, font=\small, align=center] (st) at (2.2,1.4) {次の曲がり角};
+  \draw[warn, line width=0.9pt, -{Stealth[length=5pt]}] (st.east) to[bend right=25] (4.2,3.1);
+\end{tikzpicture}
+\end{document}
